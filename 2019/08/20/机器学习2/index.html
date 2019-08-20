@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>机器学习原理以及sklearn实战笔记（1） | sloth&#39;s blog</title>
+  <title>&#39;机器学习原理以及sklearn实战笔记&#39; | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机器学习概念​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。">
+  <meta name="description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。API为sklearn.model_selection中train_test_split. ​    train_test_split(x,y,test_size) ​    x:数据集特征值 ​    y:数据集特征名称 ​    test_size:测试集所占比">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习原理以及sklearn实战笔记（1）">
-<meta property="og:url" content="http://yoursite.com/2019/08/17/机器学习/index.html">
+<meta property="og:title" content="&#39;机器学习原理以及sklearn实战笔记&#39;">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/机器学习2/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="机器学习概念​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。">
+<meta property="og:description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。API为sklearn.model_selection中train_test_split. ​    train_test_split(x,y,test_size) ​    x:数据集特征值 ​    y:数据集特征名称 ​    test_size:测试集所占比">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-20T03:16:47.883Z">
+<meta property="og:updated_time" content="2019-08-20T06:38:20.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习原理以及sklearn实战笔记（1）">
-<meta name="twitter:description" content="机器学习概念​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。">
+<meta name="twitter:title" content="&#39;机器学习原理以及sklearn实战笔记&#39;">
+<meta name="twitter:description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。API为sklearn.model_selection中train_test_split. ​    train_test_split(x,y,test_size) ​    x:数据集特征值 ​    y:数据集特征名称 ​    test_size:测试集所占比">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -163,80 +163,75 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-机器学习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-机器学习2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      机器学习原理以及sklearn实战笔记（1）
+      &#39;机器学习原理以及sklearn实战笔记&#39;
     </h1>
   
 
         
-        <a href="/2019/08/17/机器学习/" class="archive-article-date">
-  	<time datetime="2019-08-17T12:34:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+        <a href="/2019/08/20/机器学习2/" class="archive-article-date">
+  	<time datetime="2019-08-20T03:03:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。<a id="more"></a>一种目标值连续，如房价，物价，时间等，称为回归。还有一种比较特殊，没有目标值，根据训练集，将特征相似的样本归为一类，称为聚类。前两种机器学习方法有目标值，称为监督学习，第三种称为无监督学习。</p>
-<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><p>​    机器学习开发就是找到一个准确率高的模型预测结果，所谓模型是指算法加数据。开发流程粗略来说分为4步：</p>
-<p>​    1    根据数据类型确定目标算法（回归、分类、聚类）</p>
-<p>​    2    特征工程：包括特征抽取、特征处理以及数据降维</p>
-<p>​    3    算法选择</p>
-<p>​    4    模型好坏评估</p>
-<p>​    如果算法效果不好则需重新确定算法或做特征工程处理。</p>
-<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><p>​    特征工程通过特定的方法指将数据转换成为符合算法要求的数据，包括特征抽取和特征处理和数据降维。</p>
-<h3 id="特征抽取"><a href="#特征抽取" class="headerlink" title="特征抽取"></a>特征抽取</h3><h4 id="字典特征抽取"><a href="#字典特征抽取" class="headerlink" title="字典特征抽取"></a>字典特征抽取</h4><p>​    面对特征值为类别时可以利用字典特征抽取，又称为one-hot编码，指将特征中的所有类别列出，样本对应的类别位置置一，其余位置置零。</p>
-<p>​    API:sklearn.feature_extraction中DictVectorizer</p>
-<p>​    主要方法:DictVectorizer.fit_transform(x)</p>
-<p>​            x:字典型数据</p>
-<p>​            return:返回sparse矩阵，一般使用to array方法转换为数组</p>
-<h4 id="文本特征抽取"><a href="#文本特征抽取" class="headerlink" title="文本特征抽取"></a>文本特征抽取</h4><p>​    在处理文本时可用文本特征抽取。</p>
-<p>​    API:sklearn.feature_extraction.text中CountVectorizer</p>
-<p>​    主要方法:CountVectorizer.fit_transform(x)</p>
-<p>​            x:文本或包含文本的可迭代对象</p>
-<p>​            return:返回sparse矩阵</p>
-<h3 id="特征处理"><a href="#特征处理" class="headerlink" title="特征处理"></a>特征处理</h3><h4 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h4><p>​    归一化指的是将数据映射到一定范围之内，一般来说是（0，1），从而避免某一类数据对结果产生过大影响。缺点是容易受到异常值的影响。<br>$$<br>X’ = \frac{X-min}{max-min}<br>$$</p>
-<p>$$<br>X’’ = X’*(mx-mi)+mi<br>$$</p>
-<p>​    API:sklearn.preprocessing中MinMaxScaler</p>
-<p>​    MinMaxScaler(feature_range=(mi,mx))</p>
-<p>​    feature_range表示映射范围</p>
-<p>​    主要方法:MinMaxScaler.fit_transform(x)</p>
-<p>​    x:待处理的numpyarray数组</p>
-<p>​    return:处理后的数组</p>
-<h4 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h4><p>​    将数据转化为平均值为0，方差较少的数据<br>$$<br>X’ =  \frac{X-mean}{\sigma}<br>$$<br>​    其中mean为均值，σ为方差</p>
-<p>​    API:sklearn.preprocessing 中StandarScaler</p>
-<p>​    主要方法:StandarScaler.fit_transform(x)</p>
-<p>​    x:numpuarray数组</p>
-<p>​    return:处理过后的数组</p>
-<h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><p>​    缺失值一般不删除而是补充，一般选择平均值或者中位数插补。</p>
-<p>​    API:sklearn.preprocessing中Imputer</p>
-<p>​    Imputer(missing_values=’’NaN”，Strategy=‘mean’,axis=0)</p>
-<p>​    主要方法:Imputer.fit_transform(x)</p>
-<p>​    x:numpyarray数组</p>
-<p>​    return:以平均值代替缺失值的数据</p>
-<h3 id="数据降维"><a href="#数据降维" class="headerlink" title="数据降维"></a>数据降维</h3><p>​    当样本的的特征数目过多难以处理时需要数据降维减少特征数目，从而减少计算量，数据降维方法主要有特征选择以及主成分分析。</p>
-<h4 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h4><p>​    特征选择的方法有过滤式以及嵌入式，过滤式指滤除方差较小的特征，嵌入式针对各个算法主要有正则化以及决策树等。</p>
-<p>​    过滤式API:sklearn.feature_selection中的VarianceThreshold</p>
-<p>​    VarianceThreshold(x)</p>
-<p>​    x:存放指定滤除的方差值</p>
-<p>​    主要方法:VarianceThreshold.fit_transform(x)</p>
-<p>​    x:待处理的数据</p>
-<p>​    return:删除方差小于指定值后的数组</p>
-<h4 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h4><p>​    主成分分析指将高维数据投影到低维而尽量多的保留实物原本特征的方法。</p>
-<p>​    API:sklearn.decomposition中的PCA</p>
-<p>​    PCA(n_components)</p>
-<p>​    components一般用小数表示保留与原特征的相似度，一般为0.9-0.95，若用整数则表示保留的特征数。</p>
-<p>​    主要方法PCA.fit_transform(x)</p>
-<p>​    x:待处理的数据</p>
-<p>​    return:指定要求的特征数据，一般数据没有实际意义。</p>
-<p>​    </p>
-<p>​    </p>
+        <h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><p>​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。API为sklearn.model_selection中train_test_split.</p>
+<p>​    train_test_split(x,y,test_size)</p>
+<p>​    x:数据集特征值</p>
+<p>​    y:数据集特征名称</p>
+<p>​    test_size:测试集所占比率，一般为0.25</p>
+<p>​    return:注意有4个返回值，分别为x_train,x_test,y_train,y_test</p>
+<h2 id="估计器"><a href="#估计器" class="headerlink" title="估计器"></a>估计器</h2><p>​    sklearn中都是集成好的估计器API,只要调用然后实例化即可，一般步骤：</p>
+<p>​    1    fit(x_train,y_train),训练估计器</p>
+<p>​    2    y_predict = predict(x_test),取得估计值</p>
+<p>​    3    score(x_test,y_test),计算分类算法准确率</p>
+<h2 id="分类算法评估"><a href="#分类算法评估" class="headerlink" title="分类算法评估"></a>分类算法评估</h2><p>​    分类算法评估一般有两个标准即准确率(pression)、召回率(recall)。准确率置预测正确的样本数与总的样本数之比，召回率指对于某种需要被检测出的样本，通过估计器被检测出来的个数与样本中所有该类数据的个数之比。召回率一般用于疾病检测或者产品质量的检测评估。此外还有系统稳健性指标F1。<br>$$<br>F1 = \frac{2<em>pression</em>recall}{pression+recall}<br>$$<br>​    分类评估的API为sklearn.metrics中classfication_report</p>
+<p>​    classfication-report(y_ture,y_predict,target-name)</p>
+<p>​    y_true:目标的真实值</p>
+<p>​    y_predict:目标的预测值</p>
+<p>​    target_names:目标的类别名称</p>
+<p>​    return:以表格形式返回每个类别的准确率和召回率</p>
+<h2 id="模型选择与调优"><a href="#模型选择与调优" class="headerlink" title="模型选择与调优"></a>模型选择与调优</h2><p>​    为了使得训练集的随机性更强，增加模型的说服力以及效果，可以采用交叉验证的方法进行调试，其原理是将训练集按照一定比例再划分为训练集以及验证集，再将训练集与验证集交换位置进行训练。以四折交叉验证为例，将训练集等分为四份，取第一份为验证集，其余三份为训练集。训练完成之后利用验证集计算准确率，然后以第二份数据为验证集，剩下三份为训练集，以此类推得出四个模型以及准确率，最后取模型和准确率的平均值。对于API中的超参数，可以采用网格搜索的方式，具体来说就是不停的改变超参数的值来训练出最好的模型。一般交叉验证与网格搜索可以配合使用进行模型调优。</p>
+<p>​    API:sklearn.made_selection中GridSearch CV</p>
+<p>​    GridSearchCV(estimator,param_grid=None,CV=None)</p>
+<p>​    estimator:估计器，实例化的算法对象</p>
+<p>​    param_grid:估计器参数选择</p>
+<p>​    CV:指定几折交叉验证</p>
+<p>​    score:准确率</p>
+<p>​    best_score_:最好结果</p>
+<p>​    best_estimator_:最好的参数模型</p>
+<p>​    cv_results:每次交叉验证后的结果</p>
+<h2 id="knn算法"><a href="#knn算法" class="headerlink" title="knn算法"></a>knn算法</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>​    knn是典型分类算法，其原理是将测试集样本的所有的特征与训练集求欧式距离，选择其中距离最小的一个或者多个样本，将测试样本归为多数的那一类。knn算法的优点是算法简单，易于理解，缺点是计算量大并且准确率受到k的影响。</p>
+<p>​    API:sklearn.neighbours中KNeighborsClassifier</p>
+<p>​    KNeighboursClassifier(n_neighbours)</p>
+<p>​    n_neighbours:寻找计算距离的样本数即邻居数</p>
+<h2 id="算法实例–预测入住位"><a href="#算法实例–预测入住位" class="headerlink" title="算法实例–预测入住位"></a>算法实例–预测入住位</h2><p>​    已知文件中有客户id，入住时间，坐标等信息，预测其入住位置。</p>
+<p>​    读取文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">"C:\\Users\YJX\\机器学习\\facebook-v-predicting-check-ins\\train.csv"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    处理特征值，将数据范围缩小便于运算，将时间戳转换为真正的时间特征如日期、时间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data = data.query(<span class="string">"x&gt;1.0 &amp; x&lt;1.25 &amp; y&gt;2.5 &amp; y&lt;2.75"</span>)</span><br><span class="line">time_value = pd.to_datetime(data[<span class="string">'time'</span>], unit=<span class="string">'s'</span>)</span><br><span class="line">time_value = pd.DatetimeIndex(time_value)</span><br><span class="line">data[<span class="string">'day'</span>] = time_value.day</span><br><span class="line">data[<span class="string">'hour'</span>] = time_value.hour</span><br><span class="line">data[<span class="string">'weekday'</span>] = time_value.weekday</span><br><span class="line">data = data.drop([<span class="string">'time'</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    处理目标值，将类别中数目较少的目标值删除。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">place_count = data.groupby(<span class="string">'place_id'</span>).count()</span><br><span class="line">tf = place_count[place_count.row_id &gt;<span class="number">3</span>].reset_index()</span><br><span class="line">data = data[data[<span class="string">'place_id'</span>].isin(tf.place_id)]</span><br></pre></td></tr></table></figure>
+
+<p>​    获取数据集的特征值和目标值并分割数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y = data[<span class="string">'place_id'</span>]</span><br><span class="line">x = data.drop([<span class="string">'place_id'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x = data.drop([<span class="string">'row_id'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=<span class="number">0.25</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    标准化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std = StandardScaler()</span><br><span class="line">x_train = std.fit_transform(x_train)</span><br><span class="line">x_test = std.transform(x_test)</span><br></pre></td></tr></table></figure>
+
+<p>​    实例化模型并训练,得出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">knn = KNeighborsClassifier()</span><br><span class="line">knn.fit(x_train,y_train)</span><br><span class="line">y_predict = knn.predict(x_test)</span><br><span class="line">print(<span class="string">"预测的目标入住位置为"</span>,y_predict)</span><br><span class="line">print(<span class="string">"预测的准确率："</span>,knn.score(x_test,y_test))</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -321,7 +316,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/17/机器学习/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/20/机器学习2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -335,18 +330,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/08/20/机器学习2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          &#39;机器学习原理以及sklearn实战笔记&#39;
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/17/我的第一篇博客文章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客文章</div>
+    <a href="/2019/08/17/机器学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">机器学习原理以及sklearn实战笔记（1）</div>
       <i class="icon-circle-right"></i>
     </a>
   
