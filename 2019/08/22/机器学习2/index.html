@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>sloth&#39;s blog</title>
+  <title>机器学习2 | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sloth&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习2">
+<meta property="og:url" content="http://yoursite.com/2019/08/22/机器学习2/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
+<meta property="og:description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-08-22T11:05:16.189Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sloth&#39;s blog">
+<meta name="twitter:title" content="机器学习2">
+<meta name="twitter:description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -159,16 +163,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-机器学习2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-机器学习2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/22/机器学习2/">机器学习2</a>
+    <h1 class="article-title" itemprop="name">
+      机器学习2
     </h1>
   
 
@@ -181,12 +183,89 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><p>​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。
-        
-          <a class="article-more-a" href="/2019/08/22/机器学习2/#more">more >></a>
-        
+        <h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><p>​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。<a id="more"></a>API为sklearn.model_selection中train_test_split.</p>
+<p>​    train_test_split(x,y,test_size)</p>
+<p>​    x:数据集特征值</p>
+<p>​    y:数据集特征名称</p>
+<p>​    test_size:测试集所占比率，一般为0.25</p>
+<p>​    return:注意有4个返回值，分别为x_train,x_test,y_train,y_test</p>
+<h2 id="估计器"><a href="#估计器" class="headerlink" title="估计器"></a>估计器</h2><p>​    sklearn中都是集成好的估计器API,只要调用然后实例化即可，一般步骤：</p>
+<p>​    1    fit(x_train,y_train),训练估计器</p>
+<p>​    2    y_predict = predict(x_test),取得估计值</p>
+<p>​    3    score(x_test,y_test),计算分类算法准确率</p>
+<h2 id="分类算法评估"><a href="#分类算法评估" class="headerlink" title="分类算法评估"></a>分类算法评估</h2><p>​    分类算法评估一般有两个标准即准确率(pression)、召回率(recall)。准确率置预测正确的样本数与总的样本数之比，召回率指对于某种需要被检测出的样本，通过估计器被检测出来的个数与样本中所有该类数据的个数之比。召回率一般用于疾病检测或者产品质量的检测评估。此外还有系统稳健性指标F1。<br>$$<br>F1 = \frac{2*pression * recall}{pression + recall}<br>$$<br>​    分类评估的API为sklearn.metrics中classfication_report</p>
+<p>​    classfication-report(y_ture,y_predict,target-name)</p>
+<p>​    y_true:目标的真实值</p>
+<p>​    y_predict:目标的预测值</p>
+<p>​    target_names:目标的类别名称</p>
+<p>​    return:以表格形式返回每个类别的准确率和召回率</p>
+<h2 id="模型选择与调优"><a href="#模型选择与调优" class="headerlink" title="模型选择与调优"></a>模型选择与调优</h2><p>​    为了使得训练集的随机性更强，增加模型的说服力以及效果，可以采用交叉验证的方法进行调试，其原理是将训练集按照一定比例再划分为训练集以及验证集，再将训练集与验证集交换位置进行训练。以四折交叉验证为例，将训练集等分为四份，取第一份为验证集，其余三份为训练集。训练完成之后利用验证集计算准确率，然后以第二份数据为验证集，剩下三份为训练集，以此类推得出四个模型以及准确率，最后取模型和准确率的平均值。对于API中的超参数，可以采用网格搜索的方式，具体来说就是不停的改变超参数的值来训练出最好的模型。一般交叉验证与网格搜索可以配合使用进行模型调优。</p>
+<p>​    API:sklearn.made_selection中GridSearch CV</p>
+<p>​    GridSearchCV(estimator,param_grid=None,CV=None)</p>
+<p>​    estimator:估计器，实例化的算法对象</p>
+<p>​    param_grid:估计器参数选择</p>
+<p>​    CV:指定几折交叉验证</p>
+<p>​    score:准确率</p>
+<p>​    best_score_:最好结果</p>
+<p>​    best_estimator_:最好的参数模型</p>
+<p>​    cv_results:每次交叉验证后的结果</p>
+<h2 id="knn算法"><a href="#knn算法" class="headerlink" title="knn算法"></a>knn算法</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>​    knn是典型分类算法，其原理是将测试集样本的所有的特征与训练集求欧式距离，选择其中距离最小的一个或者多个样本，将测试样本归为多数的那一类。knn算法的优点是算法简单，易于理解，缺点是计算量大并且准确率受到k的影响。</p>
+<p>​    API:sklearn.neighbours中KNeighborsClassifier</p>
+<p>​    KNeighboursClassifier(n_neighbours)</p>
+<p>​    n_neighbours:寻找计算距离的样本数即邻居数</p>
+<h2 id="算法实例–预测入住位置"><a href="#算法实例–预测入住位置" class="headerlink" title="算法实例–预测入住位置"></a>算法实例–预测入住位置</h2><p>​    已知文件中有客户id，入住时间，坐标等信息，预测其入住位置。</p>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><p>​    读取文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv(<span class="string">"C:\\Users\YJX\\机器学习\\facebook-v-predicting-check-ins\\train.csv"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    处理特征值，将数据范围缩小便于运算，将时间戳转换为真正的时间特征如日期、时间。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">data = data.query(<span class="string">"x&gt;1.0 &amp; x&lt;1.25 &amp; y&gt;2.5 &amp; y&lt;2.75"</span>)</span><br><span class="line">time_value = pd.to_datetime(data[<span class="string">'time'</span>], unit=<span class="string">'s'</span>)</span><br><span class="line">time_value = pd.DatetimeIndex(time_value)</span><br><span class="line">data[<span class="string">'day'</span>] = time_value.day</span><br><span class="line">data[<span class="string">'hour'</span>] = time_value.hour</span><br><span class="line">data[<span class="string">'weekday'</span>] = time_value.weekday</span><br><span class="line">data = data.drop([<span class="string">'time'</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    处理目标值，将类别中数目较少的目标值删除。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">place_count = data.groupby(<span class="string">'place_id'</span>).count()</span><br><span class="line">tf = place_count[place_count.row_id &gt;<span class="number">3</span>].reset_index()</span><br><span class="line">data = data[data[<span class="string">'place_id'</span>].isin(tf.place_id)]</span><br></pre></td></tr></table></figure>
+
+<p>​    获取数据集的特征值和目标值并分割数据集</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">y = data[<span class="string">'place_id'</span>]</span><br><span class="line">x = data.drop([<span class="string">'place_id'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x = data.drop([<span class="string">'row_id'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=<span class="number">0.25</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    标准化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std = StandardScaler()</span><br><span class="line">x_train = std.fit_transform(x_train)</span><br><span class="line">x_test = std.transform(x_test)</span><br></pre></td></tr></table></figure>
+
+<p>​    实例化模型并训练,得出结果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">knn = KNeighborsClassifier()</span><br><span class="line">knn.fit(x_train,y_train)</span><br><span class="line">y_predict = knn.predict(x_test)</span><br><span class="line">print(<span class="string">"预测的目标入住位置为"</span>,y_predict)</span><br><span class="line">print(<span class="string">"预测的准确率："</span>,knn.score(x_test,y_test))</span><br></pre></td></tr></table></figure>
+
+<h3 id="模型优化"><a href="#模型优化" class="headerlink" title="模型优化"></a>模型优化</h3><p>​    可以采用交叉验证网格搜索的方法进行优化，选择出准确率最高的超参数值。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">knn = KNeighborsClassifier()</span><br><span class="line">param = &#123;<span class="string">"n_neighbors"</span>: [<span class="number">3</span>, <span class="number">5</span>, <span class="number">10</span>]&#125;</span><br><span class="line">gc = GridSearchCV(knn, param_grid=param, cv=<span class="number">2</span>)</span><br><span class="line">gc.fit(x_train, y_train)</span><br><span class="line">acurate = gc.score(x_test, y_test)</span><br><span class="line">print(<span class="string">"在测试集上的准确率为："</span>, acurate)</span><br><span class="line">print(<span class="string">"交叉验证中最好的结果："</span>, gc.best_score_ )</span><br><span class="line">print(<span class="string">"选择最好的模型是："</span>, gc.best_estimator_)</span><br><span class="line">print(<span class="string">"每个超参数每次交叉验证的结果："</span>, gc.cv_results_)</span><br></pre></td></tr></table></figure>
+
+<p>​    最终得出效果：</p>
+<h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>​    朴素贝叶斯一般用于文本分类以及垃圾邮件处理等。通过大量数据统计可将频率当作概率处理，设类别为C，样本的特征为F1、F2、F3等，统计可以得出c类样本含有特征f1的先验概率P(F1|C)，最终类别为C类样本的概率P(C)，特征F1出现的概率P(F1)，通过贝叶斯公式可求得拥有F1特征的样本最终为C类的概率。<br>$$<br>P(C|F1) = \frac{P(F1|C)<em>P(C) }{ P(F1)}<br>$$<br>​    假设样本的各个特征之间相互独立，可以求出拥有F1、F2、F3等N个特征的样本最终为C类的概率。<br>$$<br>P(C|F1F2F3…) = \frac{P(F1|C)<em>P(F2|C)</em>P(F3|C)…*P(FN|C)</em>(P(C))^N}{P(F1)<em>P(F2)</em>P(F3)…<em>P(FN)}<br>$$<br>​    依据贝叶斯公式可求出每个样本属于各个类别的概率，最后将样本归为概率最高的那一栏，为了避免概率中有出现0的情况引入拉普拉斯平滑系数α。假设Ni为F1在C类的所有样本中出现的次数，N为C类所有特征出现次数之和，m为所有特征个数之和，则有<br>$$<br>P(F1|C) = \frac{P(NI+α }{ P(N+α</em>m)}<br>$$</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -195,16 +274,75 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/22/机器学习2/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/22/机器学习2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/17/机器学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">机器学习原理以及sklearn实战笔记（1）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -224,201 +362,14 @@ var _hmt = _hmt || [];
 
 
 
-
   
-    <article id="post-机器学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/机器学习/">机器学习原理以及sklearn实战笔记（1）</a>
-    </h1>
   
 
-        
-        <a href="/2019/08/17/机器学习/" class="archive-article-date">
-  	<time datetime="2019-08-17T12:34:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。
-        
-          <a class="article-more-a" href="/2019/08/17/机器学习/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/17/机器学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/我的第一篇博客文章/">我的第一篇博客文章</a>
-    </h1>
   
 
-        
-        <a href="/2019/08/17/我的第一篇博客文章/" class="archive-article-date">
-  	<time datetime="2019-08-17T03:15:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h2><p>​    正式的第一篇博客，感谢codesheep羊哥对于博客重要性的告知以及搭建博客的教程，跟着羊的教程一步步走下来，遇到的坑也不多，算是终于成型。谢谢模板的提供者yilia,以及陪我聊天的童老板。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/17/我的第一篇博客文章/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/17/hello-world/">Hello World</a>
-    </h1>
   
 
-        
-        <a href="/2019/08/17/hello-world/" class="archive-article-date">
-  	<time datetime="2019-08-17T02:55:33.127Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.
-        
-          <a class="article-more-a" href="/2019/08/17/hello-world/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/17/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -441,8 +392,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
