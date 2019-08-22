@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>机器学习2 | sloth&#39;s blog</title>
+  <title>机器学习原理以及sklearn实战笔记（2） | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。">
+<meta name="keywords" content="knn、朴素贝叶斯">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器学习2">
+<meta property="og:title" content="机器学习原理以及sklearn实战笔记（2）">
 <meta property="og:url" content="http://yoursite.com/2019/08/22/机器学习2/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
 <meta property="og:description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-22T11:20:09.884Z">
+<meta property="og:image" content="http://yoursite.com/img/knn.png">
+<meta property="og:updated_time" content="2019-08-22T13:21:12.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习2">
+<meta name="twitter:title" content="机器学习原理以及sklearn实战笔记（2）">
 <meta name="twitter:description" content="数据获取​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。">
+<meta name="twitter:image" content="http://yoursite.com/img/knn.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -170,7 +173,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      机器学习2
+      机器学习原理以及sklearn实战笔记（2）
     </h1>
   
 
@@ -235,7 +238,10 @@ var _hmt = _hmt || [];
 <h3 id="模型优化"><a href="#模型优化" class="headerlink" title="模型优化"></a>模型优化</h3><p>​    可以采用交叉验证网格搜索的方法进行优化，选择出准确率最高的超参数值。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">knn = KNeighborsClassifier()</span><br><span class="line">param = &#123;<span class="string">"n_neighbors"</span>: [<span class="number">3</span>, <span class="number">5</span>, <span class="number">10</span>]&#125;</span><br><span class="line">gc = GridSearchCV(knn, param_grid=param, cv=<span class="number">2</span>)</span><br><span class="line">gc.fit(x_train, y_train)</span><br><span class="line">acurate = gc.score(x_test, y_test)</span><br><span class="line">print(<span class="string">"在测试集上的准确率为："</span>, acurate)</span><br><span class="line">print(<span class="string">"交叉验证中最好的结果："</span>, gc.best_score_ )</span><br><span class="line">print(<span class="string">"选择最好的模型是："</span>, gc.best_estimator_)</span><br><span class="line">print(<span class="string">"每个超参数每次交叉验证的结果："</span>, gc.cv_results_)</span><br></pre></td></tr></table></figure>
 
+<p>​    最终预测效果。</p>
+<p><img src="/img/knn.png" alt></p>
 <h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>​    朴素贝叶斯一般用于文本分类以及垃圾邮件处理等。通过大量数据统计可将频率当作概率处理，设类别为C，样本的特征为F1、F2、F3等，统计可以得出c类样本含有特征f1的先验概率P(F1|C)，最终类别为C类样本的概率P(C)，特征F1出现的概率P(F1)，通过贝叶斯公式可求得拥有F1特征的样本最终为C类的概率。<br>$$<br>P(C|F1) = \frac{P(F1|C)<em>P(C) }{ P(F1)}<br>$$<br>​    假设样本的各个特征之间相互独立，可以求出拥有F1、F2、F3等N个特征的样本最终为C类的概率。<br>$$<br>P(C|F1F2F3…) = \frac{P(F1|C)<em>P(F2|C)</em>P(F3|C)…*P(FN|C)</em>(P(C))^N}{P(F1)<em>P(F2)</em>P(F3)…<em>P(FN)}<br>$$<br>​    依据贝叶斯公式可求出每个样本属于各个类别的概率，最后将样本归为概率最高的那一栏，为了避免概率中有出现0的情况引入拉普拉斯平滑系数α。假设Ni为F1在C类的所有样本中出现的次数，N为C类所有特征出现次数之和，m为所有特征个数之和，则有<br>$$<br>P(F1|C) = \frac{P(NI+α }{ P(N+α</em>m)}<br>$$</p>
+<p>API:sklearn.naive_bayes中的MultinomialNB</p>
 <h2 id="算法实例–利用朴素贝叶斯进行文本分类"><a href="#算法实例–利用朴素贝叶斯进行文本分类" class="headerlink" title="算法实例–利用朴素贝叶斯进行文本分类"></a>算法实例–利用朴素贝叶斯进行文本分类</h2><p>​    已知在scikit-learn的数据库中有不同种类的文本数据集，通过朴素贝叶斯对其进行分类。</p>
 <h3 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h3><p>​    获取数据。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">news = fetch_20newsgroups(subset=<span class="string">'all'</span>)</span><br></pre></td></tr></table></figure>
@@ -249,6 +255,8 @@ var _hmt = _hmt || [];
 <p>​    实例化估计器,并训练，得出结果。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mlt = MultinomialNB()</span><br><span class="line">mlt.fit(x_train, y_train)</span><br><span class="line">y_predict = mlt.predict(x_test)</span><br><span class="line">mll = mlt.score(x_test, y_test)</span><br><span class="line">print(<span class="string">"预测的文章类别为："</span>, y_predict)</span><br><span class="line">print(<span class="string">"文章的准确率为："</span>, mll)</span><br></pre></td></tr></table></figure>
 
+<p>​    最终预测效果。</p>
+<p><img src alt="/img/朴素贝叶斯.png"></p>
 
       
 
@@ -283,6 +291,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">knn、朴素贝叶斯</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -486,6 +505,14 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">knn</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">knn、朴素贝叶斯</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
