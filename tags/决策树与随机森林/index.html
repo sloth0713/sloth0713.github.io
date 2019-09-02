@@ -6,19 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>机器学习原理以及sklearn实战笔记（1） | sloth&#39;s blog</title>
+  <title>Tag: 决策树与随机森林 | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="机器学习概念​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="机器学习原理以及sklearn实战笔记（1）">
-<meta property="og:url" content="http://yoursite.com/2019/08/17/机器学习/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="sloth&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/tags/决策树与随机森林/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="机器学习概念​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-20T03:16:47.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习原理以及sklearn实战笔记（1）">
-<meta name="twitter:description" content="机器学习概念​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。">
+<meta name="twitter:title" content="sloth&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -163,223 +159,60 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-机器学习" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      机器学习原理以及sklearn实战笔记（1）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/09/02/机器学习3/" class="archive-article-date">
+  	<time datetime="2019-09-02T01:13:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2019/09/02/机器学习3/">机器学习原理以及sklearn实战笔记（3）</a>
     </h1>
   
 
-        
-        <a href="/2019/08/17/机器学习/" class="archive-article-date">
-  	<time datetime="2019-08-17T12:34:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。<a id="more"></a>一种目标值连续，如房价，物价，时间等，称为回归。还有一种比较特殊，没有目标值，根据训练集，将特征相似的样本归为一类，称为聚类。前两种机器学习方法有目标值，称为监督学习，第三种称为无监督学习。</p>
-<h2 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h2><p>​    机器学习开发就是找到一个准确率高的模型预测结果，所谓模型是指算法加数据。开发流程粗略来说分为4步：</p>
-<p>​    1    根据数据类型确定目标算法（回归、分类、聚类）</p>
-<p>​    2    特征工程：包括特征抽取、特征处理以及数据降维</p>
-<p>​    3    算法选择</p>
-<p>​    4    模型好坏评估</p>
-<p>​    如果算法效果不好则需重新确定算法或做特征工程处理。</p>
-<h2 id="特征工程"><a href="#特征工程" class="headerlink" title="特征工程"></a>特征工程</h2><p>​    特征工程通过特定的方法指将数据转换成为符合算法要求的数据，包括特征抽取和特征处理和数据降维。</p>
-<h3 id="特征抽取"><a href="#特征抽取" class="headerlink" title="特征抽取"></a>特征抽取</h3><h4 id="字典特征抽取"><a href="#字典特征抽取" class="headerlink" title="字典特征抽取"></a>字典特征抽取</h4><p>​    面对特征值为类别时可以利用字典特征抽取，又称为one-hot编码，指将特征中的所有类别列出，样本对应的类别位置置一，其余位置置零。</p>
-<p>​    API:sklearn.feature_extraction中DictVectorizer</p>
-<p>​    主要方法:DictVectorizer.fit_transform(x)</p>
-<p>​            x:字典型数据</p>
-<p>​            return:返回sparse矩阵，一般使用to array方法转换为数组</p>
-<h4 id="文本特征抽取"><a href="#文本特征抽取" class="headerlink" title="文本特征抽取"></a>文本特征抽取</h4><p>​    在处理文本时可用文本特征抽取。</p>
-<p>​    API:sklearn.feature_extraction.text中CountVectorizer</p>
-<p>​    主要方法:CountVectorizer.fit_transform(x)</p>
-<p>​            x:文本或包含文本的可迭代对象</p>
-<p>​            return:返回sparse矩阵</p>
-<h3 id="特征处理"><a href="#特征处理" class="headerlink" title="特征处理"></a>特征处理</h3><h4 id="归一化"><a href="#归一化" class="headerlink" title="归一化"></a>归一化</h4><p>​    归一化指的是将数据映射到一定范围之内，一般来说是（0，1），从而避免某一类数据对结果产生过大影响。缺点是容易受到异常值的影响。<br>$$<br>X’ = \frac{X-min}{max-min}<br>$$</p>
-<p>$$<br>X’’ = X’*(mx-mi)+mi<br>$$</p>
-<p>​    API:sklearn.preprocessing中MinMaxScaler</p>
-<p>​    MinMaxScaler(feature_range=(mi,mx))</p>
-<p>​    feature_range表示映射范围</p>
-<p>​    主要方法:MinMaxScaler.fit_transform(x)</p>
-<p>​    x:待处理的numpyarray数组</p>
-<p>​    return:处理后的数组</p>
-<h4 id="标准化"><a href="#标准化" class="headerlink" title="标准化"></a>标准化</h4><p>​    将数据转化为平均值为0，方差较少的数据<br>$$<br>X’ =  \frac{X-mean}{\sigma}<br>$$<br>​    其中mean为均值，σ为方差</p>
-<p>​    API:sklearn.preprocessing 中StandarScaler</p>
-<p>​    主要方法:StandarScaler.fit_transform(x)</p>
-<p>​    x:numpuarray数组</p>
-<p>​    return:处理过后的数组</p>
-<h4 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h4><p>​    缺失值一般不删除而是补充，一般选择平均值或者中位数插补。</p>
-<p>​    API:sklearn.preprocessing中Imputer</p>
-<p>​    Imputer(missing_values=’’NaN”，Strategy=‘mean’,axis=0)</p>
-<p>​    主要方法:Imputer.fit_transform(x)</p>
-<p>​    x:numpyarray数组</p>
-<p>​    return:以平均值代替缺失值的数据</p>
-<h3 id="数据降维"><a href="#数据降维" class="headerlink" title="数据降维"></a>数据降维</h3><p>​    当样本的的特征数目过多难以处理时需要数据降维减少特征数目，从而减少计算量，数据降维方法主要有特征选择以及主成分分析。</p>
-<h4 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h4><p>​    特征选择的方法有过滤式以及嵌入式，过滤式指滤除方差较小的特征，嵌入式针对各个算法主要有正则化以及决策树等。</p>
-<p>​    过滤式API:sklearn.feature_selection中的VarianceThreshold</p>
-<p>​    VarianceThreshold(x)</p>
-<p>​    x:存放指定滤除的方差值</p>
-<p>​    主要方法:VarianceThreshold.fit_transform(x)</p>
-<p>​    x:待处理的数据</p>
-<p>​    return:删除方差小于指定值后的数组</p>
-<h4 id="主成分分析"><a href="#主成分分析" class="headerlink" title="主成分分析"></a>主成分分析</h4><p>​    主成分分析指将高维数据投影到低维而尽量多的保留实物原本特征的方法。</p>
-<p>​    API:sklearn.decomposition中的PCA</p>
-<p>​    PCA(n_components)</p>
-<p>​    components一般用小数表示保留与原特征的相似度，一般为0.9-0.95，若用整数则表示保留的特征数。</p>
-<p>​    主要方法PCA.fit_transform(x)</p>
-<p>​    x:待处理的数据</p>
-<p>​    return:指定要求的特征数据，一般数据没有实际意义。</p>
-<p>​    </p>
-<p>​    </p>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树与随机森林</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
+          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/08/17/机器学习/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/08/22/机器学习2/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          机器学习原理以及sklearn实战笔记（2）
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/08/17/我的第一篇博客文章/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">我的第一篇博客文章</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -402,9 +235,9 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
