@@ -16,10 +16,14 @@
 <meta property="og:site_name" content="sloth&#39;s blog">
 <meta property="og:description" content="线性回归原理​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-09T02:37:18.274Z">
+<meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
+<meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png">
+<meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png">
+<meta property="og:updated_time" content="2019-09-09T02:41:20.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习原理以及sklarn实战笔记（4）">
 <meta name="twitter:description" content="线性回归原理​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系">
+<meta name="twitter:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -209,13 +213,13 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lr = LinearRegression()</span><br><span class="line">lr.fit(x_train, y_train)</span><br><span class="line">print(lr.coef_)</span><br><span class="line">y_lr_predict = std_x.inverse_transform(lr.predict(x_test))</span><br><span class="line">lr_pre = mean_squared_error(y_test, y_lr_predict)</span><br><span class="line">print(<span class="string">"预测的准确率为："</span>, lr_pre)</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_lr_predict)</span><br></pre></td></tr></table></figure>
 
 <p>​    最终预测效果</p>
-<p><img src alt="/img/线性回归.png"></p>
+<p><img src="/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png" alt></p>
 <p>​    另一种利用梯度下降的方法解决，之前的数据处理步骤与正规方程相同，只是最后调用的API不同。其代码如下所示</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sgd = SGDRegressor()</span><br><span class="line">sgd.fit(x_train, y_train)</span><br><span class="line">print(sgd.coef_)</span><br><span class="line">y_sgd_predict = std_y.inverse_transform(sgd.predict(x_test))</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_sgd_predict)</span><br><span class="line">sgd_pre = mean_squared_error(y_test, y_sgd_predict)</span><br><span class="line">print(<span class="string">"梯度下降的准确率为："</span>, sgd_pre)</span><br></pre></td></tr></table></figure>
 
 <p>​    最终效果如图所示</p>
-<p><img src alt="/img/线性回归1.png"></p>
-<p><img src alt="/img/线性回归2.png"></p>
+<p><img src="/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png" alt></p>
+<p><img src="/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png" alt></p>
 
       
 
