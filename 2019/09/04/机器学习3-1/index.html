@@ -16,14 +16,17 @@
 <meta property="og:site_name" content="sloth&#39;s blog">
 <meta property="og:description" content="线性回归原理​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
-<meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png">
-<meta property="og:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png">
-<meta property="og:updated_time" content="2019-09-09T02:41:20.384Z">
+<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E5%B2%AD%E5%9B%9E%E5%BD%92.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F1.jpg">
+<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F2.jpg">
+<meta property="og:updated_time" content="2019-09-09T07:51:08.161Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习原理以及sklarn实战笔记（4）">
 <meta name="twitter:description" content="线性回归原理​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系">
-<meta name="twitter:image" content="http://yoursite.com/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
+<meta name="twitter:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -213,13 +216,27 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lr = LinearRegression()</span><br><span class="line">lr.fit(x_train, y_train)</span><br><span class="line">print(lr.coef_)</span><br><span class="line">y_lr_predict = std_x.inverse_transform(lr.predict(x_test))</span><br><span class="line">lr_pre = mean_squared_error(y_test, y_lr_predict)</span><br><span class="line">print(<span class="string">"预测的准确率为："</span>, lr_pre)</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_lr_predict)</span><br></pre></td></tr></table></figure>
 
 <p>​    最终预测效果</p>
-<p><img src="/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png" alt></p>
+<p><img src="/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png" alt></p>
 <p>​    另一种利用梯度下降的方法解决，之前的数据处理步骤与正规方程相同，只是最后调用的API不同。其代码如下所示</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sgd = SGDRegressor()</span><br><span class="line">sgd.fit(x_train, y_train)</span><br><span class="line">print(sgd.coef_)</span><br><span class="line">y_sgd_predict = std_y.inverse_transform(sgd.predict(x_test))</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_sgd_predict)</span><br><span class="line">sgd_pre = mean_squared_error(y_test, y_sgd_predict)</span><br><span class="line">print(<span class="string">"梯度下降的准确率为："</span>, sgd_pre)</span><br></pre></td></tr></table></figure>
 
 <p>​    最终效果如图所示</p>
-<p><img src="/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png" alt></p>
-<p><img src="/img/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png" alt></p>
+<p><img src="/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png" alt></p>
+<p><img src="/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png" alt></p>
+<h3 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h3><p>​    由于线性回归会拟合所有训练集中的参数，因此如果训练集的数据不好有较多的错误数据，就容易产生过拟合的问题，这样应用在测试集上的效果自然很差。因此引入一种正则化的方法来防止过拟合现象的产生。线性回归的正则化方法为L2正则化，它的过程简单来说就是训练过程中将某个权重不断减少来测试模型效果，这样就可以去除对预测结果作用不大的特征。在线性回归中引入正则化的回归模型称为岭回归。</p>
+<p>​    API:sklearn.linear_model.Ridge</p>
+<p>​    其中有正则化力度参数alpha，正则化力度越大模型越简单。</p>
+<p>​    return:训练好的岭回归模型。</p>
+<p>​    利用岭回归可以优化线性回归，提高预测准确率，减少误差。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rd = Ridge()</span><br><span class="line">rd.fit(x_train, y_train)</span><br><span class="line">print(rd.coef_)</span><br><span class="line">y_rd_predict = std_y.inverse_transform(rd.predict(x_test))</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_rd_predict)</span><br><span class="line">rd_pre = mean_squared_error(y_test, y_rd_predict)</span><br><span class="line">print(<span class="string">"岭回归均方误差为："</span>, rd_pre)</span><br></pre></td></tr></table></figure>
+
+<p>​    最终预测效果。</p>
+<p><img src="/img/%E5%9B%9E%E5%BD%92/%E5%B2%AD%E5%9B%9E%E5%BD%92.png" alt></p>
+<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>​    逻辑回归是将线性回归的特征的组合通过一个激活函数来达到二分类的效果。具体来说，首先令<br>$$<br>h_\theta(X) = g(\theta^TX)<br>$$<br>其中<br>$$<br>g(Z) = \frac{1}{1+e^{-z}}<br>$$<br>现在我们假设<br>$$<br>P(y=1|X;\theta) = g(\theta^TX) = \frac{1}{1+e^{-\theta X}} = h_\theta(X)<br>$$<br>它表示在X，$\theta$，已知的情况下y=1的概率，如果$g(\theta^T X)$大于0.5，我们预测类别$y^*$为1，反之我们预测类别为0，现在的任务是求得最恰当的$\theta$，使得样本特征带入模型之后预测的结果与实际情况尽量相符。因此定义损失函数为交叉熵损失，即<br>$$<br>J(\theta) = -\frac{1}{m}[\sum_{i=1}^m{y^ilogh_\theta(X^i)+(1-y^i)log(1-h_\theta(X^i)}]<br>$$<br>为什么要选择这样一个损失函数呢，我们可以求出单个样本的损失$C(\theta)​$为<br>$$<br>C(\theta) = \begin{cases}<br>-log(h_\theta (X)) &amp;y=1\<br>-log(1-h_\theta(X))&amp;y=0<br>\end{cases}<br>$$<br>这样可以画出y=1时的$C(\theta)​$和$h_\theta(X)​$的图像</p>
+<p><img src="/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F1.jpg" alt></p>
+<p>由图可以看出，当$h_\theta (X) = 1$时$P(y=1|X;\theta)=1$大于0.5，所以预测为类别1，预测正确，此时的损失$C(\theta)$为0，而当$h_\theta (X) = 0$时$P(y=1|X;\theta)=0$小于0.5，所以预测为类别0，预测错误，此时的损失$C(\theta)$为无穷大。这是完全符合我们预期要求的。当y=0时的$C(\theta)$和$h_\theta(X)$的图像也是可以画出的，同样可分析预测正确或者错误时的损失。</p>
+<p><img src="/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F2.jpg" alt></p>
+<p>​    API:sklearn.linear_model.LogisticRegression</p>
 
       
 
