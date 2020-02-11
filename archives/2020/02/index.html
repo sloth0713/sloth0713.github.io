@@ -6,28 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>机器学习原理以及sklarn实战笔记（4） | sloth&#39;s blog</title>
+  <title>Archives: 2020/2 | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线性回归原理​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系">
-<meta name="keywords" content="线性回归、逻辑回归">
-<meta property="og:type" content="article">
-<meta property="og:title" content="机器学习原理以及sklarn实战笔记（4）">
-<meta property="og:url" content="http://yoursite.com/2019/09/06/机器学习3-1/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="sloth&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/archives/2020/02/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="线性回归原理​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
-<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png">
-<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png">
-<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E5%B2%AD%E5%9B%9E%E5%BD%92.png">
-<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F1.jpg">
-<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F2.jpg">
-<meta property="og:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92.png">
-<meta property="og:updated_time" content="2019-09-09T08:16:17.237Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器学习原理以及sklarn实战笔记（4）">
-<meta name="twitter:description" content="线性回归原理​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系">
-<meta name="twitter:image" content="http://yoursite.com/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png">
+<meta name="twitter:title" content="sloth&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -172,244 +159,60 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-机器学习3-1" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      机器学习原理以及sklarn实战笔记（4）
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/02/11/天池比赛/" class="archive-article-date">
+  	<time datetime="2020-02-11T07:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/02/11/天池比赛/">&#39;天池比赛&#39;</a>
     </h1>
   
 
-        
-        <a href="/2019/09/06/机器学习3-1/" class="archive-article-date">
-  	<time datetime="2019-09-06T11:52:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系<a id="more"></a>，则可设Y=Xw+b，首先随机初始化一组w，b，代入每组特征值Xi，得出预测值Yi’，设有损失函数为残差平方和<br>$$<br>J(\theta) =\sum{(Yi’-Yi)^2}<br>$$<br>其中J为有w和b为未知变量的函数，w称为权重，b称为偏执，线性回归的目的就是通过调整w和b的值使得输入所有特征值Xi后残差平方和最小，此时的预测值和实际值是最为接近的。</p>
-<p>​    当每个样本有多个特征时，例如<br>$$<br>X1=[X11, X12,…….X1n]<br>$$<br>此时w设为列向量[w1;w2;……wn],依然可以得出Y=Xw+b此时X和w都是向量，同样得损失函数，目标依然是找到最合适的w和b使得损失函数最小，这个过程称为策略。</p>
-<p>​    关于求解的方法主要有两个，一个是利用正规方程的方法求解，可得<br>$$<br>w=(X^TX)^{-1}X^Ty<br>$$<br>这种方法是利用数学公式进行矩阵求解，准确率高，但是涉及复杂的高维矩阵的求逆运算所以计算量极大，并不适合。另一个求解方法就是梯度下降，求得J的表达式之后任意选取初始化的w和b，沿着梯度的方向来迭代调整参数值，直到损失函数值最小。沿梯度下降的速率可以调整，称之为学习率。学习率是API中的可调参量，它代表着参数改变的幅度，学习率并不是越大越好，过大的学习率会使得误差在最佳值左右徘徊而无法到达，过小的学习率则会使得训练进程缓慢，运行时间过长。最好的情况是在远离最优模型时学习率较大，快速接近，在靠近最优值附近时，学习率变小，精确调整参数，较好的结果需要丰富的经验才能达到。</p>
-<p>​    API:正规方程sklearn.linear_model.LinearRegression</p>
-<p>​        梯度下降sklearn.linear_model.SGDRegression</p>
-<p>​    主要的方法仍然是训练fit(x,y)，其中x为特征值，y是目标值，返回训练模型。</p>
-<p>​    predict(x)，其中x是测试集特征值，返回预测的结果。</p>
-<p>​    需要注意的是由于线性回归算法求得目标值与特征值的线性关系表达式，为了避免某一特征值由于数值过大影响训练效果，所以训练之前必须进行标准化。</p>
-<h2 id="回归性能的评估"><a href="#回归性能的评估" class="headerlink" title="回归性能的评估"></a>回归性能的评估</h2><p>​    回归模型的性能评估方法一般用均方误差来表示。<br>$$<br>MSE = \frac{1}{m}\sum{(y_i-y)^2}<br>$$<br>​    其中yi是模型的预测值，y是真实值。</p>
-<p>​    回归性能评估的API:sklearn.metrics.mean_squared_error</p>
-<p>​    mean_squared_error(y_test,y_predict)</p>
-<p>​    y_test:测试集的真实目标值</p>
-<p>​    y_predict:模型预测的目标值</p>
-<p>​    return:均方误差</p>
-<h2 id="算法实例"><a href="#算法实例" class="headerlink" title="算法实例"></a>算法实例</h2><p>​    利用线性回归预测boston的房价，数据在sklearn的datastes数据集中。</p>
-<p>​    将数据集划分为测试集和训练集。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train, x_test, y_train, y_test = train_test_split(lb.data, lb.target, test_size=<span class="number">0.25</span>)</span><br></pre></td></tr></table></figure>
-
-<p>​    标准化数据目标值和特征值都需要标准化，目标值标准化防止某一特征影响过大，特征值标准化因为特征值数值大，目标值小会使得权重和偏执过大，影响训练效果。此外注意fit_transform要求输入必须是二维数组，目标值是一维数组，所以用reshape改为一列，若干行，即二维。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">std_x = StandardScaler()</span><br><span class="line">x_train = std_x.fit_transform(x_train)</span><br><span class="line">x_test = std_x.transform(x_test)</span><br><span class="line">y_train = std_x.fit_transform(y_train.reshape(<span class="number">-1</span>, <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
-
-<p>​    实例化正规方程方法的类，训练得出符合要求的最优参数，用predict方法得出预测结果，记住预测的结果是经过标准化的，所以要通过inverse_transform方法得出真实的预测值。再利用回归性能评估API得出模型效果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lr = LinearRegression()</span><br><span class="line">lr.fit(x_train, y_train)</span><br><span class="line">print(lr.coef_)</span><br><span class="line">y_lr_predict = std_x.inverse_transform(lr.predict(x_test))</span><br><span class="line">lr_pre = mean_squared_error(y_test, y_lr_predict)</span><br><span class="line">print(<span class="string">"预测的准确率为："</span>, lr_pre)</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_lr_predict)</span><br></pre></td></tr></table></figure>
-
-<p>​    最终预测效果</p>
-<p><img src="/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92.png" alt></p>
-<p>​    另一种利用梯度下降的方法解决，之前的数据处理步骤与正规方程相同，只是最后调用的API不同。其代码如下所示</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sgd = SGDRegressor()</span><br><span class="line">sgd.fit(x_train, y_train)</span><br><span class="line">print(sgd.coef_)</span><br><span class="line">y_sgd_predict = std_y.inverse_transform(sgd.predict(x_test))</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_sgd_predict)</span><br><span class="line">sgd_pre = mean_squared_error(y_test, y_sgd_predict)</span><br><span class="line">print(<span class="string">"梯度下降的准确率为："</span>, sgd_pre)</span><br></pre></td></tr></table></figure>
-
-<p>​    最终效果如图所示</p>
-<p><img src="/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%921.png" alt></p>
-<p><img src="/img/%E5%9B%9E%E5%BD%92/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%922.png" alt></p>
-<h3 id="算法改进"><a href="#算法改进" class="headerlink" title="算法改进"></a>算法改进</h3><p>​    由于线性回归会拟合所有训练集中的参数，因此如果训练集的数据不好有较多的错误数据，就容易产生过拟合的问题，这样应用在测试集上的效果自然很差。因此引入一种正则化的方法来防止过拟合现象的产生。线性回归的正则化方法为L2正则化，它的过程简单来说就是训练过程中将某个权重不断减少来测试模型效果，这样就可以去除对预测结果作用不大的特征。在线性回归中引入正则化的回归模型称为岭回归。</p>
-<p>​    API:sklearn.linear_model.Ridge</p>
-<p>​    其中有正则化力度参数alpha，正则化力度越大模型越简单。</p>
-<p>​    return:训练好的岭回归模型。</p>
-<p>​    利用岭回归可以优化线性回归，提高预测准确率，减少误差。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">rd = Ridge()</span><br><span class="line">rd.fit(x_train, y_train)</span><br><span class="line">print(rd.coef_)</span><br><span class="line">y_rd_predict = std_y.inverse_transform(rd.predict(x_test))</span><br><span class="line">print(<span class="string">"房价预测结果为："</span>, y_rd_predict)</span><br><span class="line">rd_pre = mean_squared_error(y_test, y_rd_predict)</span><br><span class="line">print(<span class="string">"岭回归均方误差为："</span>, rd_pre)</span><br></pre></td></tr></table></figure>
-
-<p>​    最终预测效果。</p>
-<p><img src="/img/%E5%9B%9E%E5%BD%92/%E5%B2%AD%E5%9B%9E%E5%BD%92.png" alt></p>
-<h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>​    逻辑回归是将线性回归的特征的组合通过一个激活函数来达到二分类的效果。具体来说，首先令<br>$$<br>h_\theta(X) = g(\theta^TX)<br>$$<br>其中<br>$$<br>g(Z) = \frac{1}{1+e^{-z}}<br>$$<br>现在我们假设<br>$$<br>P(y=1|X;\theta) = g(\theta^TX) = \frac{1}{1+e^{-\theta X}} = h_\theta(X)<br>$$<br>它表示在X，$\theta$，已知的情况下y=1的概率，如果$g(\theta^T X)$大于0.5，我们预测类别$y^*$为1，反之我们预测类别为0，现在的任务是求得最恰当的$\theta$，使得样本特征带入模型之后预测的结果与实际情况尽量相符。因此定义损失函数为交叉熵损失，即<br>$$<br>J(\theta) = -\frac{1}{m}[\sum_{i=1}^m{y^ilogh_\theta(X^i)+(1-y^i)log(1-h_\theta(X^i)}]<br>$$<br>为什么要选择这样一个损失函数呢，我们可以求出单个样本的损失$C(\theta)​$为<br>$$<br>C(\theta) = \begin{cases}<br>-log(h_\theta (X)) &amp;y=1\<br>-log(1-h_\theta(X))&amp;y=0<br>\end{cases}<br>$$<br>这样可以画出y=1时的$C(\theta)​$和$h_\theta(X)​$的图像</p>
-<p><img src="/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F1.jpg" alt></p>
-<p>由图可以看出，当$h_\theta (X) = 1$时$P(y=1|X;\theta)=1$大于0.5，所以预测为类别1，预测正确，此时的损失$C(\theta)$为0，而当$h_\theta (X) = 0$时$P(y=1|X;\theta)=0$小于0.5，所以预测为类别0，预测错误，此时的损失$C(\theta)$为无穷大。这是完全符合我们预期要求的。当y=0时的$C(\theta)$和$h_\theta(X)$的图像也是可以画出的，同样可分析预测正确或者错误时的损失。</p>
-<p><img src="/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E5%9B%BE%E5%83%8F2.jpg" alt></p>
-<p>​    API:sklearn.linear_model.LogisticRegression</p>
-<p>​    :sklearn.linear_model.LogisticRegression(penalty=’L2’, c=1.0)</p>
-<p>​    penatly:正则化方法，默认为L2正则</p>
-<p>​    c:正则化力度，默认为1.0</p>
-<h2 id="算法实例-1"><a href="#算法实例-1" class="headerlink" title="算法实例"></a>算法实例</h2><p>​    利用逻辑回归预测癌症概率，数据集位于网站中，其中包括若干患者的细胞大小、细胞形状等生理学特征，但是名称未标记，仅有数据，其目标标签为良性（标记为2）和恶性（标记为4），并且有的患者部分特征为止，用“？”代替，要求预测患者为恶性肿瘤的概率。</p>
-<p>​    pandas处理数据，读取数据并构造特征名称，处理缺失值将“？”替换为np.nan，然后删除有缺失的数据。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">column_names = [<span class="string">'Sample code number'</span>, <span class="string">'Clump Thickness'</span>, <span class="string">'Uniformity of Cell Size'</span>,  <span class="string">'Uniformity of Cell Shape'</span>, <span class="string">'Marginal Adhesion'</span>, <span class="string">'Single Epithelial Cell Size '</span>, <span class="string">'Bare Nuclei'</span>, <span class="string">'Bland Chromatin'</span>, <span class="string">'Normal Nucleoli'</span>, <span class="string">'Mitoses'</span>, <span class="string">'Class'</span>]</span><br><span class="line"></span><br><span class="line">data = pd.read_csv(<span class="string">"https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data"</span>, names=column_names)</span><br><span class="line"></span><br><span class="line">data = data.replace(to_replace=<span class="string">'?'</span>, value=np.nan)</span><br><span class="line">data = data.dropna()<span class="comment"># dropna 默认删除空的数据</span></span><br></pre></td></tr></table></figure>
-
-<p>​    获取特征值和目标值并分割数据集。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y = data[<span class="string">'Class'</span>]</span><br><span class="line">x = data.drop([<span class="string">'Class'</span>], axis=<span class="number">1</span> )</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=<span class="number">0.25</span>)</span><br></pre></td></tr></table></figure>
-
-<p>​    标准化。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std = StandardScaler()</span><br><span class="line">x_train = std.fit_transform(x_train)</span><br><span class="line">x_test = std.transform(x_test)</span><br></pre></td></tr></table></figure>
-
-<p>​    实例化APi，训练，预测，得出召回率（召回率定义在之前已介绍）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">log = LogisticRegression()</span><br><span class="line">log.fit(x_train, y_train)</span><br><span class="line">print(log.coef_)</span><br><span class="line">log_predict = log.predict(x_test)</span><br><span class="line">print(log_predict)</span><br><span class="line">print(<span class="string">"预测的准确率为："</span>, log.score(x_test, y_test))</span><br><span class="line">re = classification_report(y_test, y_pred=log_predict, labels = [<span class="number">2</span>,<span class="number">4</span>]  , target_names=[<span class="string">'良性'</span>, <span class="string">'恶性'</span>] )</span><br><span class="line">print(<span class="string">"召回率为："</span>, re)</span><br></pre></td></tr></table></figure>
-
-<p>​    最终预测效果。</p>
-<p><img src="/img/%E5%9B%9E%E5%BD%92/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92.png" alt></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性回归、逻辑回归</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">天池比赛</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/06/机器学习3-1/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/09/13/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hello World
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/09/02/机器学习3/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机器学习原理以及sklearn实战笔记（3）</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -432,8 +235,8 @@ var _hmt = _hmt || [];
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
