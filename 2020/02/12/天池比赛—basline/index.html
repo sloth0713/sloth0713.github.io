@@ -20,7 +20,8 @@
 <meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/rf.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png">
 <meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/dec.png">
-<meta property="og:updated_time" content="2020-02-25T05:06:58.019Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/_post/%E5%A4%A9%E6%B1%A0--basline/dec.png">
+<meta property="og:updated_time" content="2020-02-25T05:20:38.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天池比赛_basline">
 <meta name="twitter:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
@@ -233,6 +234,7 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">param_dec = &#123;<span class="string">"criterion"</span>:[<span class="string">"gini"</span>,<span class="string">"entropy"</span>], </span><br><span class="line">         &#125;</span><br><span class="line">gc_dec = GridSearchCV(dec, param_grid=param_dec, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_dec.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"dec预测结果为："</span>, gc_dec.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"dec最好的参数模型为："</span>, gc_dec.best_params_)</span><br></pre></td></tr></table></figure>
 
 <p><img src="./img/%E5%A4%A9%E6%B1%A0basline/dec.png" alt="决策树训练结果"></p>
+<p><img src="./_post/%E5%A4%A9%E6%B1%A0--basline/dec.png" alt="决策树训练结果"></p>
 <p>关于numpy，pandas的索引总结，索引有很多内容很容易记混，一段时间不用又会很容易忘记，所以没有必要记住所有细节，记住常用的几个，其他的用到的时候百度就好：</p>
 <p>1、可以查看索引s.index_name，df.column_name其中可以使用df.column_name=[‘a’,’b’,’c’]暴力修改列索引名称。</p>
 <p>2、直接索引列名 df[‘A’] df[[‘A’, ‘B’]]。</p>
