@@ -6,19 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Hello World | sloth&#39;s blog</title>
+  <title>天池比赛_basline | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+  <meta name="description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
+<meta name="keywords" content="天池比赛">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/09/13/hello-world/index.html">
+<meta property="og:title" content="天池比赛_basline">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/天池比赛—basline/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta property="og:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-17T07:48:10.890Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/score.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/rf.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/dec.png">
+<meta property="og:updated_time" content="2020-02-25T05:06:58.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.">
+<meta name="twitter:title" content="天池比赛_basline">
+<meta name="twitter:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/score.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -163,39 +169,79 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-天池比赛—basline" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      天池比赛_basline
     </h1>
   
 
         
-        <a href="/2019/09/13/hello-world/" class="archive-article-date">
-  	<time datetime="2019-09-13T07:05:26.552Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-13</time>
+        <a href="/2020/02/12/天池比赛—basline/" class="archive-article-date">
+  	<time datetime="2020-02-12T07:45:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h2 id="特征构造"><a href="#特征构造" class="headerlink" title="特征构造"></a>特征构造</h2><p>​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。<a id="more"></a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_dt</span><span class="params">(df)</span>:</span></span><br><span class="line"><span class="comment">#     时间解码函数</span></span><br><span class="line">    df[<span class="string">'time'</span>] = pd.to_datetime(df[<span class="string">'time'</span>], format=<span class="string">'%m%d %H:%M:%S'</span>)</span><br><span class="line">    <span class="comment"># df['month'] = df['time'].dt.month</span></span><br><span class="line">    df[<span class="string">'day'</span>] = df[<span class="string">'time'</span>].dt.day</span><br><span class="line">    df[<span class="string">'date'</span>] = df[<span class="string">'time'</span>].dt.date</span><br><span class="line">    df[<span class="string">'hour'</span>] = df[<span class="string">'time'</span>].dt.hour</span><br><span class="line">    df[<span class="string">'weekday'</span>] = df[<span class="string">'time'</span>].dt.weekday</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line">train = pd.read_csv(<span class="string">'train_label.csv'</span>,index_col=<span class="number">0</span>)</span><br><span class="line">train = extract_dt(train)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>按照数据中的时间格式解码，得到time、date、hour、weekday特征，由于数据的月份基本相同，该特征意义不大。读取train数据集进行解码，test操作相同。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">group_feature</span><span class="params">(df, key, target, aggs)</span>:</span>   </span><br><span class="line">    agg_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> ag <span class="keyword">in</span> aggs:</span><br><span class="line">        agg_dict[<span class="string">f'<span class="subst">&#123;target&#125;</span>_<span class="subst">&#123;ag&#125;</span>'</span>] = ag</span><br><span class="line">    print(agg_dict)</span><br><span class="line">    t = df.groupby(key)[target].agg(agg_dict).reset_index()</span><br><span class="line">    <span class="keyword">return</span> t</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>​        agg函数是特征处理中的重要函数，通常与groupby函数联用，它可以求得一列数据的一些统计量，例如’max’,’min’,’mean’,’std’,’skew’,’sum’。以上函数的功能是将数据按照某一个特征key进行groupby合并，而且会计算target特征的’max’,’min’,’mean’这些统计量作为新的特征，其名称为target_min、target_max等。这样就成功由一个特征衍生出来多个特征，本数据按照ship进行groupby所以最终会有7000条数据。</p>
+<p>​        单个特征构造完成，接下来是对特征进行合并成为同一个表格。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_feature</span><span class="params">(df, train)</span>:</span></span><br><span class="line">    t = group_feature(df, <span class="string">'ship'</span>,<span class="string">'x'</span>,[<span class="string">'max'</span>,<span class="string">'min'</span>,<span class="string">'mean'</span>,<span class="string">'std'</span>,<span class="string">'skew'</span>,<span class="string">'sum'</span>])</span><br><span class="line"><span class="comment">#     这里按照船的id分组所以刚好结果是7000*7，与train_label格式一致因此可以合并</span></span><br><span class="line">    train = pd.merge(train, t, on=<span class="string">'ship'</span>, how=<span class="string">'left'</span>)</span><br><span class="line">    t = group_feature(df, <span class="string">'ship'</span>,<span class="string">'x'</span>,[<span class="string">'count'</span>])</span><br><span class="line">    train = pd.merge(train, t, on=<span class="string">'ship'</span>, how=<span class="string">'left'</span>)</span><br><span class="line">    t = group_feature(df, <span class="string">'ship'</span>,<span class="string">'y'</span>,[<span class="string">'max'</span>,<span class="string">'min'</span>,<span class="string">'mean'</span>,<span class="string">'std'</span>,<span class="string">'skew'</span>,<span class="string">'sum'</span>])</span><br><span class="line">    train = pd.merge(train, t, on=<span class="string">'ship'</span>, how=<span class="string">'left'</span>)</span><br><span class="line">    t = group_feature(df, <span class="string">'ship'</span>,<span class="string">'v'</span>,[<span class="string">'max'</span>,<span class="string">'min'</span>,<span class="string">'mean'</span>,<span class="string">'std'</span>,<span class="string">'skew'</span>,<span class="string">'sum'</span>])</span><br><span class="line">    train = pd.merge(train, t, on=<span class="string">'ship'</span>, how=<span class="string">'left'</span>)</span><br><span class="line">    t = group_feature(df, <span class="string">'ship'</span>,<span class="string">'d'</span>,[<span class="string">'max'</span>,<span class="string">'min'</span>,<span class="string">'mean'</span>,<span class="string">'std'</span>,<span class="string">'skew'</span>,<span class="string">'sum'</span>])</span><br><span class="line">    train = pd.merge(train, t, on=<span class="string">'ship'</span>, how=<span class="string">'left'</span>)</span><br><span class="line">    </span><br><span class="line">    train[<span class="string">'x_max_x_min'</span>] = train[<span class="string">'x_max'</span>] - train[<span class="string">'x_min'</span>]</span><br><span class="line">    train[<span class="string">'y_max_y_min'</span>] = train[<span class="string">'y_max'</span>] - train[<span class="string">'y_min'</span>]</span><br><span class="line">    train[<span class="string">'y_max_x_min'</span>] = train[<span class="string">'y_max'</span>] - train[<span class="string">'x_min'</span>]</span><br><span class="line">    train[<span class="string">'x_max_y_min'</span>] = train[<span class="string">'x_max'</span>] - train[<span class="string">'y_min'</span>]</span><br><span class="line">    </span><br><span class="line">    train[<span class="string">'slope'</span>] = train[<span class="string">'y_max_y_min'</span>] / np.where(train[<span class="string">'x_max_x_min'</span>]==<span class="number">0</span>, <span class="number">0.001</span>, train[<span class="string">'x_max_x_min'</span>])</span><br><span class="line"><span class="comment">#     numpy.where(condition[, x, y])</span></span><br><span class="line"><span class="comment"># 基于条件condition，返回值来自x或者y.</span></span><br><span class="line"><span class="comment">#     如果train['x_max_x_min']==0，则train['slope'] = train['y_max_y_min'] / 0.01</span></span><br><span class="line"><span class="comment">#     反之train['slope'] = train['y_max_y_min'] / train['x_max_x_min']</span></span><br><span class="line"><span class="comment"># 为了让坐标有问题的点显现出来，会很大</span></span><br><span class="line"></span><br><span class="line">    train[<span class="string">'area'</span>] = train[<span class="string">'x_max_x_min'</span>] * train[<span class="string">'y_max_y_min'</span>]</span><br><span class="line"><span class="comment">#  面积特征</span></span><br><span class="line">    </span><br><span class="line">    mode_hour = df.groupby(<span class="string">'ship'</span>)[<span class="string">'hour'</span>].agg(<span class="keyword">lambda</span> x:x.value_counts().index[<span class="number">0</span>]).to_dict()</span><br><span class="line">    train[<span class="string">'mode_hour'</span>] = train[<span class="string">'ship'</span>].map(mode_hour)</span><br><span class="line"><span class="comment">#     取hour出现次数最多的作为一个特征</span></span><br><span class="line">    </span><br><span class="line">    t = group_feature(df, <span class="string">'ship'</span>,<span class="string">'hour'</span>,[<span class="string">'max'</span>,<span class="string">'min'</span>])</span><br><span class="line">    train = pd.merge(train, t, on=<span class="string">'ship'</span>, how=<span class="string">'left'</span>)</span><br><span class="line">    </span><br><span class="line">    hour_nunique = df.groupby(<span class="string">'ship'</span>)[<span class="string">'hour'</span>].nunique().to_dict()</span><br><span class="line">    date_nunique = df.groupby(<span class="string">'ship'</span>)[<span class="string">'date'</span>].nunique().to_dict()</span><br><span class="line"><span class="comment">#     nunique获取唯一值统计次数</span></span><br><span class="line">    train[<span class="string">'hour_nunique'</span>] = train[<span class="string">'ship'</span>].map(hour_nunique)</span><br><span class="line">    train[<span class="string">'date_nunique'</span>] = train[<span class="string">'ship'</span>].map(date_nunique)</span><br><span class="line"></span><br><span class="line">    t = df.groupby(<span class="string">'ship'</span>)[<span class="string">'time'</span>].agg(&#123;<span class="string">'diff_time'</span>:<span class="keyword">lambda</span> x:np.max(x)-np.min(x)&#125;).reset_index()</span><br><span class="line">    t[<span class="string">'diff_day'</span>] = t[<span class="string">'diff_time'</span>].dt.days</span><br><span class="line">    t[<span class="string">'diff_second'</span>] = t[<span class="string">'diff_time'</span>].dt.seconds</span><br><span class="line">    train = pd.merge(train, t, on=<span class="string">'ship'</span>, how=<span class="string">'left'</span>)</span><br><span class="line">    <span class="keyword">return</span> train</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>extract_feature调用group_feature函数依次获取某个特征的一些统计量作为新的特征，然后将所有这些特征合并，此外还构造了一些新的特征例如x_max-y_min等。还有针对时间特征的一些构造特征如最常出现的date、hour等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_label = train.drop_duplicates(<span class="string">'ship'</span>)</span><br><span class="line">train_label = extract_feature(train, train_label)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>首先将原始的5个特征进行drop_duplicates处理，这个函数的作用是按照ship进行groupby，选择每一个ship相同数据的第一条，其余丢弃。这样train_label就是7000条数据了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = train_label.drop([<span class="string">'type'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x= x.drop([<span class="string">'time'</span>, <span class="string">'date'</span>,<span class="string">'diff_time'</span>,<span class="string">'ship'</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>按列去除type作为训练集，去除’time’, ‘date’,’diff_time’列，因为算法无法识别这些数据的格式，去除’ship’因为这个特征对于算法没有意义。</p>
+<h2 id="训练集测试集创建"><a href="#训练集测试集创建" class="headerlink" title="训练集测试集创建"></a>训练集测试集创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y_data, test_size=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>构造训练集测试集，树模型不需要标准化，train、test的比例4：1。</p>
+<p>首先用决策树、随机森林和gbdt进行训练，用GridSearch将train进行交叉验证并调参，虽然算法的内容不同，但是用网格搜索的代码类似，找出最合适的参数。</p>
+<p>在此详细解释一下GridSearch函数，她的作用是将待训练的模型的不同参数按照给定的值进行排列组合，每个组合都进行训练，通过交叉验证，从总的训练集中抽取部分作为训练集，剩下的作为验证集，测试模型好坏，挑选出最适当的参数。</p>
+<p>GridSearch(estimator, param_grid, scoring=None, n_jobs=None, cv=None, verbose=0)</p>
+<p>estimator：要训练的模型</p>
+<p>param_grid：设置模型的一些超参数，范围一般是数组，或者是用range函数。</p>
+<p>scoring：评价方式，一般为准确率(accuracy),召回率(recaall),f1score等</p>
+<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/score.png" alt="GridSearch_score"></p>
+<p>n_jobs：线程数，一般为-1，设置为所有线程</p>
+<p>cv：交叉验证重数，因此GridSearch不需要Kfold函数</p>
+<p>verbose：日志冗长度，0：不输出训练过程，1：偶尔输出，&gt;1：对每个子模型都输出。</p>
+<p>主要方法：</p>
+<p> grid_scores_：给出不同参数情况下的评价结果 </p>
+<p> best_params_ : dict  在保存数据上给出最佳结果的参数设置 </p>
+<p>GridSearch可以不需要Kfold函数，但是由于kfold函数中有shuffle这个参数，表示是否打乱划分，默认False，即不打乱，如果有这个需要可以加上，如果不需要，cv参数直接填数字即可。</p>
+<p>初始化模型并训练调参</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rf = RandomForestClassifier(n_estimators=<span class="number">2000</span> ,criterion= <span class="string">'gini'</span>)</span><br><span class="line">dec = DecisionTreeClassifier()</span><br><span class="line">gbd = GradientBoostingClassifier(n_estimators = <span class="number">4000</span>)</span><br><span class="line"><span class="comment"># 网格搜索，交叉验证</span></span><br><span class="line"></span><br><span class="line">cross_validator = KFold(<span class="number">4</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">param_rf = &#123;<span class="string">"min_samples_split"</span>:[<span class="number">3</span>], </span><br><span class="line">            <span class="string">'n_estimators'</span> :range(<span class="number">200</span>,<span class="number">2000</span>,<span class="number">100</span>),</span><br><span class="line">            <span class="string">"criterion"</span>:[<span class="string">"gini"</span>,<span class="string">"entropy"</span>]</span><br><span class="line">         &#125;</span><br><span class="line">gc_rf = GridSearchCV(rf, param_grid=param_rf, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_rf.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"rf预测结果为："</span>, gc_rf.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"rf最好的参数模型为："</span>, gc_rf.best_params_)</span><br></pre></td></tr></table></figure>
+
+<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/rf.png" alt="随机森林训练结果"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">param_gbd = &#123;<span class="string">"learning_rate"</span>:[<span class="number">0.005</span>,<span class="number">0.01</span>,<span class="number">0.05</span>,<span class="number">0.1</span>,<span class="number">0.2</span>], </span><br><span class="line">             <span class="string">'n_estimators'</span> :range(<span class="number">200</span>,<span class="number">2000</span>,<span class="number">100</span>)</span><br><span class="line">         &#125;</span><br><span class="line">gc_gbd = GridSearchCV(gbd, param_grid=param_gbd, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_gbd.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"gbd预测结果为："</span>, gc_gbd.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"gbd最好的参数模型为："</span>, gc_gbd.best_params_)</span><br></pre></td></tr></table></figure>
+
+<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/gbdt.png" alt="gbdt训练结果"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">param_dec = &#123;<span class="string">"criterion"</span>:[<span class="string">"gini"</span>,<span class="string">"entropy"</span>], </span><br><span class="line">         &#125;</span><br><span class="line">gc_dec = GridSearchCV(dec, param_grid=param_dec, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_dec.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"dec预测结果为："</span>, gc_dec.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"dec最好的参数模型为："</span>, gc_dec.best_params_)</span><br></pre></td></tr></table></figure>
+
+<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/dec.png" alt="决策树训练结果"></p>
+<p>关于numpy，pandas的索引总结，索引有很多内容很容易记混，一段时间不用又会很容易忘记，所以没有必要记住所有细节，记住常用的几个，其他的用到的时候百度就好：</p>
+<p>1、可以查看索引s.index_name，df.column_name其中可以使用df.column_name=[‘a’,’b’,’c’]暴力修改列索引名称。</p>
+<p>2、直接索引列名 df[‘A’] df[[‘A’, ‘B’]]。</p>
+<p>3、Datafram格式的loc，iloc指令都是[:,:]的格式，逗号前面表示行索引后面表示列，如df.iloc[1:3,3:5]索引1-2行，3-4列的数据，行列都是从0开始。如果没有写数据表示所有行（列），df.iloc[1:,:5]表示1至最后一行，0至4列。</p>
+<p>4、iloc只能索引列数012，loc只能索引列名如df.loc[0:3,[‘A’,’B’]]表示AB列0-3行。loc的索引是左闭右闭区间，iloc是左闭右开区间。</p>
+<p>5、 如果iloc方括号中直接给定一个数字或者一个slice的话，默认索引的是行。其中数字的情况会返回一个Series 。</p>
+<p>6、支持布尔索引，如df.loc[:,df.loc[1]&gt;4]表示索引第一行大于4的数据的所有行。</p>
+<p>​        </p>
+<p>​        </p>
 
       
 
@@ -230,6 +276,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">天池比赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -280,7 +337,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/13/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/12/天池比赛—basline/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,18 +351,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2020/02/11/天池比赛/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/14/pandas-numpy-matlop总结/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          天池比赛预处理
+          &#39;pandas,numpy,matlop总结&#39;
         
       </div>
     </a>
   
   
-    <a href="/2019/09/06/机器学习3-1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">机器学习原理以及sklarn实战笔记（4）</div>
+    <a href="/2020/02/11/天池比赛/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">天池比赛预处理</div>
       <i class="icon-circle-right"></i>
     </a>
   
