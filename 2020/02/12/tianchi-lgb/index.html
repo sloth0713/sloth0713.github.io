@@ -6,23 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>天池比赛预处理 | sloth&#39;s blog</title>
+  <title>天池比赛lgb | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。">
-<meta name="keywords" content="天池比赛">
+  <meta name="description" content="LGB算法​        lgb是现在参加数据分析比赛的主流分析算法，其较之于XGcoost算法有许多优势，其原理以后会具体介绍，在此主要讲解其具体用法，同XG boost一样，LGB有两种接口一种是原生接口，一种是sklearn的接口，">
+<meta name="keywords" content="lgb算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="天池比赛预处理">
-<meta property="og:url" content="http://yoursite.com/2020/02/11/天池比赛/index.html">
+<meta property="og:title" content="天池比赛lgb">
+<meta property="og:url" content="http://yoursite.com/2020/02/12/tianchi-lgb/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。">
+<meta property="og:description" content="LGB算法​        lgb是现在参加数据分析比赛的主流分析算法，其较之于XGcoost算法有许多优势，其原理以后会具体介绍，在此主要讲解其具体用法，同XG boost一样，LGB有两种接口一种是原生接口，一种是sklearn的接口，">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/tianchi1/%E7%AE%B1%E5%9E%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/11/天池比赛/img/tanchi1/guijitu.png">
-<meta property="og:updated_time" content="2020-02-12T11:44:40.156Z">
+<meta property="og:image" content="http://yoursite.com/2020/02/12/tianchi-lgb/img/tianchilgb/lgb.png">
+<meta property="og:image" content="http://yoursite.com/2020/02/12/tianchi-lgb/img/tianchilgb/feature.png">
+<meta property="og:updated_time" content="2020-02-25T05:14:51.326Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天池比赛预处理">
-<meta name="twitter:description" content="​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。">
-<meta name="twitter:image" content="http://yoursite.com/img/tianchi1/%E7%AE%B1%E5%9E%8B%E5%9B%BE.png">
+<meta name="twitter:title" content="天池比赛lgb">
+<meta name="twitter:description" content="LGB算法​        lgb是现在参加数据分析比赛的主流分析算法，其较之于XGcoost算法有许多优势，其原理以后会具体介绍，在此主要讲解其具体用法，同XG boost一样，LGB有两种接口一种是原生接口，一种是sklearn的接口，">
+<meta name="twitter:image" content="http://yoursite.com/2020/02/12/tianchi-lgb/img/tianchilgb/lgb.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -167,61 +167,64 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-天池比赛" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-tianchi-lgb" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      天池比赛预处理
+      天池比赛lgb
     </h1>
   
 
         
-        <a href="/2020/02/11/天池比赛/" class="archive-article-date">
-  	<time datetime="2020-02-11T07:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
+        <a href="/2020/02/12/tianchi-lgb/" class="archive-article-date">
+  	<time datetime="2020-02-12T11:40:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。<a id="more"></a>从头到尾一路走下来也基本了解了数据分析学科的工作流程，个人总结为初始数据的清洗，包括异常值缺失值等的处理方法，然后便是特征的构造，数据科学，尤其是本次比赛所用的结构化数据，一向都是特征为王，有了好的特征才能使得模型具有更好的准确率以及泛化能力。数据科学里面一直广为流传的一句话就是，好的特征决定了模型的上限，不同的算法只是在接近这个上限而已。然后就是通过分析所要处理的问题种类来确定合适的算法，调节参数构造模型，最后一步就是对较好的模型进行融合以达到更好的效果。</p>
-<p>​    我将所学到的数据处理知识，结合本次比赛并稍加扩展，做出总结。见解浅薄，还望指正。</p>
-<h3 id="比赛简介"><a href="#比赛简介" class="headerlink" title="比赛简介"></a>比赛简介</h3><p>链接:<a href="https://tianchi.aliyun.com/competition/entrance/231768/introduction?spm=5176.12281925.0.0.158c7137mJq6BE" target="_blank" rel="noopener">天池比赛</a></p>
-<h4 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h4><p>​    比赛的背景内容以及流程官网都有所介绍，接下来结合赛题数据以及数据分析的处理流程整理一下思路。比赛数据为渔船不同时刻下的几种特征，包括id、坐标XY、速度、方向以及时间。每个渔船的数据都存储在一个csv文件中，所以每个文件的渔船id都是一样的，共有7000个为训练集，训练集中还有label渔船捕鱼方法，分为围网、刺网和拖网。然后是测试集共2000个，有特征无label。要求预测测试集中每条渔船的捕鱼方式以utf—8解码为csv文件提交，得分方式为三种类别的f1取平均值，越高越好。</p>
-<p>​    显然这是一个多分类问题，数据是结构化的表格数据，没有缺失值，但是由于是实际场景，所以有大量错误数据，第一步应该做的就是数据清洗工作。这里不局限于本次比赛，会将个人所学习到的数据清洗方法都做总结。</p>
-<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><p>​        数据清洗主要处理两类值，缺失值以及异常值。</p>
-<h4 id="缺失值"><a href="#缺失值" class="headerlink" title="缺失值"></a>缺失值</h4><p>一般缺失值在结构化的表格数据中记为NAN，许多算法无法处理数据中的缺失值，因此将有缺失值的数据盲目用算法处理就会报错。缺失值的主要处理方法无非就是删除以及填补：</p>
-<p>​    1、将含有缺失值的一行数据删除，这适用于缺失值较少并且总数据 量较大的场合。</p>
-<p>​    2、特殊值填补，将缺失值作为一个特殊的类，例如性别特征的男标记为1，女标记为2，缺失则标记为0。</p>
-<p>​    3、均值填补，用整列除了缺失值的内容的平均值填补，此方法适用于各个样本符合独立同分布时使用。</p>
-<p>​    4、就近填补，用距离缺失值最近的非缺失值填补，一般取上一条最近的非缺失值的数据，也可下一条，第一条数据就是缺失值时做特殊处理，此方法适用于特征是相关联的数据，最典型的就是时间序列的数据。</p>
-<p>​    5、聚类填补，最典型的是k近邻法，取欧氏距离该样本最近的k条数据的平均值填补。</p>
-<p>​    6、当数据服从正态分布时，可以通过极大似然估计估计出缺失值，这个不太了解。</p>
-<p>关于缺失值处理的具体代码，以后再作总结。</p>
-<h4 id="异常值"><a href="#异常值" class="headerlink" title="异常值"></a>异常值</h4><p>​        异常值处理主要分为识别和处理两步。处理的方式其实和缺失值处理基本相同，关键在于识别的方法。</p>
-<p>​    1、统计量分析，设置不符合常理的数据上下限，如年龄设置在0-150之间，范围之外的就是异常值。</p>
-<p>​    2、3$ \delta$ 法则，$ \delta$即标准差，定义与平均值偏差超过三倍方差的数据为异常数据。</p>
-<p>​    3、箱型图（IQR），将数据从小到大排序，取位于0.25位置的值为Q1，中位数为Q2，位于0.75位置的为Q3，$IQR = Q3 - Q1$，$min = Q1 - kIQR$， $max = Q2 + kIQR$ ，认为小于min大于max的值为异常值。</p>
-<p><img src="/img/tianchi1/%E7%AE%B1%E5%9E%8B%E5%9B%BE.png" alt="箱型图"></p>
-<p>​    4、基于模型的检测方法，首先将所有数据都放入正常值的集合中，然后将数据依次移入异常值的集合中，只要移动使得总似然提高。</p>
-<p>​    5、基于邻近度的离群点检测方法，此法定义一个数据点的离群点得分，它由到它的距离最近的k个数据的距离的平均值确定，所以离群点的得分对于k的取值高度敏感，找到离群点得分阈值，大于该阈值的数据视为异常值。</p>
-<p>​    6、基于密度的离群点检测，一个对象的离群点得分时该对象周围的密度的逆，密度的定义有两种，一种是到k个最近邻点的平均距离的倒数，如果该距离小则密度大。另一个是点的半径为d的范围内的数据个数。两个定义的参数k和d的选取都十分重要。</p>
-<p>​    7、基于聚类的技术，将某特征值进行聚类，评估其离群点得分，如果该对象不强属于任何簇则视为异常值。</p>
-<h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>​        由于数据是按照每个船的id分别保存为csv文件，训练时只需要一张表，所以要将多表合并。</p>
-<p>将数据文件夹的所有文件名列出并检查数量是否正确</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_path = <span class="string">'./hy_round1_train_20200102_1_qbPartExtractedDir/hy_round1_train_20200102'</span></span><br><span class="line">test_path = <span class="string">'./hy_round1_testa_20200102_2_qbPartExtractedDir/hy_round1_testA_20200102'</span></span><br><span class="line">train_files = os.listdir(train_path)</span><br><span class="line">test_files = os.listdir(test_path)</span><br><span class="line">print(len(train_test))</span><br></pre></td></tr></table></figure>
+        <h2 id="LGB算法"><a href="#LGB算法" class="headerlink" title="LGB算法"></a>LGB算法</h2><p>​        lgb是现在参加数据分析比赛的主流分析算法，其较之于XGcoost算法有许多优势，其原理以后会具体介绍，在此主要讲解其具体用法，同XG boost一样，LGB有两种接口一种是原生接口，一种是sklearn的接口，<a id="more"></a>两种接口的多数参数含义相同，sklearn接口可以结合sklearn的其他api使用。在此对两种方法都做总结。</p>
+<p>​        lgb所使用的数据集和测试集和之前的相同，先说原生接口，原生接口无法接收Datafram的数据，必须通过lgb自带函数处理成lgb的数据集，并且多分类问题其输出是属于每个类别的概率而不是标签。下面结合交叉验证进行训练。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">params = &#123;</span><br><span class="line">    <span class="string">'boosting_type'</span>: <span class="string">'gbdt'</span>,</span><br><span class="line">    <span class="string">'objective'</span>: <span class="string">'multiclass'</span>,</span><br><span class="line">	<span class="string">'num_class'</span>: <span class="number">3</span>,</span><br><span class="line"> <span class="string">'early_stopping_rounds'</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="string">'num_iterations'</span>: <span class="number">2000</span>,</span><br><span class="line"><span class="comment">#     'num_leaves' :8,</span></span><br><span class="line">    <span class="string">'metrics'</span>:&#123;<span class="string">'multi_logloss'</span>&#125;,</span><br><span class="line">    <span class="string">'lambda_l1'</span> : <span class="number">0.1</span>,</span><br><span class="line">    <span class="string">'learning_rate'</span> : <span class="number">0.005</span>,</span><br><span class="line"><span class="comment">#     'feature_fraction' :0.7,</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">#设置参数</span></span><br></pre></td></tr></table></figure>
 
-<p>读取数据绘图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取其中一个船</span></span><br><span class="line">df = pd.read_csv(train_path + <span class="string">"/6966.csv"</span>)</span><br><span class="line">df.head()</span><br><span class="line">df.plot.scatter(x=<span class="string">'x'</span>,y=<span class="string">'y'</span>)</span><br><span class="line"><span class="comment">#读取其中前10个船的数据，并绘出xy坐标的轨迹图，共十张列出其中一张。</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> tqdm(train_files[<span class="number">0</span>:<span class="number">10</span>]):</span><br><span class="line">    df = pd.read_csv(train_path +<span class="string">"/"</span>+ file ) </span><br><span class="line">    df.plot.scatter(x=<span class="string">'x'</span>,y=<span class="string">'y'</span>)</span><br></pre></td></tr></table></figure>
+<p>n_estimators：迭代次数<br>boosting_type：树类型 ，一般用gbdt<br>                            gbdt, 传统的梯度提升决策树<br>                            rf, Random Forest (随机森林)<br>                           dart, Dropouts meet Multiple Additive Regression Trees<br>                            goss, Gradient-based One-Side Sampling (基于梯度的单侧采样)<br>objective：任务类型：</p>
+<p>​                    regression ：回归</p>
+<p>​                    multi_class：分类</p>
+<p>num_class：类别数目</p>
+<p>early_stopping_rounds：提前结束，如果该数目内测量指标没有提升则后面的树不再拟合。</p>
+<p>metric：度量函数，默认为mul_los，可选binary_logloss或auc也可自定义</p>
+<p>lamda_l1：l1正则化参数，处理过拟合为double。 [1e-5, 1e-2, 0.1, 1, 2,2.5,3] </p>
+<p>lamda_l2：l2正则化参数，处理过拟合为double。 [1e-5, 1e-2, 0.1, 1, 2,2.5,3] </p>
+<p>min_data_in_leaf：叶子上的最小数据量，默认为20，用来处理过拟合。</p>
+<p>bagging_freq：bagging的频率，多少轮进行一次bagging</p>
+<p>bagging_fraction：默认为1.0，选取部分数据进行拟合，可以加速训练，处理过拟合，为了启动                                bagging，bagging_freeq必须为非0 值。</p>
+<p>feature_fraction：默认为1.0，每次选取部分特征拟合，加快训练速度，处理过拟合，范围为0-1，代                                表比例。</p>
+<p>max_depth：控制树的最大深度，默认为-1，即不限制深度，处理过拟合。 range(3,10,2) </p>
+<p>learning_rate：学习率，越大收敛速度越快。一般取0.01-0.2，默认为0.1。</p>
+<p>num_thread：线程数，默认为所有线程个数，考虑到现在多数电脑线程数多于cpu核心数目，设                            置为cpu核心数目训练更快。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">kfold = <span class="number">7</span></span><br><span class="line">fold = StratifiedKFold(n_splits=kfold, shuffle=<span class="literal">True</span>, random_state=<span class="number">42</span>)</span><br><span class="line"><span class="comment"># n_splits 表示划分为几块（至少是2）</span></span><br><span class="line"><span class="comment"># shuffle 表示是否打乱划分，默认False，即不打乱,打乱就可以stacking了</span></span><br><span class="line"><span class="comment"># random_state 表示是否固定随机起点</span></span><br><span class="line">X = train_label[features].copy()</span><br><span class="line"><span class="comment"># 去掉了 特征'ship','type','time','diff_time','date'作为训练集</span></span><br><span class="line">y = train_label[target]</span><br><span class="line">models = []</span><br><span class="line"></span><br><span class="line">pred = np.zeros((len(test_label),<span class="number">3</span>))</span><br><span class="line"><span class="comment"># len(test_label)行，3列,存储预测集结果，因为结果输出是属于三个类别的概率所以有三列</span></span><br><span class="line">oof = np.zeros((len(X), <span class="number">3</span>))</span><br><span class="line"><span class="comment"># 7000行，3列，存储训练集结果。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># stacking</span></span><br><span class="line"><span class="keyword">for</span> index, (train_idx, val_idx) <span class="keyword">in</span> enumerate(fold.split(X, y)):</span><br><span class="line"><span class="comment">#     循环5次</span></span><br><span class="line"><span class="comment">#     train_index表示skfold划分的其中五分之四的训练集的行索引</span></span><br><span class="line"><span class="comment">#     val_idx表示skfold划分的其中五分之一的验证集的行索引</span></span><br><span class="line"></span><br><span class="line">    train_set = lgb.Dataset(X.iloc[train_idx], y.iloc[train_idx])</span><br><span class="line">    val_set = lgb.Dataset(X.iloc[val_idx], y.iloc[val_idx])</span><br><span class="line"><span class="comment">#     iloc按照行抽取数据</span></span><br><span class="line"><span class="comment"># train_set是训练数据，val_set是验证数据</span></span><br><span class="line"></span><br><span class="line">    model = lgb.train(params, train_set, valid_sets=[train_set, val_set], verbose_eval=<span class="number">100</span>)</span><br><span class="line"><span class="comment">#    verbose_eval: 迭代多少次打印</span></span><br><span class="line">    models.append(model)</span><br><span class="line">    val_pred = model.predict(X.iloc[val_idx])</span><br><span class="line"><span class="comment">#     预测本轮的训练集数据，预测结果是[（n_splits-1/n_splits）*7000]*3的数组，每行表示属于对应类的概率。</span></span><br><span class="line">    oof[val_idx] = val_pred</span><br><span class="line"><span class="comment">#     存放所有轮的预测数据，预测结果是7000*3的数组，每行表示属于对应类的概率。</span></span><br><span class="line">    val_y = y.iloc[val_idx]</span><br><span class="line">    <span class="comment">#val_y是真实的类别</span></span><br><span class="line">    </span><br><span class="line">    val_pred = np.argmax(val_pred, axis=<span class="number">1</span>)</span><br><span class="line"><span class="comment">#     按行搜索最大值，即选择概率最大的结果的索引，012代表三个类别    </span></span><br><span class="line"></span><br><span class="line">    print(index, <span class="string">'val f1'</span>, metrics.f1_score(val_y, val_pred, average=<span class="string">'macro'</span>))</span><br><span class="line">	ave_f1_score += metrics.f1_score(val_y, val_pred, average=<span class="string">'macro'</span>)/k_fold</span><br><span class="line">    </span><br><span class="line">    test_pred = model.predict(test_label[features])</span><br><span class="line">    pred += test_pred/kfold</span><br><span class="line">    <span class="comment">#待预测数据也在7轮中被预测了7次，所以除7作为最终预测结果，2000*3的数据，属于每种类的概率。</span></span><br><span class="line">print(<span class="string">'平均f1_score'</span>,ave_f1_score)</span><br></pre></td></tr></table></figure>
 
-<p><img src="./img/tanchi1/guijitu.png" alt="轨迹图"></p>
-<p>将训练集的csv合并成一张表格。    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ret = []</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> tqdm(train_files):</span><br><span class="line">    df = pd.read_csv(train_path +<span class="string">"/"</span>+ file ) </span><br><span class="line">    ret.append(df)</span><br><span class="line">df = pd.concat(ret)</span><br><span class="line"><span class="comment">#特征名定义为英文。</span></span><br><span class="line">df.columns = [<span class="string">'ship'</span>,<span class="string">'x'</span>,<span class="string">'y'</span>,<span class="string">'v'</span>,<span class="string">'d'</span>,<span class="string">'time'</span>,<span class="string">'type'</span>]</span><br><span class="line"><span class="comment">#生成表格</span></span><br><span class="line">df.to_csv(<span class="string">'train.csv'</span>)</span><br><span class="line"><span class="comment">#查看label种类，合成表格的形状。</span></span><br><span class="line">df[<span class="string">'type'</span>].unique()</span><br><span class="line">df.shape</span><br></pre></td></tr></table></figure>
+<p>​        首先明确lgb的原生接口处理多分类问题时输出的是属于某种类别的概率，所以最终存储结果的需要是一个同训练（测试）行数一样，列数为多分类个数的二维数组，即其中的oof（存储训练集），pred（存储预测集），由于在处理数据时将训练集的三个类别分别定义为数字012，而后使用np.argmax函数就可以返回每行的数据最大数的索引，即返回对应012类别的最大概率的索引。遍历fold.split（x，y）获得每次抽取的数据的行索引，截取数据后处理得到lgb的数据格式，训练集训练模型，再用训练好的模型预测剩下的七分之一的验证集，将验证集与真实结果比对，获取模型得分，同时在每次循环时对预测集做一次预测，最终将预测集的结果除以五得到最终属于每一类的概率。</p>
+<p>训练结果如下所示</p>
+<p><img src="./img/tianchilgb/lgb.png" alt="lgb训练结果"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">oof = np.argmax(oof, axis=<span class="number">1</span>)</span><br><span class="line">print(<span class="string">'oof f1'</span>, metrics.f1_score(oof, y, average=<span class="string">'macro'</span>))</span><br><span class="line"><span class="comment">#打印每次训练模型预测结果得到的得分</span></span><br></pre></td></tr></table></figure>
 
-<p>测试集的表格合并过程完全相同。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pred = np.argmax(pred, axis=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">sub = test_label[[<span class="string">'ship'</span>]]</span><br><span class="line">sub[<span class="string">'pred'</span>] = pred</span><br><span class="line">print(sub[<span class="string">'pred'</span>].value_counts(<span class="number">1</span>))</span><br><span class="line"><span class="comment">#查看最终结果各个类别所占比例</span></span><br><span class="line">sub[<span class="string">'pred'</span>] = sub[<span class="string">'pred'</span>].map(type_map_rev)</span><br><span class="line"><span class="comment">#将012分别变回围网刺网拖网</span></span><br><span class="line">sub.to_csv(<span class="string">'result02016.csv'</span>, index=<span class="literal">None</span>, header=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>将lgb对预测集输出的概率变为对应的预测类别，并查看分布情况，生成符合要求的预测文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ret = []</span><br><span class="line"><span class="keyword">for</span> index, model <span class="keyword">in</span> enumerate(models):</span><br><span class="line">    df = pd.DataFrame()</span><br><span class="line">    df[<span class="string">'name'</span>] = model.feature_name()</span><br><span class="line">    df[<span class="string">'score'</span>] = model.feature_importance()</span><br><span class="line">    df[<span class="string">'fold'</span>] = index</span><br><span class="line">    ret.append(df)</span><br><span class="line">    </span><br><span class="line">df = pd.concat(ret)</span><br><span class="line"><span class="comment">#将每轮训练的特征的名称以及重要性得分列成一张表格</span></span><br><span class="line">df = df.groupby(<span class="string">'name'</span>, as_index=<span class="literal">False</span>)[<span class="string">'score'</span>].mean()</span><br><span class="line">df = df.sort_values([<span class="string">'score'</span>], ascending=<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#将重要性按照特征名分组，取均值得到平均得分并对分数进行排序，得出特征的重要程度。</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="./img/tianchilgb/feature.png" alt="特征重要性"></p>
+<p>在使用lgb算法的过程中我发现用lgb.train方法时，数据为Datafram使用train_test_split分割数据集后再载入数据会出现nan报错，这个问题后面用stacking时也有出现，解决方法是将Datafram转化为多维数组，一个方法是使用StandardScaler函数，标准化以后自动变为数组，另一个方法是使用x_train.value方法，将Datafram转化为数组，这个方法对于ndarray数组同样适用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x_test = x_test.values</span><br><span class="line">x_train = x_train.values</span><br><span class="line">y_train = y_train.values</span><br><span class="line">y_test = y_test.values</span><br></pre></td></tr></table></figure>
+
+<p>用sklearn的lgb接口时分类就用 LGBMClassifie，回归用LGBMRegressor </p>
+<p>如果是Datafram的某一列想知道每个类别所占比例用df.[‘type’].value_counts()</p>
+<p>如果是ndarray就可以用pd.DataFrame({‘a’:train[‘type’]})[‘a’].value_counts()</p>
 
       
 
@@ -261,7 +264,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">天池比赛</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">lgb算法</a>
         		</li>
       		
 		</ul>
@@ -317,7 +320,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/11/天池比赛/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/12/tianchi-lgb/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,18 +334,18 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2020/02/12/天池比赛—basline/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/02/14/pandas-numpy-matlop总结/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          天池比赛_basline
+          &#39;pandas,numpy,matlop总结&#39;
         
       </div>
     </a>
   
   
-    <a href="/2019/09/13/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2020/02/12/天池比赛—basline/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">天池比赛_basline</div>
       <i class="icon-circle-right"></i>
     </a>
   

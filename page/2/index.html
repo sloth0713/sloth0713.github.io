@@ -6,23 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>天池比赛预处理 | sloth&#39;s blog</title>
+  <title>sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。">
-<meta name="keywords" content="天池比赛">
-<meta property="og:type" content="article">
-<meta property="og:title" content="天池比赛预处理">
-<meta property="og:url" content="http://yoursite.com/2020/02/11/天池比赛/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="sloth&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/tianchi1/%E7%AE%B1%E5%9E%8B%E5%9B%BE.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/11/天池比赛/img/tanchi1/guijitu.png">
-<meta property="og:updated_time" content="2020-02-12T11:44:40.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="天池比赛预处理">
-<meta name="twitter:description" content="​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。">
-<meta name="twitter:image" content="http://yoursite.com/img/tianchi1/%E7%AE%B1%E5%9E%8B%E5%9B%BE.png">
+<meta name="twitter:title" content="sloth&#39;s blog">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -167,187 +159,52 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-天池比赛" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-机器学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      天池比赛预处理
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/17/机器学习/">机器学习原理以及sklearn实战笔记（1）</a>
     </h1>
   
 
         
-        <a href="/2020/02/11/天池比赛/" class="archive-article-date">
-  	<time datetime="2020-02-11T07:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
+        <a href="/2019/08/17/机器学习/" class="archive-article-date">
+  	<time datetime="2019-08-17T12:34:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。<a id="more"></a>从头到尾一路走下来也基本了解了数据分析学科的工作流程，个人总结为初始数据的清洗，包括异常值缺失值等的处理方法，然后便是特征的构造，数据科学，尤其是本次比赛所用的结构化数据，一向都是特征为王，有了好的特征才能使得模型具有更好的准确率以及泛化能力。数据科学里面一直广为流传的一句话就是，好的特征决定了模型的上限，不同的算法只是在接近这个上限而已。然后就是通过分析所要处理的问题种类来确定合适的算法，调节参数构造模型，最后一步就是对较好的模型进行融合以达到更好的效果。</p>
-<p>​    我将所学到的数据处理知识，结合本次比赛并稍加扩展，做出总结。见解浅薄，还望指正。</p>
-<h3 id="比赛简介"><a href="#比赛简介" class="headerlink" title="比赛简介"></a>比赛简介</h3><p>链接:<a href="https://tianchi.aliyun.com/competition/entrance/231768/introduction?spm=5176.12281925.0.0.158c7137mJq6BE" target="_blank" rel="noopener">天池比赛</a></p>
-<h4 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h4><p>​    比赛的背景内容以及流程官网都有所介绍，接下来结合赛题数据以及数据分析的处理流程整理一下思路。比赛数据为渔船不同时刻下的几种特征，包括id、坐标XY、速度、方向以及时间。每个渔船的数据都存储在一个csv文件中，所以每个文件的渔船id都是一样的，共有7000个为训练集，训练集中还有label渔船捕鱼方法，分为围网、刺网和拖网。然后是测试集共2000个，有特征无label。要求预测测试集中每条渔船的捕鱼方式以utf—8解码为csv文件提交，得分方式为三种类别的f1取平均值，越高越好。</p>
-<p>​    显然这是一个多分类问题，数据是结构化的表格数据，没有缺失值，但是由于是实际场景，所以有大量错误数据，第一步应该做的就是数据清洗工作。这里不局限于本次比赛，会将个人所学习到的数据清洗方法都做总结。</p>
-<h3 id="数据清洗"><a href="#数据清洗" class="headerlink" title="数据清洗"></a>数据清洗</h3><p>​        数据清洗主要处理两类值，缺失值以及异常值。</p>
-<h4 id="缺失值"><a href="#缺失值" class="headerlink" title="缺失值"></a>缺失值</h4><p>一般缺失值在结构化的表格数据中记为NAN，许多算法无法处理数据中的缺失值，因此将有缺失值的数据盲目用算法处理就会报错。缺失值的主要处理方法无非就是删除以及填补：</p>
-<p>​    1、将含有缺失值的一行数据删除，这适用于缺失值较少并且总数据 量较大的场合。</p>
-<p>​    2、特殊值填补，将缺失值作为一个特殊的类，例如性别特征的男标记为1，女标记为2，缺失则标记为0。</p>
-<p>​    3、均值填补，用整列除了缺失值的内容的平均值填补，此方法适用于各个样本符合独立同分布时使用。</p>
-<p>​    4、就近填补，用距离缺失值最近的非缺失值填补，一般取上一条最近的非缺失值的数据，也可下一条，第一条数据就是缺失值时做特殊处理，此方法适用于特征是相关联的数据，最典型的就是时间序列的数据。</p>
-<p>​    5、聚类填补，最典型的是k近邻法，取欧氏距离该样本最近的k条数据的平均值填补。</p>
-<p>​    6、当数据服从正态分布时，可以通过极大似然估计估计出缺失值，这个不太了解。</p>
-<p>关于缺失值处理的具体代码，以后再作总结。</p>
-<h4 id="异常值"><a href="#异常值" class="headerlink" title="异常值"></a>异常值</h4><p>​        异常值处理主要分为识别和处理两步。处理的方式其实和缺失值处理基本相同，关键在于识别的方法。</p>
-<p>​    1、统计量分析，设置不符合常理的数据上下限，如年龄设置在0-150之间，范围之外的就是异常值。</p>
-<p>​    2、3$ \delta$ 法则，$ \delta$即标准差，定义与平均值偏差超过三倍方差的数据为异常数据。</p>
-<p>​    3、箱型图（IQR），将数据从小到大排序，取位于0.25位置的值为Q1，中位数为Q2，位于0.75位置的为Q3，$IQR = Q3 - Q1$，$min = Q1 - kIQR$， $max = Q2 + kIQR$ ，认为小于min大于max的值为异常值。</p>
-<p><img src="/img/tianchi1/%E7%AE%B1%E5%9E%8B%E5%9B%BE.png" alt="箱型图"></p>
-<p>​    4、基于模型的检测方法，首先将所有数据都放入正常值的集合中，然后将数据依次移入异常值的集合中，只要移动使得总似然提高。</p>
-<p>​    5、基于邻近度的离群点检测方法，此法定义一个数据点的离群点得分，它由到它的距离最近的k个数据的距离的平均值确定，所以离群点的得分对于k的取值高度敏感，找到离群点得分阈值，大于该阈值的数据视为异常值。</p>
-<p>​    6、基于密度的离群点检测，一个对象的离群点得分时该对象周围的密度的逆，密度的定义有两种，一种是到k个最近邻点的平均距离的倒数，如果该距离小则密度大。另一个是点的半径为d的范围内的数据个数。两个定义的参数k和d的选取都十分重要。</p>
-<p>​    7、基于聚类的技术，将某特征值进行聚类，评估其离群点得分，如果该对象不强属于任何簇则视为异常值。</p>
-<h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>​        由于数据是按照每个船的id分别保存为csv文件，训练时只需要一张表，所以要将多表合并。</p>
-<p>将数据文件夹的所有文件名列出并检查数量是否正确</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_path = <span class="string">'./hy_round1_train_20200102_1_qbPartExtractedDir/hy_round1_train_20200102'</span></span><br><span class="line">test_path = <span class="string">'./hy_round1_testa_20200102_2_qbPartExtractedDir/hy_round1_testA_20200102'</span></span><br><span class="line">train_files = os.listdir(train_path)</span><br><span class="line">test_files = os.listdir(test_path)</span><br><span class="line">print(len(train_test))</span><br></pre></td></tr></table></figure>
-
-<p>读取数据绘图。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#读取其中一个船</span></span><br><span class="line">df = pd.read_csv(train_path + <span class="string">"/6966.csv"</span>)</span><br><span class="line">df.head()</span><br><span class="line">df.plot.scatter(x=<span class="string">'x'</span>,y=<span class="string">'y'</span>)</span><br><span class="line"><span class="comment">#读取其中前10个船的数据，并绘出xy坐标的轨迹图，共十张列出其中一张。</span></span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> tqdm(train_files[<span class="number">0</span>:<span class="number">10</span>]):</span><br><span class="line">    df = pd.read_csv(train_path +<span class="string">"/"</span>+ file ) </span><br><span class="line">    df.plot.scatter(x=<span class="string">'x'</span>,y=<span class="string">'y'</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="./img/tanchi1/guijitu.png" alt="轨迹图"></p>
-<p>将训练集的csv合并成一张表格。    </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ret = []</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> tqdm(train_files):</span><br><span class="line">    df = pd.read_csv(train_path +<span class="string">"/"</span>+ file ) </span><br><span class="line">    ret.append(df)</span><br><span class="line">df = pd.concat(ret)</span><br><span class="line"><span class="comment">#特征名定义为英文。</span></span><br><span class="line">df.columns = [<span class="string">'ship'</span>,<span class="string">'x'</span>,<span class="string">'y'</span>,<span class="string">'v'</span>,<span class="string">'d'</span>,<span class="string">'time'</span>,<span class="string">'type'</span>]</span><br><span class="line"><span class="comment">#生成表格</span></span><br><span class="line">df.to_csv(<span class="string">'train.csv'</span>)</span><br><span class="line"><span class="comment">#查看label种类，合成表格的形状。</span></span><br><span class="line">df[<span class="string">'type'</span>].unique()</span><br><span class="line">df.shape</span><br></pre></td></tr></table></figure>
-
-<p>测试集的表格合并过程完全相同。</p>
-
+        <h1 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>​    机器学习说到底就做了一个工作，预测。预测又分为三种，一种目标值不连续，如性别是男是女，质量是好是坏，称为分类。
+        
+          <a class="article-more-a" href="/2019/08/17/机器学习/#more">more >></a>
+        
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">天池比赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/17/机器学习/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/02/11/天池比赛/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/02/12/天池比赛—basline/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          天池比赛_basline
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/09/13/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -367,14 +224,75 @@ var _hmt = _hmt || [];
 
 
 
-  
-  
-  
 
   
-
+    <article id="post-我的第一篇博客文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/17/我的第一篇博客文章/">我的第一篇博客文章</a>
+    </h1>
   
 
+        
+        <a href="/2019/08/17/我的第一篇博客文章/" class="archive-article-date">
+  	<time datetime="2019-08-17T03:15:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h2><p>​    正式的第一篇博客，感谢codesheep羊哥对于博客重要性的告知以及搭建博客的教程，跟着羊的教程一步步走下来，遇到的坑也不多，算是终于成型。谢谢模板的提供者Litten,以及陪我聊天的童老板。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/17/我的第一篇博客文章/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -397,8 +315,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
