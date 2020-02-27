@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/dec.png">
 <meta property="og:image" content="http://yoursite.com/_post/%E5%A4%A9%E6%B1%A0--basline/dec.png">
 <meta property="og:image" content="http://yoursite.com/img/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF.png">
-<meta property="og:updated_time" content="2020-02-27T11:27:26.677Z">
+<meta property="og:updated_time" content="2020-02-27T11:35:36.758Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天池比赛_basline">
 <meta name="twitter:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
@@ -217,7 +217,7 @@ var _hmt = _hmt || [];
 <p>estimator：要训练的模型</p>
 <p>param_grid：设置模型的一些超参数，范围一般是数组，或者是用range函数。</p>
 <p>scoring：评价方式，一般为准确率(accuracy),召回率(recaall),f1score等</p>
-<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/score.png" alt="/img/天池basline/score.png"></p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/score.png" alt="评分方式"></p>
 <p>n_jobs：线程数，一般为-1，设置为所有线程</p>
 <p>cv：交叉验证重数，因此GridSearch不需要Kfold函数</p>
 <p>verbose：日志冗长度，0：不输出训练过程，1：偶尔输出，&gt;1：对每个子模型都输出。</p>
@@ -228,10 +228,10 @@ var _hmt = _hmt || [];
 <p>初始化模型并训练调参</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rf = RandomForestClassifier(n_estimators=<span class="number">2000</span> ,criterion= <span class="string">'gini'</span>)</span><br><span class="line">dec = DecisionTreeClassifier()</span><br><span class="line">gbd = GradientBoostingClassifier(n_estimators = <span class="number">4000</span>)</span><br><span class="line"><span class="comment"># 网格搜索，交叉验证</span></span><br><span class="line"></span><br><span class="line">cross_validator = KFold(<span class="number">4</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">param_rf = &#123;<span class="string">"min_samples_split"</span>:[<span class="number">3</span>], </span><br><span class="line">            <span class="string">'n_estimators'</span> :range(<span class="number">200</span>,<span class="number">2000</span>,<span class="number">100</span>),</span><br><span class="line">            <span class="string">"criterion"</span>:[<span class="string">"gini"</span>,<span class="string">"entropy"</span>]</span><br><span class="line">         &#125;</span><br><span class="line">gc_rf = GridSearchCV(rf, param_grid=param_rf, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_rf.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"rf预测结果为："</span>, gc_rf.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"rf最好的参数模型为："</span>, gc_rf.best_params_)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/rf.png" alt="/img/天池basline/rf.png"></p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/rf.png" alt="随机森林训练结果"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">param_gbd = &#123;<span class="string">"learning_rate"</span>:[<span class="number">0.005</span>,<span class="number">0.01</span>,<span class="number">0.05</span>,<span class="number">0.1</span>,<span class="number">0.2</span>], </span><br><span class="line">             <span class="string">'n_estimators'</span> :range(<span class="number">200</span>,<span class="number">2000</span>,<span class="number">100</span>)</span><br><span class="line">         &#125;</span><br><span class="line">gc_gbd = GridSearchCV(gbd, param_grid=param_gbd, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_gbd.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"gbd预测结果为："</span>, gc_gbd.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"gbd最好的参数模型为："</span>, gc_gbd.best_params_)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png" alt="/img/天池basline/gbdt.png"></p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png" alt="gbdt训练结果"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">param_dec = &#123;<span class="string">"criterion"</span>:[<span class="string">"gini"</span>,<span class="string">"entropy"</span>], </span><br><span class="line">         &#125;</span><br><span class="line">gc_dec = GridSearchCV(dec, param_grid=param_dec, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_dec.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"dec预测结果为："</span>, gc_dec.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"dec最好的参数模型为："</span>, gc_dec.best_params_)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/img/%E5%A4%A9%E6%B1%A0basline/dec.png" alt="决策树训练结果"></p>
@@ -506,11 +506,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kmeansk</a>
+                <a href="javascript:void(0)" class="js-tag color4">决策树与随机森林</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">决策树与随机森林</a>
+                <a href="javascript:void(0)" class="js-tag color3">kmeansk</a>
               </li>
              
               <li class="article-tag-list-item">
