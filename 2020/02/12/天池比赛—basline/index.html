@@ -16,15 +16,17 @@
 <meta property="og:site_name" content="sloth&#39;s blog">
 <meta property="og:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/score.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/rf.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png">
-<meta property="og:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/dec.png">
-<meta property="og:updated_time" content="2020-02-25T05:24:15.128Z">
+<meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/score.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/rf.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/dec.png">
+<meta property="og:image" content="http://yoursite.com/_post/%E5%A4%A9%E6%B1%A0--basline/dec.png">
+<meta property="og:image" content="http://yoursite.com/img/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF.png">
+<meta property="og:updated_time" content="2020-02-27T11:27:26.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天池比赛_basline">
 <meta name="twitter:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
-<meta name="twitter:image" content="http://yoursite.com/2020/02/12/天池比赛—basline/img/%E5%A4%A9%E6%B1%A0basline/score.png">
+<meta name="twitter:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/score.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -203,19 +205,19 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_label = train.drop_duplicates(<span class="string">'ship'</span>)</span><br><span class="line">train_label = extract_feature(train, train_label)</span><br></pre></td></tr></table></figure>
 
 <p>首先将原始的5个特征进行drop_duplicates处理，这个函数的作用是按照ship进行groupby，选择每一个ship相同数据的第一条，其余丢弃。这样train_label就是7000条数据了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = train_label.drop([<span class="string">'type'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x= x.drop([<span class="string">'time'</span>, <span class="string">'date'</span>,<span class="string">'diff_time'</span>,<span class="string">'ship'</span>],axis=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = train_label.drop([<span class="string">'type'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x= x.drop([<span class="string">'time'</span>, <span class="string">'date'</span>,<span class="string">'diff_time'</span>,<span class="string">'ship'</span>],axis=<span class="number">1</span>)</span><br><span class="line">y_data = train_label[<span class="string">'type'</span>]</span><br></pre></td></tr></table></figure>
 
 <p>按列去除type作为训练集，去除’time’, ‘date’,’diff_time’列，因为算法无法识别这些数据的格式，去除’ship’因为这个特征对于算法没有意义。</p>
-<h2 id="训练集测试集创建"><a href="#训练集测试集创建" class="headerlink" title="训练集测试集创建"></a>训练集测试集创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y_data, test_size=<span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="训练集测试集创建"><a href="#训练集测试集创建" class="headerlink" title="训练集测试集创建"></a>训练集测试集创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y_data, test_size=<span class="number">0.2</span>,stratify = y_data)</span><br></pre></td></tr></table></figure>
 
-<p>构造训练集测试集，树模型不需要标准化，train、test的比例4：1。</p>
+<p>构造训练集测试集，树模型不需要标准化，train、test的比例4：1，stratify参数用来保证抽取的训练集和测试集中的样本类别比例与原样本中的相同，对于样本类别不平衡的数据可以使用。</p>
 <p>首先用决策树、随机森林和gbdt进行训练，用GridSearch将train进行交叉验证并调参，虽然算法的内容不同，但是用网格搜索的代码类似，找出最合适的参数。</p>
 <p>在此详细解释一下GridSearch函数，她的作用是将待训练的模型的不同参数按照给定的值进行排列组合，每个组合都进行训练，通过交叉验证，从总的训练集中抽取部分作为训练集，剩下的作为验证集，测试模型好坏，挑选出最适当的参数。</p>
 <p>GridSearch(estimator, param_grid, scoring=None, n_jobs=None, cv=None, verbose=0)</p>
 <p>estimator：要训练的模型</p>
 <p>param_grid：设置模型的一些超参数，范围一般是数组，或者是用range函数。</p>
 <p>scoring：评价方式，一般为准确率(accuracy),召回率(recaall),f1score等</p>
-<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/score.png" alt="GridSearch_score"></p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/score.png" alt="/img/天池basline/score.png"></p>
 <p>n_jobs：线程数，一般为-1，设置为所有线程</p>
 <p>cv：交叉验证重数，因此GridSearch不需要Kfold函数</p>
 <p>verbose：日志冗长度，0：不输出训练过程，1：偶尔输出，&gt;1：对每个子模型都输出。</p>
@@ -226,22 +228,15 @@ var _hmt = _hmt || [];
 <p>初始化模型并训练调参</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rf = RandomForestClassifier(n_estimators=<span class="number">2000</span> ,criterion= <span class="string">'gini'</span>)</span><br><span class="line">dec = DecisionTreeClassifier()</span><br><span class="line">gbd = GradientBoostingClassifier(n_estimators = <span class="number">4000</span>)</span><br><span class="line"><span class="comment"># 网格搜索，交叉验证</span></span><br><span class="line"></span><br><span class="line">cross_validator = KFold(<span class="number">4</span>, shuffle=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">param_rf = &#123;<span class="string">"min_samples_split"</span>:[<span class="number">3</span>], </span><br><span class="line">            <span class="string">'n_estimators'</span> :range(<span class="number">200</span>,<span class="number">2000</span>,<span class="number">100</span>),</span><br><span class="line">            <span class="string">"criterion"</span>:[<span class="string">"gini"</span>,<span class="string">"entropy"</span>]</span><br><span class="line">         &#125;</span><br><span class="line">gc_rf = GridSearchCV(rf, param_grid=param_rf, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_rf.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"rf预测结果为："</span>, gc_rf.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"rf最好的参数模型为："</span>, gc_rf.best_params_)</span><br></pre></td></tr></table></figure>
 
-<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/rf.png" alt="随机森林训练结果"></p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/rf.png" alt="/img/天池basline/rf.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">param_gbd = &#123;<span class="string">"learning_rate"</span>:[<span class="number">0.005</span>,<span class="number">0.01</span>,<span class="number">0.05</span>,<span class="number">0.1</span>,<span class="number">0.2</span>], </span><br><span class="line">             <span class="string">'n_estimators'</span> :range(<span class="number">200</span>,<span class="number">2000</span>,<span class="number">100</span>)</span><br><span class="line">         &#125;</span><br><span class="line">gc_gbd = GridSearchCV(gbd, param_grid=param_gbd, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_gbd.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"gbd预测结果为："</span>, gc_gbd.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"gbd最好的参数模型为："</span>, gc_gbd.best_params_)</span><br></pre></td></tr></table></figure>
 
-<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/gbdt.png" alt="gbdt训练结果"></p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png" alt="/img/天池basline/gbdt.png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">param_dec = &#123;<span class="string">"criterion"</span>:[<span class="string">"gini"</span>,<span class="string">"entropy"</span>], </span><br><span class="line">         &#125;</span><br><span class="line">gc_dec = GridSearchCV(dec, param_grid=param_dec, cv=cross_validator,scoring=<span class="string">'f1_macro'</span>)</span><br><span class="line">gc_dec.fit(x_train, y_train)</span><br><span class="line">print(<span class="string">"dec预测结果为："</span>, gc_dec.score(x_test,y_test))</span><br><span class="line">print(<span class="string">"dec最好的参数模型为："</span>, gc_dec.best_params_)</span><br></pre></td></tr></table></figure>
 
-<p><img src="./img/%E5%A4%A9%E6%B1%A0basline/dec.png" alt="决策树训练结果"></p>
-<p><img src alt="/_post/天池--basline/dec.png"></p>
-<p><img src alt="/img/朴素贝叶斯.png"></p>
-<p>关于numpy，pandas的索引总结，索引有很多内容很容易记混，一段时间不用又会很容易忘记，所以没有必要记住所有细节，记住常用的几个，其他的用到的时候百度就好：</p>
-<p>1、可以查看索引s.index_name，df.column_name其中可以使用df.column_name=[‘a’,’b’,’c’]暴力修改列索引名称。</p>
-<p>2、直接索引列名 df[‘A’] df[[‘A’, ‘B’]]。</p>
-<p>3、Datafram格式的loc，iloc指令都是[:,:]的格式，逗号前面表示行索引后面表示列，如df.iloc[1:3,3:5]索引1-2行，3-4列的数据，行列都是从0开始。如果没有写数据表示所有行（列），df.iloc[1:,:5]表示1至最后一行，0至4列。</p>
-<p>4、iloc只能索引列数012，loc只能索引列名如df.loc[0:3,[‘A’,’B’]]表示AB列0-3行。loc的索引是左闭右闭区间，iloc是左闭右开区间。</p>
-<p>5、 如果iloc方括号中直接给定一个数字或者一个slice的话，默认索引的是行。其中数字的情况会返回一个Series 。</p>
-<p>6、支持布尔索引，如df.loc[:,df.loc[1]&gt;4]表示索引第一行大于4的数据的所有行。</p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/dec.png" alt="决策树训练结果"></p>
+<p><img src="/_post/%E5%A4%A9%E6%B1%A0--basline/dec.png" alt="/_post/天池--basline/dec.png"></p>
+<p><img src="/img/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF.png" alt></p>
 <p>​        </p>
 <p>​        </p>
 
@@ -503,10 +498,6 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">lgb算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">天池比赛</a>
               </li>
              
@@ -515,11 +506,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">kmeansk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">决策树与随机森林</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">kmeansk</a>
+                <a href="javascript:void(0)" class="js-tag color1">lgb算法</a>
               </li>
              
               <li class="article-tag-list-item">
