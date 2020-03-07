@@ -6,25 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>sloth&#39;s blog</title>
+  <title>天池比赛_basline | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: 天池比赛_baslinedate: 2020-02-12 15:45:17tags: 天池比赛 特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
+  <meta name="description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
+<meta name="keywords" content="天池比赛">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sloth&#39;s blog">
+<meta property="og:title" content="天池比赛_basline">
 <meta property="og:url" content="http://yoursite.com/2020/02/12/天池比赛—basline/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="title: 天池比赛_baslinedate: 2020-02-12 15:45:17tags: 天池比赛 特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
+<meta property="og:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/rf.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/coor.png">
+<meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/delete.png">
 <meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/score.png">
 <meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/dec.png">
 <meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/gbdt.png">
 <meta property="og:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/rf.png">
-<meta property="og:updated_time" content="2020-02-27T11:40:20.873Z">
+<meta property="og:updated_time" content="2020-03-07T12:07:05.091Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sloth&#39;s blog">
-<meta name="twitter:description" content="title: 天池比赛_baslinedate: 2020-02-12 15:45:17tags: 天池比赛 特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
-<meta name="twitter:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/rf.png">
+<meta name="twitter:title" content="天池比赛_basline">
+<meta name="twitter:description" content="特征构造​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。">
+<meta name="twitter:image" content="http://yoursite.com/img/%E5%A4%A9%E6%B1%A0basline/coor.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -172,10 +174,24 @@ var _hmt = _hmt || [];
             <article id="post-天池比赛—basline" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      天池比赛_basline
+    </h1>
+  
+
+        
+        <a href="/2020/02/12/天池比赛—basline/" class="archive-article-date">
+  	<time datetime="2020-02-12T07:45:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/img/%E5%A4%A9%E6%B1%A0basline/rf.png" alt="随机森林训练结果">title: 天池比赛_basline<br>date: 2020-02-12 15:45:17<br>tags: 天池比赛</p>
-<h2 id="特征构造"><a href="#特征构造" class="headerlink" title="特征构造"></a>特征构造</h2><p>​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。<a id="more"></a></p>
+        <h2 id="特征构造"><a href="#特征构造" class="headerlink" title="特征构造"></a>特征构造</h2><p>​        首先需要处理的是时间特征，由于数据中的时间格式特殊，所以需要进行时间解码，时间解码在pandas中有专门的api。<a id="more"></a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">extract_dt</span><span class="params">(df)</span>:</span></span><br><span class="line"><span class="comment">#     时间解码函数</span></span><br><span class="line">    df[<span class="string">'time'</span>] = pd.to_datetime(df[<span class="string">'time'</span>], format=<span class="string">'%m%d %H:%M:%S'</span>)</span><br><span class="line">    <span class="comment"># df['month'] = df['time'].dt.month</span></span><br><span class="line">    df[<span class="string">'day'</span>] = df[<span class="string">'time'</span>].dt.day</span><br><span class="line">    df[<span class="string">'date'</span>] = df[<span class="string">'time'</span>].dt.date</span><br><span class="line">    df[<span class="string">'hour'</span>] = df[<span class="string">'time'</span>].dt.hour</span><br><span class="line">    df[<span class="string">'weekday'</span>] = df[<span class="string">'time'</span>].dt.weekday</span><br><span class="line">    <span class="keyword">return</span> df</span><br><span class="line">train = pd.read_csv(<span class="string">'train_label.csv'</span>,index_col=<span class="number">0</span>)</span><br><span class="line">train = extract_dt(train)</span><br></pre></td></tr></table></figure>
 
 <p>按照数据中的时间格式解码，得到time、date、hour、weekday特征，由于数据的月份基本相同，该特征意义不大。读取train数据集进行解码，test操作相同。</p>
@@ -192,6 +208,19 @@ var _hmt = _hmt || [];
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = train_label.drop([<span class="string">'type'</span>], axis=<span class="number">1</span>)</span><br><span class="line">x= x.drop([<span class="string">'time'</span>, <span class="string">'date'</span>,<span class="string">'diff_time'</span>,<span class="string">'ship'</span>],axis=<span class="number">1</span>)</span><br><span class="line">y_data = train_label[<span class="string">'type'</span>]</span><br></pre></td></tr></table></figure>
 
 <p>按列去除type作为训练集，去除’time’, ‘date’,’diff_time’列，因为算法无法识别这些数据的格式，去除’ship’因为这个特征对于算法没有意义。</p>
+<h4 id="绘制特征的相关系数热力图"><a href="#绘制特征的相关系数热力图" class="headerlink" title="绘制特征的相关系数热力图"></a>绘制特征的相关系数热力图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment">#导入seaborn和matplotlib绘图包</span></span><br><span class="line">coor = x.corr().abs()</span><br><span class="line"><span class="comment">#计算出各个特征之间的相关系数，并取绝对值。</span></span><br><span class="line">plt.subplots(figsize=(<span class="number">40</span>,<span class="number">40</span>))</span><br><span class="line">plt.subplots(figsize=(<span class="number">15</span>,<span class="number">10</span>))</span><br><span class="line">sns.heatmap(coor, annot=<span class="literal">True</span>, annot_kws=&#123;<span class="string">'size'</span>:<span class="number">5</span>&#125;)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment">#绘制相关系数热力图。</span></span><br></pre></td></tr></table></figure>
+
+<p> sns.heatmap这个方法的参数有多达20个，但是绘制相关系数图时用到的不多，在此介绍常用到的几个。</p>
+<p>data ：唯一需要填入的参数，是一个二维ndarray数组或是一个Datafram，是Datafram时热力图侧边显示行列索引名，ndarray就显示默认数字索引。</p>
+<p>annot: 默认为False，为True的话，会在格子上显示数字。</p>
+<p>annot_kws：当annot为True时就可以使用annot_kws调节显示的数字的参数如字体大小，是否加粗，字体颜色等。如： annot_kws={‘size’:9,’weight’:’bold’, ‘color’:’blue’} </p>
+<p>相关系数图如下所示。</p>
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/coor.png" alt></p>
+<p>相关系数过高的数据容易产生特征冗余，对于模型的训练效果类似，延长了训练时间，通常应该删除.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 寻找相关系数大于threshold的列</span></span><br><span class="line">threshold = <span class="number">0.9</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># List of pairs along with correlation above threshold</span></span><br><span class="line">corr_list = []</span><br><span class="line">size = <span class="number">44</span></span><br><span class="line"><span class="comment">#Search for the highly correlated pairs</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,size): <span class="comment">#for 'size' features</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>,size): <span class="comment">#avoid repetition</span></span><br><span class="line">        <span class="keyword">if</span> (coor.iloc[i,j] &gt;= threshold <span class="keyword">and</span> coor.iloc[i,j] &lt; <span class="number">1</span>) <span class="keyword">or</span> (coor.iloc[i,j] &lt; <span class="number">0</span> <span class="keyword">and</span> coor.iloc[i,j] &lt;= -threshold):</span><br><span class="line">            corr_list.append([coor.iloc[i,j],i,j]) <span class="comment">#store correlation and columns index</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">#Sort to show higher ones first            </span></span><br><span class="line">s_corr_list = sorted(corr_list,key=<span class="keyword">lambda</span> x: -abs(x[<span class="number">0</span>]))</span><br><span class="line"><span class="comment">#Print correlations and column names</span></span><br><span class="line"><span class="keyword">for</span> v,i,j <span class="keyword">in</span> s_corr_list:</span><br><span class="line">    <span class="keyword">print</span> (<span class="string">"%s and %s = %.2f"</span> % (cols[i],cols[j],v))</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/%E5%A4%A9%E6%B1%A0basline/delete.png" alt></p>
+<p>当然有时有两个甚至多个特征同时存在才会对于模型有较好的提升效果，如果盲目删去一个可能模型效果反而变差，所以特征筛选还是要具体训练来得出结果。</p>
 <h2 id="训练集测试集创建"><a href="#训练集测试集创建" class="headerlink" title="训练集测试集创建"></a>训练集测试集创建</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y_data, test_size=<span class="number">0.2</span>,stratify = y_data)</span><br></pre></td></tr></table></figure>
 
 <p>构造训练集测试集，树模型不需要标准化，train、test的比例4：1，stratify参数用来保证抽取的训练集和测试集中的样本类别比例与原样本中的相同，对于样本类别不平衡的数据可以使用。</p>
@@ -255,6 +284,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">天池比赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -473,15 +513,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">决策树与随机森林</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">knn、朴素贝叶斯</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kmeansk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">决策树与随机森林</a>
               </li>
              
               <li class="article-tag-list-item">

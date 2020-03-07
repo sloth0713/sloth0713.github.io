@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="sloth&#39;s blog">
 <meta property="og:description" content="关于numpy，pandas的索引总结，索引有很多内容很容易记混，一段时间不用又会很容易忘记，所以没有必要记住所有细节，记住常用的几个，">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-27T11:09:31.428Z">
+<meta property="og:updated_time" content="2020-02-29T03:38:12.477Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="&#39;pandas,numpy,matlop总结&#39;">
 <meta name="twitter:description" content="关于numpy，pandas的索引总结，索引有很多内容很容易记混，一段时间不用又会很容易忘记，所以没有必要记住所有细节，记住常用的几个，">
@@ -184,14 +184,48 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <p>关于numpy，pandas的索引总结，索引有很多内容很容易记混，一段时间不用又会很容易忘记，所以没有必要记住所有细节，记住常用的几个，<a id="more"></a>其他的用到的时候百度就好：</p>
-<p>1、可以查看索引s.index_name，df.column_name其中可以使用df.column_name=[‘a’,’b’,’c’]暴力修改列索引名称。</p>
+<p>1、可以查看索引s.index_name，df.column_name其中可以使用df.column_name=[‘a’,’b’,’c’]暴力修改列索引名称。查看每列数据类型，df.type。查看不重复的值df.unique。</p>
 <p>2、直接索引列名 df[‘A’] df[[‘A’, ‘B’]]。</p>
 <p>3、Datafram格式的loc，iloc指令都是[:,:]的格式，逗号前面表示行索引后面表示列，如df.iloc[1:3,3:5]索引1-2行，3-4列的数据，行列都是从0开始。如果没有写数据表示所有行（列），df.iloc[1:,:5]表示1至最后一行，0至4列。</p>
 <p>4、iloc只能索引列数012，loc只能索引列名如df.loc[0:3,[‘A’,’B’]]表示AB列0-3行。loc的索引是左闭右闭区间，iloc是左闭右开区间。</p>
 <p>5、 如果iloc方括号中直接给定一个数字或者一个slice的话，默认索引的是行。其中数字的情况会返回一个Series 。</p>
 <p>6、支持布尔索引，如df.loc[:,df.loc[1]&gt;4]表示索引第一行大于4的数据的所有行。</p>
-<p>如果是Datafram的某一列想知道每个类别所占比例用df.[‘type’].value_counts()</p>
-<p>如果是ndarray就可以用pd.DataFrame({‘a’:x})[‘a’].value_counts()</p>
+<p>7、如果是Datafram的某一列想知道每个类别所占比例用df.[‘type’].value_counts()</p>
+<p>如果是ndarray的x就可以用pd.DataFrame({‘a’:x})[‘a’].value_counts()</p>
+<p>8、查看字段是否有空值np.isnan(x).any()或者pd.isna(df).any()，</p>
+<p>用df.fillna（value， axis，method）填补，这对于Datafram或者其一列都有用。</p>
+<p>value： 需要用什么值去填充缺失值 ，常量或者是里名填补数据组合的字典</p>
+<p>method：ffill:用缺失值前面的一个值代替缺失值，如果axis =1，那么就是横向的前面的值替换后面的缺失值，如果axis=0，那么则是上面的值替换下面的缺失值。backfill/bfill，缺失值后面的一个值代替前面的缺失值。注意这个参数不能与<strong>value</strong>同时出现 </p>
+<p>删除缺失值</p>
+<p>DataFrame.dropna(axis=0, how=’any’, thresh=None, subset=None, inplace=False)</p>
+<p>how:”all”表示这一行或列中的元素全部缺失（为nan）才删除这一行或列，”any”表示这一行或列中只要有元素缺失，就删除这一行或列</p>
+<p>thresh:一行或一列中至少出现thresh个非缺失值就不删除。</p>
+<p>subset：在某些列的子集中选择出现了缺失值的列删除，不在子集中的含有缺失值得列或行不会删除（有axis决定是行还是列），填列名如[‘A’,’B’]。</p>
+<p>inplace：刷选过缺失值得新数据是存为副本还是直接在原数据上进行修改。</p>
+<p>9、</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.concat(objs, axis=0, join=&apos;outer&apos;, join_axes=None, ignore_index=False,</span><br><span class="line">    keys=None, levels=None, names=None, verify_integrity=False)</span><br></pre></td></tr></table></figure>
+
+<p>objs: series，dataframe或者是panel构成的序列lsit </p>
+<p>axis： 需要合并链接的轴，0是行，1是列 </p>
+<p>join：连接的方式 inner，或者outer</p>
+<p> 如果两个表的index都没有实际含义，使用ignore_index参数，置true，合并的两个表就睡根据列字段对齐，然后合并。最后再重新整理一个新的index。  </p>
+<p>10、在pandas中，merge的作用和sql中join，left join， right join非常类似。<br>  pd.merge(df1, df2, on=’key’, how=’inner’) </p>
+<p>how =’left’,’right’,’outer’,’inner’,默认为inner取交集，left以左边的表为基准，右边表没有的为nan，out取笛卡尔积。</p>
+<h3 id="matplotlib画图"><a href="#matplotlib画图" class="headerlink" title="matplotlib画图"></a>matplotlib画图</h3><p> import matplotlib.pyplot as plt </p>
+<h4 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h4><p>x1,x2,x3存储多条ndarray数组数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">plt.plot（x1,x2,x3,linewith(线条粗细) = <span class="number">2</span>）</span><br><span class="line"><span class="comment"># 设置标题 </span></span><br><span class="line">plot.title(<span class="string">"zszxz line "</span>,fontsize=<span class="number">12</span>) </span><br><span class="line"><span class="comment"># 设置x轴 </span></span><br><span class="line">plot.xlabel(<span class="string">"x"</span>,fontsize=<span class="number">12</span>) </span><br><span class="line"><span class="comment"># 设置y轴 </span></span><br><span class="line">plot.ylabel(<span class="string">"y"</span>,fontsize=<span class="number">12</span>) </span><br><span class="line"><span class="comment"># 添加图例</span></span><br><span class="line">plot.legend()</span><br><span class="line"><span class="comment"># 设置x范围</span></span><br><span class="line">plot.xlim(<span class="number">1</span>,<span class="number">12</span>)</span><br><span class="line"><span class="comment"># 设置 x 刻度</span></span><br><span class="line">x_ticks = np.arange(<span class="number">1</span>, <span class="number">13</span>, <span class="number">1</span>)</span><br><span class="line">plot.xticks(x_ticks)</span><br><span class="line"><span class="comment"># 显示 </span></span><br><span class="line">plot.show()</span><br></pre></td></tr></table></figure>
+
+<h4 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h4><p>x,y存储散点坐标</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">plot.scatter(x,y,color=<span class="string">'pink'</span>)</span><br><span class="line"><span class="comment"># 设置标题</span></span><br><span class="line">plot.title(<span class="string">"zszxz scatter"</span>,fontsize=<span class="number">12</span>)</span><br><span class="line"><span class="comment"># 设置x轴</span></span><br><span class="line">plot.xlabel(<span class="string">"x"</span>,fontsize=<span class="number">12</span>)</span><br><span class="line"><span class="comment"># 设置y轴</span></span><br><span class="line">plot.ylabel(<span class="string">"y"</span>,fontsize=<span class="number">12</span>)</span><br><span class="line"><span class="comment">#设置网格线</span></span><br><span class="line"><span class="comment">#plot.grid(True)</span></span><br><span class="line"><span class="comment"># 显示</span></span><br><span class="line">plot.show()</span><br></pre></td></tr></table></figure>
+
+<h4 id="多布图"><a href="#多布图" class="headerlink" title="多布图"></a>多布图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建画布</span></span><br><span class="line">plot.figure()</span><br><span class="line"><span class="comment"># 子图1</span></span><br><span class="line">plot.subplot(<span class="number">211</span>)</span><br><span class="line">x = np.linspace(-np.pi*<span class="number">2</span>, np.pi*<span class="number">2</span>, <span class="number">1024</span>)</span><br><span class="line">sin_y = np.sin(x)</span><br><span class="line"><span class="comment"># 设置虚线</span></span><br><span class="line">plot.plot(x, sin_y,dashes=[<span class="number">6</span>, <span class="number">3</span>],c=<span class="string">'m'</span>)</span><br><span class="line"><span class="comment"># 子图2</span></span><br><span class="line">plot.subplot(<span class="number">212</span>)</span><br><span class="line">con_y = np.cos(x)</span><br><span class="line">plot.plot(x, con_y,dashes=[<span class="number">6</span>, <span class="number">2</span>],c=<span class="string">'r'</span>)</span><br><span class="line"><span class="comment"># 显示</span></span><br><span class="line">plot.show()</span><br></pre></td></tr></table></figure>
+
+<h4 id="三维散点图"><a href="#三维散点图" class="headerlink" title="三维散点图"></a>三维散点图</h4><h4 id="三维曲面图"><a href="#三维曲面图" class="headerlink" title="三维曲面图"></a>三维曲面图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 多导入一个画三维图的库</span></span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line">fig = plt.figure(<span class="number">5</span>)</span><br><span class="line">ax=fig.add_subplot(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,projection=<span class="string">'3d'</span>)     <span class="comment">#绘制三维图</span></span><br><span class="line"></span><br><span class="line">x,y=np.mgrid[<span class="number">-2</span>:<span class="number">2</span>:<span class="number">20j</span>,<span class="number">-2</span>:<span class="number">2</span>:<span class="number">20j</span>]  <span class="comment">#获取x轴数据，y轴数据</span></span><br><span class="line">z=x*np.exp(-x**<span class="number">2</span>-y**<span class="number">2</span>)   <span class="comment">#获取z轴数据</span></span><br><span class="line"></span><br><span class="line">ax.plot_surface(x,y,z,rstride=<span class="number">2</span>,cstride=<span class="number">1</span>,cmap=plt.cm.coolwarm,alpha=<span class="number">0.8</span>)  <span class="comment">#绘制三维图表面</span></span><br><span class="line">ax.set_xlabel(<span class="string">'x-name'</span>)     <span class="comment">#x轴名称</span></span><br><span class="line">ax.set_ylabel(<span class="string">'y-name'</span>)     <span class="comment">#y轴名称</span></span><br><span class="line">ax.set_zlabel(<span class="string">'z-name'</span>)     <span class="comment">#z轴名称</span></span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fig,(ax0,ax1) = plt.subplots(nrows=<span class="number">2</span>,figsize=(<span class="number">9</span>,<span class="number">6</span>))     </span><br><span class="line"><span class="comment">#在窗口上添加2个子图</span></span><br><span class="line">sigma = <span class="number">1</span>   </span><br><span class="line"><span class="comment">#标准差</span></span><br><span class="line">mean = <span class="number">0</span>    </span><br><span class="line"><span class="comment">#均值</span></span><br><span class="line">x=mean+sigma*np.random.randn(<span class="number">10000</span>)   </span><br><span class="line"><span class="comment">#正态分布随机数</span></span><br><span class="line">ax0.hist(x,bins=<span class="number">40</span>,normed=<span class="literal">False</span>,histtype=<span class="string">'bar'</span>,facecolor=<span class="string">'yellowgreen'</span>,alpha=<span class="number">0.75</span>)   </span><br><span class="line"><span class="comment">#normed是否归一化，histtype直方图类型，facecolor颜色，alpha透明度</span></span><br><span class="line">ax1.hist(x,bins=<span class="number">20</span>,normed=<span class="number">1</span>,histtype=<span class="string">'bar'</span>,facecolor=<span class="string">'pink'</span>,alpha=<span class="number">0.75</span>,cumulative=<span class="literal">True</span>,rwidth=<span class="number">0.8</span>) </span><br><span class="line"><span class="comment">#bins柱子的个数,cumulative是否计算累加分布，rwidth柱子宽度</span></span><br><span class="line">plt.show()  </span><br><span class="line"><span class="comment">#所有窗口运行</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="柱形图"><a href="#柱形图" class="headerlink" title="柱形图"></a>柱形图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(<span class="number">3</span>) x_index = np.arange(<span class="number">5</span>) </span><br><span class="line"><span class="comment">#柱的索引 x_data = ('A', 'B', 'C', 'D', 'E') y1_data = (20, 35, 30, 35, 27) y2_data = (25, 32, 34, 20, 25) bar_width = 0.35 </span></span><br><span class="line"><span class="comment">#定义一个数字代表每个独立柱的宽度 rects1 = plt.bar(x_index, y1_data, width=bar_width,alpha=0.4, color='b',label='legend1') </span></span><br><span class="line"><span class="comment">#参数：左偏移、高度、柱宽、透明度、颜色、图例 rects2 = plt.bar(x_index + bar_width, y2_data, width=bar_width,alpha=0.5,color='r',label='legend2') </span></span><br><span class="line"><span class="comment">#参数：左偏移、高度、柱宽、透明度、颜色、图例 </span></span><br><span class="line"><span class="comment">#关于左偏移，不用关心每根柱的中心不中心，因为只要把刻度线设置在柱的中间就可以了 plt.xticks(x_index + bar_width/2, x_data) </span></span><br><span class="line"><span class="comment">#x轴刻度线 plt.legend() </span></span><br><span class="line"><span class="comment">#显示图例 plt.tight_layout() </span></span><br><span class="line"><span class="comment">#自动控制图像外部边缘，此方法不能够很好的控制图像间的间隔 plt.show()</span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -444,15 +478,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">决策树与随机森林</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">knn、朴素贝叶斯</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">kmeansk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">决策树与随机森林</a>
               </li>
              
               <li class="article-tag-list-item">
