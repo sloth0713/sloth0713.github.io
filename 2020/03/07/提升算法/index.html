@@ -6,16 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>&#39;提升算法&#39; | sloth&#39;s blog</title>
+  <title>集成学习 | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="&#39;提升算法&#39;">
+  <meta name="description" content="浅谈集成学习方法​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，集成学习可以避免过拟合现象的发生，提高模型的泛化能力。本文总结较常用的集成学习方法原理即部分应用。 bagging​    假设数据集中数据共有n条，从初始的数据集中有放回的随机抽取m">
+<meta name="keywords" content="blending">
+<meta property="og:type" content="article">
+<meta property="og:title" content="集成学习">
 <meta property="og:url" content="http://yoursite.com/2020/03/07/提升算法/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
+<meta property="og:description" content="浅谈集成学习方法​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，集成学习可以避免过拟合现象的发生，提高模型的泛化能力。本文总结较常用的集成学习方法原理即部分应用。 bagging​    假设数据集中数据共有n条，从初始的数据集中有放回的随机抽取m">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-07T12:08:27.319Z">
+<meta property="og:updated_time" content="2020-03-13T13:15:57.105Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&#39;提升算法&#39;">
+<meta name="twitter:title" content="集成学习">
+<meta name="twitter:description" content="浅谈集成学习方法​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，集成学习可以避免过拟合现象的发生，提高模型的泛化能力。本文总结较常用的集成学习方法原理即部分应用。 bagging​    假设数据集中数据共有n条，从初始的数据集中有放回的随机抽取m">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -167,7 +171,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      &#39;提升算法&#39;
+      集成学习
     </h1>
   
 
@@ -180,7 +184,19 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="浅谈集成学习方法"><a href="#浅谈集成学习方法" class="headerlink" title="浅谈集成学习方法"></a>浅谈集成学习方法</h3><p>​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，集成学习可以避免过拟合现象的发生，提高模型的泛化能力。本文总结较常用的集成学习方法原理即部分应用。</p>
+<h3 id="bagging"><a href="#bagging" class="headerlink" title="bagging"></a>bagging</h3><p>​    假设数据集中数据共有n条，从初始的数据集中有放回的随机抽取m个样本k次，采用相同的模型进行训练，从而得到k个模型，这k个模型地位相等，当然在训练这些模型的过程中可以只选择部分特征训练，进一步提高模型的泛化能力。在预测阶段，将每一条数据分别放入这k个基学习器中进行预测（之前选择部分特征训练的模型就选用这部分特征进行预测）。对于分类问题采用投票方法，选择基学习器中票数最多的类别作为最终类别，回归问题就取预测值的均值作为最后的结果。</p>
+<p>​    bagging方法通过降低基分类器的方差，有效改善了泛化误差，如果基分类器的稳定性差，bagging方法就可以降低数据波动而导致的随机误差。而由于每个样本被选中的概率相同，所以bagging方法并不依赖于某些特定的数据，也就是说所有数据的重要性相同，这对于样本分类不均匀的数据集可能会出现问题。bagging的一个方法常见的应用就是随机森林。</p>
+<h3 id="boosting"><a href="#boosting" class="headerlink" title="boosting"></a>boosting</h3><p>​    这里主要说下最常见的adaboost方法，主要过程为，每次训练同一组数据，第一次训练时所有数据的权值相同，得出结果后加大其中被错误分类的数据的权值进行第二次训练，以此类推，进行k次训练，得到k个模型。针对训练过程中的k个模型的得分对其进行加权，得分高的模型权值高。预测时将一组数据用k个模型分别预测一次，最后加权得出最终结果。adaboost提高了对于错误预测数据的重视程度，预测时增加高得分模型的权值，是很有可能组合出一个强学习器的。</p>
+<p>adaboost对于模型评估标准采用分类误差率，假设共有N个样本，样本的labels为+1和-1，则<br>$$<br>e_m = P(G_m(x_i)\neq y_i) = \sum_{i=1}^Nw_{mi}I(G_m(x_i\neq y_i))<br>$$<br>其中I为指示函数，正确分类的为0，错误分类的为1。</p>
+<p>每个学习器的权值定义为<br>$$<br>\alpha_m = \frac12log\frac{1-e_m}{e_m}<br>$$<br>显然，当$e_m&lt;\frac12$时$\alpha_m$&gt;0，并且$\alpha _m$随着$e_m$的减小而增大，所以，分类错误率越低的模型的权值越大，在最后分类器中的作用也就越大。</p>
+<p>对于每个样本的权值，初始化的$D_1 = (w_{11},…,w_{1i},…,w_{1N})$,$w_{1i} = \frac1N$，每次更新权值的算法为<br>$$<br>D_{m+1} = (w_{m+1,i},…,w_{m+1,i},…w_{m+1,N})<br>$$</p>
+<p>$$<br>w_{m+1,i} = \frac{w_{mi}}{z_m}exp(-\alpha_my_iG_m(x_i)),i = 1,2,…,N<br>$$</p>
+<p>其中$z_m$是规范化因子<br>$$<br>z_m = \sum_{i=1}^N w_{mi}exp(-\alpha_my_iG_m(x_i))<br>$$<br>最后的分类器定义为<br>$$<br>G(x) = sign(\sum_{i=1}^{M}\alpha_mG_m(x))<br>$$<br>adaboost其实就是每迭代一次就优化一个学习器，并且其损失函数定义为指数函数，这种每迭代一次就优化一个学习器及其参数的方法称为前向分布算法，显然adaboost是前向分步算法的一个特例，当前向分步算法的损失函数定义为指数函数时，其优化过程与adaboost完全一致。</p>
+<p>​    另一个boosting算法的实例是提升树，它采用加法模型（多个基模型的线性组合）与前向分步算法，其基模型采用CART（分类或回归决策树）。在提升树利用前向分步算法优化的过程中，如果损失函数为平方损失或是指数损失，优化过程很简单，但是如果是一般损失就会很繁琐，为了简化过程，采用梯度提升的策略，即利用损失函数的负梯度在当前模型的值来作为回归问题中的残差近似值拟合一个回归树，对于平方损失函数，这个近似值就是一般所说的残差，对于一般损失函数这是一个用来拟合残差的近似值。这种方法称为GBDT。</p>
+<p>​    boosting和bagging一般选用的基模型是同类模型，不同类的模型往往会针对不同种类的特征产生好的效果，所以一般模型训练结束后还会将不同的模型进行融合以进一步提升模型效果。</p>
+<p>​    针对分类问题一般采用vote方法，其思想很简单不同模型对于分类结果进行投票，选取票数多的类别作为最终结果，有时可以对模型进行加权投票。针对回归问题，一般采用avaging方法，其思想也很简单就是将各个模型预测出的结果取平均或是加权平均作为最终结果。当然模型融合还有其他复杂的方法，例如stacking和blending。</p>
+<h3 id="stacking"><a href="#stacking" class="headerlink" title="stacking"></a>stacking</h3><h3 id="blending"><a href="#blending" class="headerlink" title="blending"></a>blending</h3>
       
 
       
@@ -214,6 +230,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">blending</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -277,6 +304,15 @@ var _hmt = _hmt || [];
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/03/13/机器学习评分标准/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          浅谈机器学习中的评分标准
+        
+      </div>
+    </a>
   
   
     <a href="/2020/02/14/docker/" id="article-nav-older" class="article-nav-link-wrap">
@@ -420,6 +456,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">天池比赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">blending</a>
               </li>
              
               <li class="article-tag-list-item">

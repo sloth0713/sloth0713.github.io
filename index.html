@@ -161,20 +161,20 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-提升算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-机器学习评分标准" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/提升算法/">&#39;提升算法&#39;</a>
+      <a class="article-title" href="/2020/03/13/机器学习评分标准/">浅谈机器学习中的评分标准</a>
     </h1>
   
 
         
-        <a href="/2020/03/07/提升算法/" class="archive-article-date">
-  	<time datetime="2020-03-07T12:08:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+        <a href="/2020/03/13/机器学习评分标准/" class="archive-article-date">
+  	<time datetime="2020-03-13T13:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
 </a>
         
       </header>
@@ -189,6 +189,91 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/13/机器学习评分标准/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-提升算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/提升算法/">集成学习</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/07/提升算法/" class="archive-article-date">
+  	<time datetime="2020-03-07T12:08:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="浅谈集成学习方法"><a href="#浅谈集成学习方法" class="headerlink" title="浅谈集成学习方法"></a>浅谈集成学习方法</h3><p>​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，集成学习可以避免过拟合现象的发生，提高模型的泛化能力。本文总结较常用的集成学习方法原理即部分应用。</p>
+<h3 id="bagging"><a href="#bagging" class="headerlink" title="bagging"></a>bagging</h3><p>​    假设数据集中数据共有n条，从初始的数据集中有放回的随机抽取m个样本k次，采用相同的模型进行训练，从而得到k个模型，这k个模型地位相等，当然在训练这些模型的过程中可以只选择部分特征训练，进一步提高模型的泛化能力。在预测阶段，将每一条数据分别放入这k个基学习器中进行预测（之前选择部分特征训练的模型就选用这部分特征进行预测）。对于分类问题采用投票方法，选择基学习器中票数最多的类别作为最终类别，回归问题就取预测值的均值作为最后的结果。</p>
+<p>​    bagging方法通过降低基分类器的方差，有效改善了泛化误差，如果基分类器的稳定性差，bagging方法就可以降低数据波动而导致的随机误差。而由于每个样本被选中的概率相同，所以bagging方法并不依赖于某些特定的数据，也就是说所有数据的重要性相同，这对于样本分类不均匀的数据集可能会出现问题。bagging的一个方法常见的应用就是随机森林。</p>
+<h3 id="boosting"><a href="#boosting" class="headerlink" title="boosting"></a>boosting</h3><p>​    这里主要说下最常见的adaboost方法，主要过程为，每次训练同一组数据，第一次训练时所有数据的权值相同，得出结果后加大其中被错误分类的数据的权值进行第二次训练，以此类推，进行k次训练，得到k个模型。针对训练过程中的k个模型的得分对其进行加权，得分高的模型权值高。预测时将一组数据用k个模型分别预测一次，最后加权得出最终结果。adaboost提高了对于错误预测数据的重视程度，预测时增加高得分模型的权值，是很有可能组合出一个强学习器的。</p>
+<p>adaboost对于模型评估标准采用分类误差率，假设共有N个样本，样本的labels为+1和-1，则<br>$$<br>e_m = P(G_m(x_i)\neq y_i) = \sum_{i=1}^Nw_{mi}I(G_m(x_i\neq y_i))<br>$$<br>其中I为指示函数，正确分类的为0，错误分类的为1。</p>
+<p>每个学习器的权值定义为<br>$$<br>\alpha_m = \frac12log\frac{1-e_m}{e_m}<br>$$<br>显然，当$e_m&lt;\frac12$时$\alpha_m$&gt;0，并且$\alpha _m$随着$e_m$的减小而增大，所以，分类错误率越低的模型的权值越大，在最后分类器中的作用也就越大。</p>
+<p>对于每个样本的权值，初始化的$D_1 = (w_{11},…,w_{1i},…,w_{1N})$,$w_{1i} = \frac1N$，每次更新权值的算法为<br>$$<br>D_{m+1} = (w_{m+1,i},…,w_{m+1,i},…w_{m+1,N})<br>$$</p>
+<p>$$<br>w_{m+1,i} = \frac{w_{mi}}{z_m}exp(-\alpha_my_iG_m(x_i)),i = 1,2,…,N<br>$$</p>
+<p>其中$z_m$是规范化因子<br>$$<br>z_m = \sum_{i=1}^N w_{mi}exp(-\alpha_my_iG_m(x_i))<br>$$<br>最后的分类器定义为<br>$$<br>G(x) = sign(\sum_{i=1}^{M}\alpha_mG_m(x))<br>$$<br>adaboost其实就是每迭代一次就优化一个学习器，并且其损失函数定义为指数函数，这种每迭代一次就优化一个学习器及其参数的方法称为前向分布算法，显然adaboost是前向分步算法的一个特例，当前向分步算法的损失函数定义为指数函数时，其优化过程与adaboost完全一致。</p>
+<p>​    另一个boosting算法的实例是提升树，它采用加法模型（多个基模型的线性组合）与前向分步算法，其基模型采用CART（分类或回归决策树）。在提升树利用前向分步算法优化的过程中，如果损失函数为平方损失或是指数损失，优化过程很简单，但是如果是一般损失就会很繁琐，为了简化过程，采用梯度提升的策略，即利用损失函数的负梯度在当前模型的值来作为回归问题中的残差近似值拟合一个回归树，对于平方损失函数，这个近似值就是一般所说的残差，对于一般损失函数这是一个用来拟合残差的近似值。这种方法称为GBDT。</p>
+<p>​    boosting和bagging一般选用的基模型是同类模型，不同类的模型往往会针对不同种类的特征产生好的效果，所以一般模型训练结束后还会将不同的模型进行融合以进一步提升模型效果。</p>
+<p>​    针对分类问题一般采用vote方法，其思想很简单不同模型对于分类结果进行投票，选取票数多的类别作为最终结果，有时可以对模型进行加权投票。针对回归问题，一般采用avaging方法，其思想也很简单就是将各个模型预测出的结果取平均或是加权平均作为最终结果。当然模型融合还有其他复杂的方法，例如stacking和blending。</p>
+<h3 id="stacking"><a href="#stacking" class="headerlink" title="stacking"></a>stacking</h3><h3 id="blending"><a href="#blending" class="headerlink" title="blending"></a>blending</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">blending</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -502,387 +587,9 @@ var _hmt = _hmt || [];
 
 
   
-    <article id="post-天池比赛" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/11/天池比赛/">天池比赛预处理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/11/天池比赛/" class="archive-article-date">
-  	<time datetime="2020-02-11T07:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    漫长寒假参加了一次天池算法大赛，来锻炼自己数据分析的能力，总共大概写了20天的代码，由于是第一次参加，所以有许多地方都是从头开始的，需要慢慢摸索，当然也因此走了不少的弯路。收获自然也是很大的，由于是大型比赛，所以数据量大且真实。
-        
-          <a class="article-more-a" href="/2020/02/11/天池比赛/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">天池比赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/11/天池比赛/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-机器学习4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/09/机器学习4/">机器学习原理与sklearn实战笔记（5）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/09/机器学习4/" class="archive-article-date">
-  	<time datetime="2019-09-09T10:00:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="k均值聚类"><a href="#k均值聚类" class="headerlink" title="k均值聚类"></a>k均值聚类</h2><p>​    </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">kmeansk</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/09/机器学习4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-机器学习3-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/06/机器学习3-1/">机器学习原理以及sklarn实战笔记（4）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/06/机器学习3-1/" class="archive-article-date">
-  	<time datetime="2019-09-06T11:52:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="线性回归"><a href="#线性回归" class="headerlink" title="线性回归"></a>线性回归</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>​    先说一元线性回归，假设样本仅有一个特征X，目标值Y和特征值呈线性关系
-        
-          <a class="article-more-a" href="/2019/09/06/机器学习3-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性回归、逻辑回归</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/06/机器学习3-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-机器学习3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/02/机器学习3/">机器学习原理以及sklearn实战笔记（3）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/09/02/机器学习3/" class="archive-article-date">
-  	<time datetime="2019-09-02T01:13:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="信息熵"><a href="#信息熵" class="headerlink" title="信息熵"></a>信息熵</h3><p>​    设事件发生的概率为P(X)，定义信息熵为<br>$$<br>H(D) = -\sum{P(X)logP(X)}<br>$$<br>信息熵可以表示事物的不确定程度
-        
-          <a class="article-more-a" href="/2019/09/02/机器学习3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">决策树与随机森林</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/02/机器学习3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-机器学习2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/22/机器学习2/">机器学习原理以及sklearn实战笔记（2）</a>
-    </h1>
-  
-
-        
-        <a href="/2019/08/22/机器学习2/" class="archive-article-date">
-  	<time datetime="2019-08-22T11:03:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><p>​    一般数据由外部获取，当然也可以从datasets中获取部分数据，数据获取之后要将数据按照一定比率分为训练集和测试集。
-        
-          <a class="article-more-a" href="/2019/08/22/机器学习2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">knn、朴素贝叶斯</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/22/机器学习2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -991,6 +698,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">天池比赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">blending</a>
               </li>
              
               <li class="article-tag-list-item">
