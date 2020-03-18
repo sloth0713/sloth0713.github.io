@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>&#39;docker&#39; | sloth&#39;s blog</title>
+  <title>docker | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="&#39;docker&#39;">
+  <meta name="description" content="简介​        Docker是一个开源的容器引擎，其设计目的是为了隔离各种进程的开发环境，使得部署和运维变的更加便捷。其设计目的与虚拟机类似">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker">
 <meta property="og:url" content="http://yoursite.com/2020/02/14/docker/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
+<meta property="og:description" content="简介​        Docker是一个开源的容器引擎，其设计目的是为了隔离各种进程的开发环境，使得部署和运维变的更加便捷。其设计目的与虚拟机类似">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-14T06:39:25.784Z">
+<meta property="og:updated_time" content="2020-03-18T12:07:58.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&#39;docker&#39;">
+<meta name="twitter:title" content="docker">
+<meta name="twitter:description" content="简介​        Docker是一个开源的容器引擎，其设计目的是为了隔离各种进程的开发环境，使得部署和运维变的更加便捷。其设计目的与虚拟机类似">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -167,7 +170,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      &#39;docker&#39;
+      docker
     </h1>
   
 
@@ -180,7 +183,23 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        Docker是一个开源的容器引擎，其设计目的是为了隔离各种进程的开发环境，使得部署和运维变的更加便捷。其设计目的与虚拟机类似<a id="more"></a>，但是因为抛弃了图形界面，所以Docker的包装显得更加轻量级，占用内存较少，一个linux的操作系统往往只要一百多兆不像虚拟机的镜像要好几个G，所以Docker可允许同时运行的镜像数就会较多。Docker按照应用隔离，有些产品所需的运行环境之间是相互冲突的，将其放在相同环境下调试就会十分麻烦，虚拟机虽然也能解决这个问题，但是显然Docker开销相对而言就要小得多。下面介绍Docker常用的几个概念：镜像、容器和仓库。</p>
+<p>​        Docker镜像的概念与普通镜像相同，就是一套操作系统。启动一个镜像后它就变成了一个容器，在容器中可以安装各种软件以及编译环境。安装好环境以后就可以将这个容器打包成为一个新的镜像，下次需要使用时再拉取（pull）镜像并打开，镜像内就会带有之前安装好的环境，由于Docker舍弃了图形界面，所以一个镜像会使非常轻量级的，这样对于一些对环境要求苛刻的软件就可以轻易的利用Docker进行部署和维护。至于镜像则是从网上的Docker仓库拉取（下载）而来，由于Docker国外的官网下载速度非常慢，所以也可以从国内的镜像源下载。当然拉取下来以后的镜像以及安装环境以后生成的新的镜像也可以存储在本地仓库，下次需要使用时抽取即可。</p>
+<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3><p>​        以下简单介绍一下Docker的主要指令，本人采用Linux系统，使用阿里云的仓库当作本地仓库，拖取或推送镜像，仓库申请建造过程参考阿里云步骤即可。</p>
+<p><a href="https://cr.console.aliyun.com/repository/cn-shanghai/sloth0713/sloth/details" target="_blank" rel="noopener">参考网址</a></p>
+<p>【查看images】<br>docker images</p>
+<p>【利用Dockerfile创建images】<br>首先cd到含有dockerfiles的文件夹</p>
+<p>build -t 公网地址 . </p>
+<p>例如：build -t registry.cn-shanghai.aliyuncs.com/sloth0713/sloth:[版本号] .（这个点表示路径为当前路径，不要忘记。）<br>【运行镜像】<br>docker run 仓库名：[版本号] （或是imageid）会启动已有容器或者新建一个容器</p>
+<p>docker start 容器id（注意是容器id 启动已有容器，如果没有这个容器会报错）</p>
+<p>长时间运行 docker run -d  仓库名：[版本号] （或是imageid）<br>但是这样运行由于没有前台进程所以会打开后立刻停止，因为所有在后台运行必须有一个前台界面，所以查看正在运行的容器仍然不会显。</p>
+<p>解决办法：docker run -dit 仓库名</p>
+<p>【停止容器】<br>docker stop 容器id</p>
+<p>【删除镜像、容器】<br>docker rmi 镜像id<br>docker rm 容器id<br>docker rm $(docker ps -a -q) 删除所有容器，正在运行的不能删除</p>
+<p>【将容器变为镜像】<br>docker commit<br>-a :提交的镜像作者；<br>-c :使用Dockerfile指令来创建镜像；<br>-m :提交时的说明文字；<br>-p :在commit时，将容器暂停。</p>
+<p>【拉取镜像】<br>docker  pull</p>
+<p>【查看进程】<br>docker ps [-a]没加a只显示运行的容器，加a显示所有的容器。</p>
+
       
 
       
