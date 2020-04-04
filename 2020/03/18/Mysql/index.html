@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Mysql | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Mysql服务指令开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。 ​                            2、计算机–管理–服务–右击开启或关闭。 连接Mysql：1、命令行输入 mysql [-h 主机名 -p 端口号] -U 用户名 -p 端口号。 ​                       2、sqlyog界面直接连接mysq">
+  <meta name="description" content="Mysql服务指令开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。 ​                            2、计算机–管理–服务–右击开启或关闭。">
 <meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql">
 <meta property="og:url" content="http://yoursite.com/2020/03/18/Mysql/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="Mysql服务指令开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。 ​                            2、计算机–管理–服务–右击开启或关闭。 连接Mysql：1、命令行输入 mysql [-h 主机名 -p 端口号] -U 用户名 -p 端口号。 ​                       2、sqlyog界面直接连接mysq">
+<meta property="og:description" content="Mysql服务指令开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。 ​                            2、计算机–管理–服务–右击开启或关闭。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-26T09:12:56.642Z">
+<meta property="og:updated_time" content="2020-04-04T09:09:54.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql">
-<meta name="twitter:description" content="Mysql服务指令开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。 ​                            2、计算机–管理–服务–右击开启或关闭。 连接Mysql：1、命令行输入 mysql [-h 主机名 -p 端口号] -U 用户名 -p 端口号。 ​                       2、sqlyog界面直接连接mysq">
+<meta name="twitter:description" content="Mysql服务指令开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。 ​                            2、计算机–管理–服务–右击开启或关闭。">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -185,7 +185,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Mysql服务指令"><a href="#Mysql服务指令" class="headerlink" title="Mysql服务指令"></a>Mysql服务指令</h3><p>开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。</p>
-<p>​                            2、计算机–管理–服务–右击开启或关闭。</p>
+<p>​                            2、计算机–管理–服务–右击开启或关闭。<a id="more"></a></p>
 <p>连接Mysql：1、命令行输入 mysql [-h 主机名 -p 端口号] -U 用户名 -p 端口号。</p>
 <p>​                       2、sqlyog界面直接连接mysql。</p>
 <p>###SQL的常见命令</p>
@@ -290,12 +290,35 @@ TCL（Transaction Control Language）：事务控制语言
 <p>join 表2 as b</p>
 <p>on a.连接字段between b.连接字段1 and b.连接字段2</p>
 <p>将a的连接字段的值在b的两个连接字段之间的数据连接成一条数据。</p>
-<p>自链接：</p>
+<p>全外连接：</p>
+<p>select 字段</p>
+<p>from 表1 as a</p>
+<p>full outer join 表2 as b</p>
+<p>where a.字段1 = b.字段2</p>
+<p>类似左右外连接，只是保留ab表中的所有结果。</p>
+<p>自连接：</p>
 <p>select 字段</p>
 <p>from 表1 as a</p>
 <p>join 表1 as b</p>
 <p>where a.字段1 = b.字段2</p>
 <p>只有表中有两个字段的含义相同时才能连接。</p>
+<h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><p>子查询简而言之就是在select语句中用括号嵌套查询语句，被嵌套的语句称为子查询语句，它优先被程序执行，子查询语句的结果为一行一列的单个数据，一列多行的数据，多行多列的数据时，分别称之为标量子查询，列子查询，表子查询。</p>
+<h5 id="标量子查询"><a href="#标量子查询" class="headerlink" title="标量子查询"></a>标量子查询</h5><p>1、直接用于select后面</p>
+<p>2、用于where和having后面一般搭配一般搭配着单行操作符使用&lt; &gt;= &lt;= = &lt;&gt;</p>
+<h5 id="列子查询"><a href="#列子查询" class="headerlink" title="列子查询"></a>列子查询</h5><p>用于where和having后面 一般搭配多行操作符使用in、any/some、all 但是一般any/some、all可以转化成标量子查询所以用的不多，all和any一般在对应小于所有的数据或小于任一数据，这类语法可以转化成小于最小值或是大于最大值的标量子查询。</p>
+<h5 id="表子查询"><a href="#表子查询" class="headerlink" title="表子查询"></a>表子查询</h5><p>用于where的后面或是结合exists关键字</p>
+<p>子查询的结果理解成一个多行多列的新表格，必须起别名，可以结合着连接或是分组查询使用。用的较多。</p>
+<p>exists关键字类似于in的效果，可以查询主查询表位于子查询表字段中的信息，也可以使用not exists表示相反意思例如：select 字段1 from 表 where 字段2 in（列子查询）等价于</p>
+<p>select 字段 1  from 表 where exists（表子查询）</p>
+<h5 id="行子查询"><a href="#行子查询" class="headerlink" title="行子查询"></a>行子查询</h5><p>还有一种返回一行多列或是多行多列的子查询称为行子查询，用于where语句之后用的不多，其实就是将多个等于条件换了一种形式而已。</p>
+<p>例如：select * from 表a where 字段a=标量子查询值1 and 字段b=标量子查询值2等价于行子查询</p>
+<p>​            select * from 表a where （字段a，字段b） =（标量子查询 值1，标量子查询值2）</p>
+<h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><p>当数据一页显示补全要分成多页提交时，保证每次提交一页的数据</p>
+<p>limit (page-1)*size,size；page为页数，size为每页的数据条数，第一个参数表示其实索引，省略默认为0，第二个参数表示显示条数。可以结合排序查询选取前几名的数据。</p>
+<p>例如：查询第5-10条 select 字段 from 表 limit（4，5）</p>
+<h4 id="连接查询-1"><a href="#连接查询-1" class="headerlink" title="连接查询"></a>连接查询</h4><p>要查询的结果来自于多个表，且多个表没有直接的连接关系，但查询的信息一致时，使用union关键字，连接两个查询语句，两个结果将垂直连接，所以对应的表头的含义要一一对应。</p>
+<p>例如查询中国用户中男性的信息以及外国用户中年男性的用户信息</p>
+<p>select id,cname from t_ca where csex=’男’<br>UNION ALL<br>select t_id,tname from t_ua where tGender=’male’;</p>
 
       
 
@@ -404,6 +427,15 @@ TCL（Transaction Control Language）：事务控制语言
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/03/27/mysql2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          &#39;mysql2&#39;
+        
+      </div>
+    </a>
   
   
     <a href="/2020/03/13/机器学习评分标准/" id="article-nav-older" class="article-nav-link-wrap">
@@ -546,11 +578,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color5">天池比赛</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">天池比赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">knn、朴素贝叶斯</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -562,7 +594,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">knn、朴素贝叶斯</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">

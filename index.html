@@ -161,6 +161,74 @@ var _hmt = _hmt || [];
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mysql2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/27/mysql2/">&#39;mysql2&#39;</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/27/mysql2/" class="archive-article-date">
+  	<time datetime="2020-03-27T13:58:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="DML语言"><a href="#DML语言" class="headerlink" title="DML语言"></a>DML语言</h2><p>数据操作语言，插入（insert ）、更新（update）、删除（delete）数据</p>
+<h3 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h3><p>方式一</p>
+<p>语法：</p>
+<p>insert into 表名(字段名,…) values(值,…);
+        
+          <a class="article-more-a" href="/2020/03/27/mysql2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/27/mysql2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -182,118 +250,10 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Mysql服务指令"><a href="#Mysql服务指令" class="headerlink" title="Mysql服务指令"></a>Mysql服务指令</h3><p>开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。</p>
-<p>​                            2、计算机–管理–服务–右击开启或关闭。</p>
-<p>连接Mysql：1、命令行输入 mysql [-h 主机名 -p 端口号] -U 用户名 -p 端口号。</p>
-<p>​                       2、sqlyog界面直接连接mysql。</p>
-<p>###SQL的常见命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">show databases； 查看所有的数据库</span><br><span class="line">use 库名； 打开指定 的库</span><br><span class="line">show tables ; 显示库中的所有表</span><br><span class="line">show tables from 库名;显示指定库中的所有表</span><br><span class="line">create table 表名(</span><br><span class="line">	字段名 字段类型,	</span><br><span class="line">	字段名 字段类型</span><br><span class="line">); 创建表</span><br><span class="line"></span><br><span class="line">desc 表名; 查看指定表的结构</span><br><span class="line">select * from 表名;显示表中的所有数据</span><br></pre></td></tr></table></figure>
-
-<p>###SQL的语言分类</p>
-<pre><code>DQL（Data Query Language）：数据查询语言
-    select 
-DML(Data Manipulate Language):数据操作语言
-    insert 、update、delete
-DDL（Data Define Languge）：数据定义语言
-    create、drop、alter
-TCL（Transaction Control Language）：事务控制语言
-    commit、rollback</code></pre><h3 id="DQL语句"><a href="#DQL语句" class="headerlink" title="DQL语句"></a>DQL语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select 字段,...</span><br><span class="line">from 表1</span><br><span class="line">【inner|left outer|right outer|cross】join 表2 on  连接条件</span><br><span class="line">【inner|left outer|right outer|cross】join 表3 on  连接条件</span><br><span class="line">【where 筛选条件】</span><br><span class="line">【group by 分组字段】</span><br><span class="line">【having 分组后的筛选条件】</span><br><span class="line">【order by 字段（desc\asc】</span><br><span class="line">【limit 【起始的条目索引，】（不写默认起始索引为0）条目数;】</span><br></pre></td></tr></table></figure>
-
-<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p>后加字段名或是表达式，表示需要查询的数据。</p>
-<p>1、取别名，后面空格加别名或用as。</p>
-<p>例如：select 字段 别名 等价于 select 字段 as 别名。</p>
-<p>2、去重，用来查询每个字段的种类数。<br>select distinct 字段名 from 表名;<br>select distinct b distinct a from表 会去除ab都用一样的</p>
-<p>3、ifnull函数<br>功能：判断某字段或表达式是否为null，如果为null 返回指定的值，否则返回原本的值<br>select ifnull(commission_pct,0) from employees; （employee表的commission_pct字段如果为null则填0。)</p>
-<p>4isnull函数<br>功能：判断某字段或表达式是否为null，如果是，则返回1，否则返回0</p>
-<h4 id="where-筛选条件"><a href="#where-筛选条件" class="headerlink" title="where 筛选条件"></a>where 筛选条件</h4><p>1、条件表达式。&lt;、&gt;、&lt;=、&gt;=、!=（等价于&lt;&gt;）</p>
-<p>例如：字段名&gt;1000</p>
-<p>2、结合逻辑表达式。&amp;&amp;and（与）、||or（或）、！not（非）</p>
-<p>例如：字段名1&gt;1000 &amp;&amp; 字段名2&lt;2000</p>
-<p>3、利用关键字模糊查询</p>
-<p>like关键字:一般搭配通配符使用，可以判断字符型或数值型。<br>通配符：%任意多个字符（包括0个），_任意单个字符。</p>
-<p>例1：查询含有name字段含有a的数据</p>
-<p>select name from 表名 where name like ‘%a%’;</p>
-<p>例2：查询salary字段数字的第二位为5的数据</p>
-<p>select salary from 表名 where salary like ‘_5%’;</p>
-<p>between and关键字：表示字段数值在一段范围之内的部分。</p>
-<p>字段 between 下界 and 上界 等价于 字段&gt;=下界 &amp;&amp;字段&lt;=上界</p>
-<p>显然下界必须小于上界</p>
-<p>in关键字：某字段的取值在某个集合内的部分，集合可以是字符或数据。</p>
-<p>字段 in（100，200，300）等价于 字段=100  or字段=200 or 字段=300</p>
-<h4 id="order-by-排序查询"><a href="#order-by-排序查询" class="headerlink" title="order by 排序查询"></a>order by 排序查询</h4><p>order by  排序字段 asc（升序）\desc（降序）可以不写，默认为升序</p>
-<h4 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h4><p>一、单行函数<br>1、字符函数：<br>    length:获取字节个数(utf-8一个汉字代表3个字节,gbk为2个字节) 单参数</p>
-<p>​    concat：连接字符串，多参数。</p>
-<p>​    substr：索引字符串，3参数，substr（字符串，起始索引a，字符个数b）获取字符串从第a个字</p>
-<p>​    开始的b个字符，b可以省略，代表从第a个开始到最后一个字符。</p>
-<p>​    instr：instr（字符串a，字串b）返回子串的第一个字符在a中的索引。如果完全相同返回0</p>
-<p>​    upper：将字符串改为大写</p>
-<p>​    lower：将字符串改为小写</p>
-<p>​    lpad：用指定字符左填充至指定长度</p>
-<p>​    rpad：用指定字符右填充至指定长度</p>
-<p>​    trim:去前后空格 或者是其他字符</p>
-<p>​    replace：replace（字符串a，子串b，子串c）用子串c替换字符串a中的子串b</p>
-<p>2、数学函数：</p>
-<p>​    ceil:向上取整</p>
-<p>​    round：四舍五入</p>
-<p>​    mod:取模</p>
-<p>​    floor：向下取整</p>
-<p>​    truncate:截断</p>
-<p>​    rand:获取随机数，返回0-1之间的小数    </p>
-<p>3、日期函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">now：返回当前日期+时间</span><br><span class="line"></span><br><span class="line">curdate:返回当前日期</span><br><span class="line"></span><br><span class="line">curtime：返回当前时间</span><br><span class="line"></span><br><span class="line">例如select now()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">year:返回年</span><br><span class="line"></span><br><span class="line">month：返回月</span><br><span class="line"></span><br><span class="line">day:返回日</span><br><span class="line"></span><br><span class="line">monthname:以英文形式返回月</span><br><span class="line"></span><br><span class="line">hour:小时</span><br><span class="line"></span><br><span class="line">minute:分钟</span><br><span class="line"></span><br><span class="line">second：秒</span><br><span class="line">例如 select hour(now());</span><br></pre></td></tr></table></figure>
-
-<p>date_format:j解析日期格式，并转换成相应的字符串</p>
-<p>str_to_date:解析字符串并转换成日期格式的数据</p>
-<p>datediff:返回两个日期相差的天数</p>
-<h4 id="group-by-having-分组查询"><a href="#group-by-having-分组查询" class="headerlink" title="group by + having 分组查询"></a>group by + having 分组查询</h4><p>分组函数：</p>
-<p>max 最大值</p>
-<p>min 最小值</p>
-<p>sum 和</p>
-<p>avg 平均值</p>
-<p>count 计算个数</p>
-<p>sum和avg一般用于处理数值型，max、min、count可以处理任何数据类型分组函数都忽略null。</p>
-<p>都可以搭配distinct使用，实现去重的统计。例如：select sum(distinct 字段) from 表;</p>
-<p>count函数<br>count(字段)：统计该字段非空值的个数<br>count(*):统计结果集的行数</p>
-<p>一般用分组函数结合groupby函数实现分组查询，再加上having语句实现分组后的数据筛选。</p>
-<p>所谓的分组查询就是指选定表中的某个字段和一个分组函数，该语法会将指定字段中值 相同的数据合并再用分组函数进行处理，返回该字段中的distinct值以及分组的结果。</p>
-<p>例如：</p>
-<p>select 字段，avg（字段）</p>
-<p>from 表</p>
-<p>group by 字段</p>
-<p>having avg（字段）+筛选条件</p>
-<h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p>等值连接：</p>
-<p>内连接：</p>
-<p>select a.字段，b.字段</p>
-<p>from 表1 as a</p>
-<p>join 表2 as b</p>
-<p>on a.连接字段 = b.连接字段</p>
-<p>连接字段的含义相同，将a，b中连接字段相同的数据连接成为一条数据，其余的数据丢弃。</p>
-<p>左外连接：</p>
-<p>select a.字段，b.字段</p>
-<p>from 表1 as a</p>
-<p>left join 表2 as b</p>
-<p>on a.连接字段 = b.连接字段</p>
-<p>保留a中所有的数据，将a，b中连接字段相同的数据连接成为一条数据，若连接字段的值a中有，b中没有，则将b中的字段值设为null。</p>
-<p>右外连接：</p>
-<p>select a.字段，b.字段</p>
-<p>from 表1 as a</p>
-<p>right join 表2 as b</p>
-<p>on a.连接字段 = b.连接字段</p>
-<p>类似左外，保留b中的所有数据。</p>
-<p>非等值连接：</p>
-<p>select a.字段，b.字段</p>
-<p>from 表1 as a</p>
-<p>join 表2 as b</p>
-<p>on a.连接字段between b.连接字段1 and b.连接字段2</p>
-<p>将a的连接字段的值在b的两个连接字段之间的数据连接成一条数据。</p>
-<p>自链接：</p>
-<p>select 字段</p>
-<p>from 表1 as a</p>
-<p>join 表1 as b</p>
-<p>where a.字段1 = b.字段2</p>
-<p>只有表中有两个字段的含义相同时才能连接。</p>
-
+<p>​                            2、计算机–管理–服务–右击开启或关闭。
+        
+          <a class="article-more-a" href="/2020/03/18/Mysql/#more">more >></a>
+        
       
 
       
@@ -614,82 +574,6 @@ TCL（Transaction Control Language）：事务控制语言
 
 
   
-    <article id="post-tianchi-lgb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/12/tianchi-lgb/">天池比赛lgb</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/12/tianchi-lgb/" class="archive-article-date">
-  	<time datetime="2020-02-12T11:40:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="LGB算法"><a href="#LGB算法" class="headerlink" title="LGB算法"></a>LGB算法</h2><p>​        lgb是现在参加数据分析比赛的主流分析算法，其较之于XGcoost算法有许多优势，其原理以后会具体介绍，在此主要讲解其具体用法，同XG boost一样，LGB有两种接口一种是原生接口，一种是sklearn的接口，
-        
-          <a class="article-more-a" href="/2020/02/12/tianchi-lgb/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">lgb算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/12/tianchi-lgb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -800,11 +684,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+                <a href="javascript:void(0)" class="js-tag color5">天池比赛</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">天池比赛</a>
+                <a href="javascript:void(0)" class="js-tag color5">knn、朴素贝叶斯</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -816,7 +700,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">knn、朴素贝叶斯</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
               </li>
              
               <li class="article-tag-list-item">
