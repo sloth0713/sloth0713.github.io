@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>&#39;mysql2&#39; | sloth&#39;s blog</title>
+  <title>MySQL基础2 | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一 语法： insert into 表名(字段名,…) values(值,…);">
+  <meta name="description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一">
+<meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="&#39;mysql2&#39;">
+<meta property="og:title" content="MySQL基础2">
 <meta property="og:url" content="http://yoursite.com/2020/03/27/mysql2/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
-<meta property="og:description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一 语法： insert into 表名(字段名,…) values(值,…);">
+<meta property="og:description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-04-04T09:10:13.672Z">
+<meta property="og:image" content="http://yoursite.com/_post/mysql2/case1.png">
+<meta property="og:image" content="http://yoursite.com/_post/mysql2/case2.png">
+<meta property="og:updated_time" content="2020-04-06T11:19:21.744Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="&#39;mysql2&#39;">
-<meta name="twitter:description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一 语法： insert into 表名(字段名,…) values(值,…);">
+<meta name="twitter:title" content="MySQL基础2">
+<meta name="twitter:description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一">
+<meta name="twitter:image" content="http://yoursite.com/_post/mysql2/case1.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -170,7 +174,7 @@ var _hmt = _hmt || [];
         
   
     <h1 class="article-title" itemprop="name">
-      &#39;mysql2&#39;
+      MySQL基础2
     </h1>
   
 
@@ -184,9 +188,9 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="DML语言"><a href="#DML语言" class="headerlink" title="DML语言"></a>DML语言</h2><p>数据操作语言，插入（insert ）、更新（update）、删除（delete）数据</p>
-<h3 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h3><p>方式一</p>
+<h3 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h3><p>方式一<a id="more"></a></p>
 <p>语法：</p>
-<p>insert into 表名(字段名,…) values(值,…);<a id="more"></a>（值里字符型日期型加引号，数值型不用）</p>
+<p>insert into 表名(字段名,…) values(值,…);（值里字符型日期型加引号，数值型不用）</p>
 <p>支持子查询，即把从其他表中查询得到的结果直接插入至指定表中。</p>
 <p>例如：insert into 表名 select语句</p>
 <p>特点：</p>
@@ -358,7 +362,9 @@ var _hmt = _hmt || [];
 <p>1、创建视图</p>
 <p>create view 视图名<br>as<br>查询语句;</p>
 <p>2、修改视图</p>
-<p>create or replace or alter view 视图名<br>as<br>查询语句;</p>
+<p>create or replace  view 视图名<br>as<br>查询语句;</p>
+<p>或者：</p>
+<p>alter view 视图名<br>as<br>查询语句;</p>
 <p>3、使用视图</p>
 <p>select 字段</p>
 <p>from 视图名</p>
@@ -391,16 +397,12 @@ var _hmt = _hmt || [];
 <p>位置：begin end里面，也可以放在外面</p>
 <p>使用：</p>
 <p>①声明并赋值：</p>
-<p>set @变量名=值;或</p>
-<p>set @变量名:=值;或</p>
-<p>select @变量名:=值;</p>
+<p>set @变量名=值;</p>
 <p>②更新值</p>
 <p>方式一：</p>
-<p>​    set @变量名=值;或</p>
-<p>​    set @变量名:=值;或</p>
-<p>​    select @变量名:=值;</p>
+<p>​    set @变量名=值;</p>
 <p>方式二：</p>
-<p>​    select xx into @变量名 from 表;</p>
+<p>​    select xx into @变量名 from 表;（常用）</p>
 <p>③使用</p>
 <p>select @变量名;</p>
 <p>2、局部变量</p>
@@ -411,12 +413,72 @@ var _hmt = _hmt || [];
 <p>declare 变量名 类型 【default 值】;</p>
 <p>②赋值或更新</p>
 <p>方式一：</p>
-<p>​    set 变量名=值;或</p>
-<p>​    set 变量名:=值;或</p>
-<p>​    select @变量名:=值;<br>方式二：</p>
-<p>​    select xx into 变量名 from 表;</p>
+<p>​    set 变量名=值;<br>方式二：</p>
+<p>​    select xx into 变量名 from 表;（常用）</p>
 <p>③使用</p>
 <p>select 变量名;</p>
+<p>用户变量要加@，局部变量不用加@，且必须先声明。</p>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p>含义：一组预先编译好的SQL语句的集合，理解成批处理语句</p>
+<p>提高代码的重用性，简化操作，减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率</p>
+<p>一、创建：</p>
+<p>create procedure 存储过程名(参数模式 参数名 参数类型)</p>
+<p>begin</p>
+<p>​        存储过程体</p>
+<p>end</p>
+<p>注意：<br>1.参数模式：in、out、inout，其中in可以省略，分别表示该参数的作用是输入，输出或是既输入又输出。<br>2.存储过程体的每一条sql语句都需要用分号结尾。</p>
+<p>3、存储过程可以用delimiter设置结束标记如 delimiter 结束标记符号;</p>
+<p>二、调用</p>
+<p>call 存储过程名(传入参数)</p>
+<p>三、查看存储过程：</p>
+<p>show create procedure 存储过程名 ；</p>
+<p>四、删除：<br>drop procedure 存储过程名；</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>类似存储过程，但是只有一个返回。</p>
+<p>一、创建<br>create function 函数名(参数名 参数类型) returns  返回类型</p>
+<p>begin</p>
+<p>​    函数体</p>
+<p>end</p>
+<p>注意：函数体中肯定需要有return语句</p>
+<p>同样可以用delimiter设置结束标记</p>
+<p>二、调用</p>
+<p>select 函数名(实参列表);</p>
+<p>三、查看</p>
+<p>show create function 函数名;</p>
+<p>四、删除</p>
+<p>drop function 函数名；</p>
+<h3 id="流程控制结构"><a href="#流程控制结构" class="headerlink" title="流程控制结构"></a>流程控制结构</h3><h4 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h4><p>1、case结构</p>
+<p>case结构主要有两种，一种是把每条case语句单独作为一个语句，即每条语句后都加分号表示语句结束，另一种则是把整个case语句当成一条语句，其作用范围如图所示</p>
+<p><img src="/_post/mysql2/case1.png" alt></p>
+<p><img src="/_post/mysql2/case2.png" alt></p>
+<p>所以既然把case语句当成一整条的适用范围广，建议用此方法。</p>
+<p>2、if结构</p>
+<p>首先是if函数，if（表达式1，表达式2，表达式3），其含义是如果表达式1成立则执行语句2，否则执行语句3。if函数可以用在任意处。</p>
+<p>然后是if结构</p>
+<p>其用法为</p>
+<p>语法：</p>
+<p>if 条件1 then 语句1;</p>
+<p>elseif 条件2 then 语句2;</p>
+<p>….<br>else 语句n;</p>
+<p>end if;</p>
+<p>功能类似于多重，注意if只能应用在begin end 中。</p>
+<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><p>1、while</p>
+<p>语法：</p>
+<p>【名称:】while 循环条件 do</p>
+<p>​        循环体</p>
+<p>end while 【名称】;</p>
+<p>不满足循环条件跳出。</p>
+<p>2、loop</p>
+<p>语法：</p>
+<p>【名称：】loop</p>
+<p>​        循环体</p>
+<p>end loop 【名称】;</p>
+<p>死循环，循环体中没有跳出语句就不会结束</p>
+<p>3、repeat</p>
+<p>语法：</p>
+<p>【名称:】repeat</p>
+<p>​        循环体</p>
+<p>until 结束条件 </p>
+<p>end repeat 【名称】;</p>
+<p>批量相同操作时可以使用循环结构加上函数来完成。</p>
 <p>​                    </p>
 
       
@@ -452,6 +514,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -518,7 +591,7 @@ var _hmt = _hmt || [];
   
   
     <a href="/2020/03/18/Mysql/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mysql</div>
+      <div class="article-nav-title">Mysql基础1</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -674,6 +747,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
