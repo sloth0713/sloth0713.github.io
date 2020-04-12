@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="sloth&#39;s blog">
 <meta property="og:description" content="浅谈集成学习方法​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://yoursite.com/_post/%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95/stacking.png">
-<meta property="og:updated_time" content="2020-03-14T13:10:45.472Z">
+<meta property="og:image" content="http://yoursite.com/img/%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95/stacking.png">
+<meta property="og:updated_time" content="2020-04-12T10:37:54.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="集成学习">
 <meta name="twitter:description" content="浅谈集成学习方法​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，">
-<meta name="twitter:image" content="http://yoursite.com/_post/%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95/stacking.png">
+<meta name="twitter:image" content="http://yoursite.com/img/%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95/stacking.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -199,7 +199,7 @@ var _hmt = _hmt || [];
 <p>​    boosting和bagging一般选用的基模型是同类模型，不同类的模型往往会针对不同种类的特征产生好的效果，所以一般模型训练结束后还会将不同的模型进行融合以进一步提升模型效果。</p>
 <p>​    针对分类问题一般采用vote方法，其思想很简单不同模型对于分类结果进行投票，选取票数多的类别作为最终结果，有时可以对模型进行加权投票。针对回归问题，一般采用avaging方法，其思想也很简单就是将各个模型预测出的结果取平均或是加权平均作为最终结果。当然模型融合还有其他复杂的方法，例如stacking和blending。</p>
 <h3 id="stacking"><a href="#stacking" class="headerlink" title="stacking"></a>stacking</h3><p>​    stacking的主要思想就是先用几个调整好超参数的学习器预测，然后用一个新的学习器对预测结果的残差进行拟合，以达到更准确的预测结果。称第一次预测的学习器为初级学习器，第二次预测的学习器为次级学习器。当然也可以增加对残差的拟合次数形成多层stacking，stacking一般结合交叉验证提高模型的泛化能力。</p>
-<p><img src="/_post/%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95/stacking.png" alt="stacking"></p>
+<p><img src="/img/%E6%8F%90%E5%8D%87%E7%AE%97%E6%B3%95/stacking.png" alt="stacking"></p>
 <p>​    如图所示，假设初级学习器共三个为m1,m2,m3，大训练集共n条数据，待预测数据集为test共m条数，将训练集划分为5份，第一轮将前4份作为训练集（train），最后一份作为验证集（val）预测其结果，得到n/5行，1列的结果，同时用训练好的模型预测test，得到m行，1列的结果。三个初级学习器在这一轮中同时训练并预测就会得到n/5行，3列的对val预测结果，以及m行，3列的对test预测结果。第二轮，接着将倒数第二份作为验证集（val），其余数据作为训练集对三个模型进行训练和预测。五轮以后将会得到n行，3列的对大训练集每条数据的预测结果。将同一模型在五轮对test的预测结果取一个平均值，这样会得到m行，3列的初级学习器对test的预测结果。至此第一层学习结束。然后第二层将第一层得到的n行3列的数据作为特征X，大训练集的label作为label组成一个新的训练集，对于这个训练集采用第二层的模型进行训练。然后用训练好的模型对第一层得到的m行3列的结果进行预测作为最终预测结果。一般最后一层的使用的都是LR模型。</p>
 <h3 id="blending"><a href="#blending" class="headerlink" title="blending"></a>blending</h3><p>​    blending的思想与stacking有一定的相似之处，也是通过多层拟合残差的方式来融合，不同的时blending不采用交叉验证，而是直接将训练集划分，以两层的blending为例，将数据集分为两部分d1和d2，用d1训练初级学习器，并对test作预测得出test_new作为新的特征，然后用初级学习器对d2作预测得出结果作为第二层训练集的特征X，将d2的label作为第二层的label，对第二层的学习器进行训练，训练完后再用它对test_new作预测作为最终的结果。</p>
 <h3 id="Stacking和Blending对比"><a href="#Stacking和Blending对比" class="headerlink" title="Stacking和Blending对比"></a>Stacking和Blending对比</h3><p>​    Blending的优点在于比stacking简单（因为不用进行k次的交叉验证来获得stacker feature），而且还避开了一个信息泄露问题：各层使用了不一样的数据集。缺点在于使用了很少的数据分给各层训练，blender可能会过拟合，而使用cv的stacking过拟合风险相对较小。对于实践中的结果而言，stacking和blending的效果是差不多的。</p>
