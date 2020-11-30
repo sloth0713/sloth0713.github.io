@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>sloth&#39;s blog</title>
+  <title>MySQL基础2 | sloth&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sloth&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一">
+<meta name="keywords" content="MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL基础2">
+<meta property="og:url" content="http://yoursite.com/2020/06/27/mysql2/index.html">
 <meta property="og:site_name" content="sloth&#39;s blog">
+<meta property="og:description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/img/mysql2/case1.png">
+<meta property="og:image" content="http://yoursite.com/img/mysql2/case2.png">
+<meta property="og:updated_time" content="2020-11-30T09:33:56.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sloth&#39;s blog">
+<meta name="twitter:title" content="MySQL基础2">
+<meta name="twitter:description" content="DML语言数据操作语言，插入（insert ）、更新（update）、删除（delete）数据 插入语句方式一">
+<meta name="twitter:image" content="http://yoursite.com/img/mysql2/case1.png">
   
     <link rel="alternative" href="/atom.xml" title="sloth&#39;s blog" type="application/atom+xml">
   
@@ -159,16 +167,14 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-mysql2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-mysql2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/mysql2/">MySQL基础2</a>
+    <h1 class="article-title" itemprop="name">
+      MySQL基础2
     </h1>
   
 
@@ -182,12 +188,327 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="DML语言"><a href="#DML语言" class="headerlink" title="DML语言"></a>DML语言</h2><p>数据操作语言，插入（insert ）、更新（update）、删除（delete）数据</p>
-<h3 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h3><p>方式一
-        
-          <a class="article-more-a" href="/2020/06/27/mysql2/#more">more >></a>
-        
+<h3 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h3><p>方式一<a id="more"></a></p>
+<p>语法：</p>
+<p>insert into 表名(字段名,…) values(值,…);（值里字符型日期型加引号，数值型不用）</p>
+<p>支持子查询，即把从其他表中查询得到的结果直接插入至指定表中。</p>
+<p>例如：insert into 表名 select语句</p>
+<p>特点：</p>
+<p>1、要求值的类型和字段的类型要一致或兼容</p>
+<p>2、字段的个数和顺序不一定与原始表中的字段个数和顺序一致，但必须保证值和字段一一对应</p>
+<p>3、假如表中有可以为null的字段，注意可以通过以下两种方式插入null值</p>
+<p>①字段和值都省略</p>
+<p>②字段写上，值使用null</p>
+<p>4、字段和值的个数必须一致</p>
+<p>5、字段名可以省略，默认所有列</p>
+<p>此方法可以插入多行，<strong>常用</strong>。</p>
+<p>方式二</p>
+<p>语法：</p>
+<p>insert into 表名 set 字段=值,字段=值,…;</p>
+<p>只能插入一行，不常用。</p>
+<h3 id="修改语句"><a href="#修改语句" class="headerlink" title="修改语句"></a>修改语句</h3><p>1、修改单表记录</p>
+<p>语法：update 表名 set 字段=值,字段=值 【where 筛选条件】;</p>
+<p>一般需要加where筛选，否则默认更新表中所有数据，用的多</p>
+<p>2、修改多表记录：</p>
+<p>语法：<br>update 表1 别名 </p>
+<p>left|right|inner join 表2 别名 </p>
+<p>on 连接条件  set 字段=值,字段=值 </p>
+<p>【where 筛选条件】;</p>
+<p>其实就是将两张表join成了一张表，再修改其信息</p>
+<h3 id="删除语句"><a href="#删除语句" class="headerlink" title="删除语句"></a>删除语句</h3><p>1、使用delete删除</p>
+<p>语法：delete from 表名 【where 筛选条件】【limit 条目数】</p>
+<p>一般需要加where筛选，否则默认删除表中所有数据，用的多</p>
+<p>级联删除</p>
+<p>语法：<br>delete 别名1,别名2 from 表1 别名 </p>
+<p>inner|left|right join 表2 别名 </p>
+<p>on 连接条件</p>
+<p> 【where 筛选条件】</p>
+<p>其实就是join两个表再删除。</p>
+<p>2、使用truncate删除</p>
+<p>语法：truncate table 表名</p>
+<p>两种删除方式的区别：</p>
+<p>1.如果删除的是自增长列，truncate删除后，如果再插入，标识列从1开始</p>
+<p>  delete删除后，如果再插入，标识列从断点开始（标识列就是每增加一条数据值会自动加一的列，多用于序号、id栏）</p>
+<p>2.delete可以添加筛选条件</p>
+<p> truncate不可以添加筛选条件</p>
+<p>3.truncate效率较高</p>
+<p>4.truncate没有返回值</p>
+<p>delete可以返回受影响的行数</p>
+<p>5.truncate不可以回滚</p>
+<p>delete可以回滚</p>
+<h2 id="DDL语言"><a href="#DDL语言" class="headerlink" title="DDL语言"></a>DDL语言</h2><p>数据定义语言，数据库、表的创建（create）、删除（drop）、更改（alter）</p>
+<h3 id="库的管理语句"><a href="#库的管理语句" class="headerlink" title="库的管理语句"></a>库的管理语句</h3><p>一、创建库</p>
+<p>create database 【if not exists】 库名【 character set 字符集名（gbk/utf-8）】;</p>
+<p>加上if not exists后如果库已存在会报错，增加安全性。</p>
+<p>更加安全的做法是先删再建：</p>
+<p>drop database if exists 库名；</p>
+<p>create database 库名；</p>
+<p>二、修改库字符集</p>
+<p>alter database 库名 character set 字符集名;</p>
+<p>三、删除库</p>
+<p>drop database 【if exists】 库名;</p>
+<p>同样增加exists增加安全性</p>
+<h3 id="表的管理语句"><a href="#表的管理语句" class="headerlink" title="表的管理语句"></a>表的管理语句</h3><p>一、创建表 </p>
+<p>安全做法是先删再建：</p>
+<p>drop table if exists 表名；</p>
+<p>create table 【if not exists】 表名(</p>
+<p>​    字段名 字段类型 【（数据长度）【constraint 约束别名】列级约束】,</p>
+<p>​    字段名 字段类型 【（数据长度）【constraint 约束别名】列级约束】,<br>​    。。。</p>
+<p>​    字段名 字段类型 【（数据长度）【constraint 约束别名】列级约束】，</p>
+<p>​    【constraint 约束别名】 FOREIGN KEY(从表列名) REFERENCES 主表名(主表列名)</p>
+<p>)；</p>
+<p>二、修改表</p>
+<p>1.添加列</p>
+<p>alter table 表名 add column 列名 类型 【first|after 字段名（用于在指定位置添加，否则默认加在最后）】;</p>
+<p>2.修改列的类型或约束</p>
+<p>alter table 表名 modify column 列名 新类型 【新约束】;</p>
+<p>3.修改列名</p>
+<p>alter table 表名 change column 旧列名 新列名 类型;</p>
+<p>4 .删除列</p>
+<p>alter table 表名 drop column 列名;</p>
+<p>5.修改表名</p>
+<p>alter table 表名 rename 【to】 新表名;</p>
+<p>三、删除表</p>
+<p>drop table【if exists】 表名;</p>
+<p>四、复制表</p>
+<p>1、复制表的结构（无数据）</p>
+<p>create table 表名 like 旧表;</p>
+<p>2、复制表的结构+数据</p>
+<p>create table 表名 </p>
+<p>select 查询列表 from 旧表【where 筛选】;（复制旧表部分数据）</p>
+<p>3、复制表的部分结构，把where的部分设置为永不满足</p>
+<p>create table 表名</p>
+<p>select 列1 列2 from 旧表 where 1=2</p>
+<h4 id="关于约束"><a href="#关于约束" class="headerlink" title="关于约束"></a>关于约束</h4><p>在创建表或者修改表示添加约束，一个字段可以添加多个约束。</p>
+<p>六大约束：<br>    NOT NULL：非空，用于保证该字段的值不能为空，比如姓名、学号等。</p>
+<p>​    DEFAULT:默认，用于保证该字段有默认值，比如性别。</p>
+<p>​    PRIMARY KEY:主键，用于保证该字段的值具有唯一性，并且非空，比如学号、员工编号等。</p>
+<p>​    UNIQUE:唯一，用于保证该字段的值具有唯一性，<strong>可以为空</strong>，比如座位号。</p>
+<p>​    CHECK:检查约束【mysql中不支持】，比如年龄、性别。</p>
+<p>​    FOREIGN KEY:外键，用于限制两个表的关系，用于保证该字段的值必须来自于主表的关联列的值</p>
+<p>在从表添加外键约束，用于引用主表中某列的值，比如学生表的专业编号，员工表的部门编号，员工</p>
+<p>表的工种编号。</p>
+<p>外键约束的要求：</p>
+<p>​    1、在从表设置外键关系</p>
+<p>​    2、从表的外键列的类型和主表的关联列的类型要求一致或兼容</p>
+<p>​    3、主表的关联列必须是一个key（一般是主键或唯一）</p>
+<p>​    4、插入数据时，先插入主表，再插入从表，删除数据时，先删除从表，再删除主表</p>
+<p>​    5、<strong>不允许数据为空</strong></p>
+<p>​    这其中，列级约束有默认DEFAULT、非空NOT NULL、主键PRIMARY KEY、唯一UNIQUE，表级</p>
+<p>束为外键FOREIGN KEY，且主键、唯一和外键约束会<strong>自动创建索引</strong>。可以利用show index from表名 ;查看索引。</p>
+<p>1、创建表时的约束写法：</p>
+<p>列级约束：直接在字段名和类型后面追加 约束类型即可。</p>
+<p>表级约束：在所有字段的最下面，表级约束只有foreign key 语法为：</p>
+<p>【constraint 约束别名】 foreign key(从表列名)  references 主表名(主表列名)</p>
+<p>（其实列级约束也可以在表级约束的位置写，但是为了避免搞混最好不要）</p>
+<p>2、修改表时约束写法：</p>
+<p>列级约束modify</p>
+<p>alter table 表名 modify column 字段名 字段类型 新约束;</p>
+<p>表级约束add<br>alter table 表名 add 【constraint 约束别名】foreign key从表列名)  references 主表名(主表列名)</p>
+<p>3、修改表时删除约束</p>
+<p>删除非空约束</p>
+<p>alter table 表名 modify column 列名 数据类型(长度) NULL;</p>
+<p>删除默认约束</p>
+<p>alter table表名 modify column 列名 数据类型 ;</p>
+<p>删除主键</p>
+<p>alter table 表名 drop primary key;</p>
+<p>删除唯一</p>
+<p>alter table 表名drop index 列名;</p>
+<p>删除外键</p>
+<p>alter table 列名 drop foreign key 外键别名;</p>
+<p><strong>注意</strong>：对于外键的删除应该先删除从表的外键才能删除主表的主键，否则会报错，若要强行先删除主表的主键，那么对于从表的外键在删除时有两种处理办法，需要在创建是注明：</p>
+<p>​        1、主键所对应位置外键整条删除（级联删除）</p>
+<p>添加外键时语句：</p>
+<p>alter table add constraint 键别名 foreign key（从表列名）references 主表（主键列名）on delete cascade</p>
+<p>​        2、主键对应外键位置置空（级联置空）</p>
+<p>添加外键时语句：</p>
+<p>alter table add constraint 键别名 foreign key（从表列名）references 主表（主键列名）on delete set null </p>
+<h4 id="标识列（自增长列）"><a href="#标识列（自增长列）" class="headerlink" title="标识列（自增长列）"></a>标识列（自增长列）</h4><p>可以不用手动的插入值，每新增一条数据，系统提供默认的序列值</p>
+<p>要求是一个key（主键或是唯一或是外键），一个表至多一个，类型只能是数值型，通过SET auto_increment_increment=3;设置步长，通过 手动插入值，设置起始值。</p>
+<p>1、创建表时设置标识列：</p>
+<p>create table 表名（</p>
+<p>​                                    列 int 键约束 auto_increment</p>
+<p>）</p>
+<p>2、修改表时设置或是删除标识列</p>
+<p>alter table 表名 modify 列名 数据类型 键约束 auto_increment（原来有标识列的不写就相当于删除）</p>
+<h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>​        事务指的是一组sql语句，有开始结束的标志，所有指令要么全部执行要么都不执行，如果中途执行失败，会回滚到之前的状态，事务会占用相关变量的资源，如果有其他指令读取该变量的值，则会读取到事务开始之前的值。事务的特点有ACID：</p>
+<p>A 原子性：一个事务是不可再分割的整体，要么都执行要么都不执行</p>
+<p>C 一致性：一个事务可以使数据从一个一致状态切换到另外一个一致的状态</p>
+<p>I 隔离性：一个事务不受其他事务的干扰，多个事务互相隔离的</p>
+<p>D 持久性：一个事务一旦提交了，则永久的持久化到本地</p>
+<p>使用事务：</p>
+<p>1、开启事务</p>
+<p>set autocommit=0;（其实就是取消单个语句的自动提交，待事务完成同时提交）</p>
+<p>2编写一组逻辑sql语句</p>
+<p>注意：sql语句支持的是insert、update、delete</p>
+<p>设置回滚点：</p>
+<p>savepoint 回滚点名;</p>
+<p>③结束事务</p>
+<p>提交：commit;</p>
+<p>回滚：rollback;</p>
+<p>回滚到指定的地方：rollback to 回滚点名;</p>
+<h3 id="事务的并发"><a href="#事务的并发" class="headerlink" title="事务的并发"></a>事务的并发</h3><p>多个事务 同时 操作 同一个数据库的相同数据时会产生事务的并发问题。主要有：</p>
+<p>脏读：一个事务读取了其他事务还没有提交的数据，读到的是其他事务“更新”后的数据，但是其实该事务有可能回滚，读取的值就是错误的。</p>
+<p>不可重复读：对于两个事务T1、T2，如果T1提交之前T2读取了T1控制的某个资源，在T1提交后T2又读了一次，则两次的结果是不同的。（同一条目内容不同）</p>
+<p>幻读：对于两个事务T1、T2，如果T1提交之前T2读取了T1控制的某个表，之后T1在表中插入了几条数据，T2再次读取时就会多出几行。（数目不同）</p>
+<p>可以通过设置隔离级别来解决并发问题，主要有：</p>
+<p>read uncommitted读未提交 ：允许事务读取未被其他事务提交的变更，此隔离级别最低，会导致脏读、不可重复读以及幻读。</p>
+<p>read committed读已提交：只允许事务读取已经被其他事务提交的变更，因此可以避免脏读，但是如果在一条事T1务执行过程中另一条事务T2对某个字段或表更改且提交，那么T1在T2执行前后仍有可能出现不可重复读和幻读问题。</p>
+<p>repeatable read可重复读 ：确保一个事务可以多次从一个字段中读取相同的值，在一个事务执行期间，禁止其他事务对该事务控制的字段进行变更，但是仍然允许对该字段所在表的增删改，所以幻读仍然存在。</p>
+<p>serializable串行化 ：在事务执行期间，禁止其他事务对于该表的增删改操作，所以性能十分低下，可以避免所有并发问题。</p>
+<p>​                                                        脏读        不可重复读        幻读<br>read uncommitted:读未提交         ×               ×                      ×<br>read committed：读已提交          √                ×                      ×<br>repeatable read：可重复读          √                √                      ×<br>serializable：串行化                      √                √                      √</p>
+<p>MySQL支持4种隔离级别，默认隔离级别为repeatable read。</p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>​        视图是在执行sql语句中（包含groupby、join、where等关键字）形成的虚拟表，在mysql中只保留产生该视图的sql语句，在调用时执行语句产生视图，这样占用存储空间远远小于一张表，视图一般用于查询特定的字段而不用来删除或修改字段。</p>
+<p>1、创建视图</p>
+<p>create view 视图名<br>as<br>查询语句;</p>
+<p>2、修改视图</p>
+<p>create or replace  view 视图名<br>as<br>查询语句;</p>
+<p>或者：</p>
+<p>alter view 视图名<br>as<br>查询语句;</p>
+<p>3、使用视图</p>
+<p>select 字段</p>
+<p>from 视图名</p>
+<p>where。。。。</p>
+<p>4、删除视图</p>
+<p>drop view 视图1，视图2,…;</p>
+<p>5、查看视图</p>
+<p>desc 视图名;</p>
+<p>show create view 视图名;</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>MySQL变量有系统变量和自定义变量</p>
+<p>一、系统变量</p>
+<p>​    包括全局变量global：在所有连接中均有效，服务器启动时赋值，不能跨重启</p>
+<p>​           会话变量session：仅针对当前连接有效。</p>
+<p>说明：变量由系统提供的，不用自定义</p>
+<p>语法：</p>
+<p>查看系统变量</p>
+<p>show 【global|session 】variables like ‘’; 如果没有显式声明global还是session，则默认是session</p>
+<p>查看指定的系统变量的值</p>
+<p>select @@【global|session】.变量名; 如果没有显式声明global还是session，则默认是session</p>
+<p>为系统变量赋值</p>
+<p>方式一：</p>
+<p>set 【global|session 】 变量名=值; 如果没有显式声明global还是session，则默认是session</p>
+<p>方式二：</p>
+<p>set @@global.变量名=值;</p>
+<p>set @@变量名=值；</p>
+<p>二、自定义变量</p>
+<p>说明：</p>
+<p>1、用户变量</p>
+<p>作用域：针对于当前连接（会话）生效</p>
+<p>位置：begin end里面，也可以放在外面</p>
+<p>使用：</p>
+<p>①声明并赋值：</p>
+<p>set @变量名=值;</p>
+<p>②更新值</p>
+<p>方式一：</p>
+<p>​    set @变量名=值;</p>
+<p>方式二：</p>
+<p>​    select xx into @变量名 from 表;（常用）</p>
+<p>③使用</p>
+<p>select @变量名;</p>
+<p>2、局部变量</p>
+<p>作用域：仅仅在定义它的begin end中有效</p>
+<p>位置：只能放在begin end中，而且只能放在第一句</p>
+<p>使用：</p>
+<p>①声明</p>
+<p>declare 变量名 类型 【default 值】;</p>
+<p>②赋值或更新</p>
+<p>方式一：</p>
+<p>​    set 变量名=值;<br>方式二：</p>
+<p>​    select xx into 变量名 from 表;（常用）</p>
+<p>③使用</p>
+<p>select 变量名;</p>
+<p>用户变量要加@，局部变量不用加@，且必须先声明。</p>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><p>含义：一组预先编译好的SQL语句的集合，理解成批处理语句</p>
+<p>提高代码的重用性，简化操作，减少了编译次数并且减少了和数据库服务器的连接次数，提高了效率</p>
+<p>一、创建：</p>
+<p>create procedure 存储过程名(参数模式 参数名 参数类型)</p>
+<p>begin</p>
+<p>​        存储过程体</p>
+<p>end</p>
+<p>注意：<br>1.参数模式：in、out、inout，其中in可以省略，分别表示该参数的作用是输入，输出或是既输入又输出。<br>2.存储过程体的每一条sql语句都需要用分号结尾。</p>
+<p>3、存储过程可以用delimiter设置结束标记如 delimiter 结束标记符号;</p>
+<p>二、调用</p>
+<p>call 存储过程名(传入参数)</p>
+<p>三、查看存储过程：</p>
+<p>show create procedure 存储过程名 ；</p>
+<p>四、删除：<br>drop procedure 存储过程名；</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>类似存储过程，但是只有一个返回。</p>
+<p>一、创建<br>create function 函数名(参数名 参数类型) returns  返回类型</p>
+<p>begin</p>
+<p>​    函数体</p>
+<p>end</p>
+<p>注意：函数体中肯定需要有return语句</p>
+<p>同样可以用delimiter设置结束标记</p>
+<p>二、调用</p>
+<p>select 函数名(实参列表);</p>
+<p>三、查看</p>
+<p>show create function 函数名;</p>
+<p>四、删除</p>
+<p>drop function 函数名；</p>
+<h3 id="流程控制结构"><a href="#流程控制结构" class="headerlink" title="流程控制结构"></a>流程控制结构</h3><h4 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a>分支结构</h4><p>1、case结构</p>
+<p>case结构主要有两种，一种是把每条case语句单独作为一个语句，即每条语句后都加分号表示语句结束，另一种则是把整个case语句当成一条语句，其作用范围如图所示</p>
+<p><img src="/img/mysql2/case1.png" alt></p>
+<p><img src="/img/mysql2/case2.png" alt></p>
+<p>所以既然把case语句当成一整条的适用范围广，建议用此方法。</p>
+<p>2、if结构</p>
+<p>首先是if函数，if（表达式1，表达式2，表达式3），其含义是如果表达式1成立则执行语句2，否则执行语句3。if函数可以用在任意处。</p>
+<p>然后是if结构</p>
+<p>其用法为</p>
+<p>语法：</p>
+<p>if 条件1 then 语句1;</p>
+<p>elseif 条件2 then 语句2;</p>
+<p>….<br>else 语句n;</p>
+<p>end if;</p>
+<p>功能类似于多重，注意if只能应用在begin end 中。</p>
+<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><p>1、while</p>
+<p>语法：</p>
+<p>【名称:】while 循环条件 do</p>
+<p>​        循环体</p>
+<p>end while 【名称】;</p>
+<p>不满足循环条件跳出。</p>
+<p>2、loop</p>
+<p>语法：</p>
+<p>【名称：】loop</p>
+<p>​        循环体</p>
+<p>end loop 【名称】;</p>
+<p>死循环，循环体中没有跳出语句就不会结束</p>
+<p>3、repeat</p>
+<p>语法：</p>
+<p>【名称:】repeat</p>
+<p>​        循环体</p>
+<p>until 结束条件 </p>
+<p>end repeat 【名称】;</p>
+<p>批量相同操作时可以使用循环结构加上函数来完成。</p>
+<p>​                    </p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -207,16 +528,75 @@ var _hmt = _hmt || [];
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/27/mysql2/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/27/mysql2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/18/Mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mysql基础1</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -236,357 +616,14 @@ var _hmt = _hmt || [];
 
 
 
-
-  
-    <article id="post-Mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/18/Mysql/">Mysql基础1</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/18/Mysql/" class="archive-article-date">
-  	<time datetime="2020-03-18T12:07:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Mysql服务指令"><a href="#Mysql服务指令" class="headerlink" title="Mysql服务指令"></a>Mysql服务指令</h3><p>开启\关闭服务：1、以管理员身份打开命令行，输入net start\stop Mysql。</p>
-<p>​                            2、计算机–管理–服务–右击开启或关闭。
-        
-          <a class="article-more-a" href="/2020/03/18/Mysql/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/18/Mysql/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-机器学习评分标准" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/机器学习评分标准/">浅谈机器学习中的评分标准</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/13/机器学习评分标准/" class="archive-article-date">
-  	<time datetime="2020-03-13T13:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/13/机器学习评分标准/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-提升算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/提升算法/">集成学习</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/07/提升算法/" class="archive-article-date">
-  	<time datetime="2020-03-07T12:08:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="浅谈集成学习方法"><a href="#浅谈集成学习方法" class="headerlink" title="浅谈集成学习方法"></a>浅谈集成学习方法</h3><p>​    在有监督学习过程中，正确率较低，仅仅略高于随机选择的学习器称为弱学习器，正确率较高的学习器称为强学习器。理论已经证明，多个弱学习器经过组合改进，可以成为一个强学习器，这个过程被称为集成学习，
-        
-          <a class="article-more-a" href="/2020/03/07/提升算法/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">bagging、boosting、stacking、blending</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/07/提升算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/14/docker/">docker</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/14/docker/" class="archive-article-date">
-  	<time datetime="2020-02-14T06:39:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>​        Docker是一个开源的容器引擎，其设计目的是为了隔离各种进程的开发环境，使得部署和运维变的更加便捷。其设计目的与虚拟机类似
-        
-          <a class="article-more-a" href="/2020/02/14/docker/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/14/docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-pandas-numpy-matlop总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/14/pandas-numpy-matlop总结/">&#39;pandas,numpy,matlop总结&#39;</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/14/pandas-numpy-matlop总结/" class="archive-article-date">
-  	<time datetime="2020-02-14T06:15:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>关于numpy，pandas的索引总结，索引有很多内容很容易记混，一段时间不用又会很容易忘记，所以没有必要记住所有细节，记住常用的几个，
-        
-          <a class="article-more-a" href="/2020/02/14/pandas-numpy-matlop总结/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/14/pandas-numpy-matlop总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -609,8 +646,8 @@ var _hmt = _hmt || [];
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
